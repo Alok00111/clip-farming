@@ -9,6 +9,11 @@ export default function Loader() {
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+    
     if (shouldReduceMotion) {
       setIsLoading(false);
       return;
