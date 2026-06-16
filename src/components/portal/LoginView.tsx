@@ -9,7 +9,7 @@ export default function LoginView({ onLogin }: LoginViewProps) {
     <div className="flex min-h-screen items-center justify-center bg-neutral-50 px-6 pt-20">
       {/* Background Effect */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
-        <div className="h-[40rem] w-[40rem] rounded-full bg-accent blur-[150px]" />
+        <div className="h-[40rem] w-[40rem] rounded-full bg-neutral-300 blur-[150px]" />
       </div>
 
       <div className="relative z-10 w-full max-w-md rounded-3xl border border-neutral-200 bg-white p-10 shadow-xl">
@@ -39,7 +39,7 @@ export default function LoginView({ onLogin }: LoginViewProps) {
             <input
               type="email"
               placeholder="you@example.com"
-              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-neutral-100"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-black focus:bg-neutral-100"
               required
             />
           </div>
@@ -50,14 +50,14 @@ export default function LoginView({ onLogin }: LoginViewProps) {
             <input
               type="password"
               placeholder="••••••••"
-              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-neutral-100"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-black focus:bg-neutral-100"
               required
             />
           </div>
 
           <button 
             type="submit"
-            className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-accent px-8 font-bold uppercase tracking-wide text-black transition-colors hover:bg-accent/90"
+            className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-black px-8 font-bold uppercase tracking-wide text-white transition-colors hover:bg-neutral-800"
           >
             Sign In <ArrowRight className="h-5 w-5" />
           </button>

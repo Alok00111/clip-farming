@@ -18,9 +18,9 @@ export default function EarningsView() {
       <div className="grid gap-6 sm:grid-cols-3">
         {/* Total Balance */}
         <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6 relative overflow-hidden sm:col-span-2">
-          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent blur-[80px] opacity-20" />
+          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-neutral-200 blur-[80px] opacity-50" />
           <div className="relative z-10 flex h-full flex-col justify-between">
-            <div className="flex items-center gap-2 text-accent">
+            <div className="flex items-center gap-2 text-black">
               <DollarSign className="h-5 w-5" />
               <span className="font-bold uppercase tracking-widest">Pending Payout</span>
             </div>
@@ -39,7 +39,7 @@ export default function EarningsView() {
           </div>
           <div className="mt-4">
             <span className="font-display text-4xl font-bold text-black">2 Days</span>
-            <p className="mt-2 text-sm text-accent font-bold">Bi-Weekly Schedule</p>
+            <p className="mt-2 text-sm text-neutral-500 font-bold">Bi-Weekly Schedule</p>
           </div>
         </div>
       </div>
@@ -67,9 +67,9 @@ export default function EarningsView() {
                   <p className="text-xs text-neutral-500">{item.date}</p>
                 </div>
                 <div className="flex items-center gap-1 font-bold text-neutral-700">
-                  {item.views} <ArrowUpRight className="h-3 w-3 text-accent" />
+                  {item.views} <ArrowUpRight className="h-3 w-3 text-neutral-400" />
                 </div>
-                <div className="text-right font-bold text-accent">
+                <div className="text-right font-bold text-black">
                   {item.earned}
                 </div>
               </div>
