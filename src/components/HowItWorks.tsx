@@ -170,10 +170,10 @@ export default function HowItWorks() {
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
                         <Icon className="h-8 w-8 text-accent" />
                       </div>
-                      <h3 className="mb-4 font-display text-3xl font-bold uppercase text-foreground">
+                      <h3 className="mb-4 font-display text-3xl font-bold uppercase text-white">
                         {step.title}
                       </h3>
-                      <p className="text-lg leading-relaxed text-muted-foreground">
+                      <p className="text-lg leading-relaxed text-neutral-400">
                         {step.description}
                       </p>
                     </TiltCard>
