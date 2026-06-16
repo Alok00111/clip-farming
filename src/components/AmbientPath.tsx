@@ -13,8 +13,10 @@ export default function AmbientPath() {
     offset: ["start center", "end center"]
   });
 
-  // Path draws progressively from 0 to 1 as you scroll down
-  const pathDraw = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  // Main path draws progressively from 0 to 0.9 of scroll
+  const mainPathDraw = useTransform(scrollYProgress, [0, 0.9], [0, 1]);
+  // The inverted T-splits draw simultaneously from 0.9 to 1.0
+  const splitPathDraw = useTransform(scrollYProgress, [0.9, 1], [0, 1]);
 
   if (shouldReduceMotion) return null;
 
@@ -29,24 +31,62 @@ export default function AmbientPath() {
         viewBox="0 0 1000 3000" 
         preserveAspectRatio="none"
       >
-        {/* Faint Background Track */}
+        {/* Faint Background Track - Main */}
         <path
-          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
+          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 2950"
+          fill="transparent"
+          stroke="currentColor"
+          className="text-black/10 dark:text-white/10"
+          strokeWidth="4"
+        />
+        {/* Faint Background Track - Splits */}
+        <path
+          d="M 500 2950 H 100"
+          fill="transparent"
+          stroke="currentColor"
+          className="text-black/10 dark:text-white/10"
+          strokeWidth="4"
+        />
+        <path
+          d="M 500 2950 H 900"
           fill="transparent"
           stroke="currentColor"
           className="text-black/10 dark:text-white/10"
           strokeWidth="4"
         />
 
-        {/* Bright Glowing Track (Optimized) */}
+        {/* Bright Glowing Track - Main */}
         <motion.path
-          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
+          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 2950"
           fill="transparent"
           stroke="currentColor"
           className="text-black dark:text-accent"
           strokeWidth="6"
           style={{ 
-            pathLength: pathDraw,
+            pathLength: mainPathDraw,
+            willChange: "stroke-dashoffset"
+          }}
+        />
+        {/* Bright Glowing Track - Splits */}
+        <motion.path
+          d="M 500 2950 H 100"
+          fill="transparent"
+          stroke="currentColor"
+          className="text-black dark:text-accent"
+          strokeWidth="6"
+          style={{ 
+            pathLength: splitPathDraw,
+            willChange: "stroke-dashoffset"
+          }}
+        />
+        <motion.path
+          d="M 500 2950 H 900"
+          fill="transparent"
+          stroke="currentColor"
+          className="text-black dark:text-accent"
+          strokeWidth="6"
+          style={{ 
+            pathLength: splitPathDraw,
             willChange: "stroke-dashoffset"
           }}
         />
