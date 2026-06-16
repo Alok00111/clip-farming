@@ -35,14 +35,14 @@ export default function AmbientPath() {
       >
         {/* Faint Background Track - Top Splits */}
         <path
-          d="M 100 0 Q 100 350 500 350"
+          d="M 100 0 V 150 H 250 L 350 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
           className="text-black/10 dark:text-white/10"
           strokeWidth="4"
         />
         <path
-          d="M 900 0 Q 900 350 500 350"
+          d="M 900 0 V 150 H 750 L 650 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
           className="text-black/10 dark:text-white/10"
@@ -76,7 +76,7 @@ export default function AmbientPath() {
 
         {/* Bright Glowing Track - Top Splits */}
         <motion.path
-          d="M 100 0 Q 100 350 500 350"
+          d="M 100 0 V 150 H 250 L 350 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
           className="text-black dark:text-accent"
@@ -87,7 +87,7 @@ export default function AmbientPath() {
           }}
         />
         <motion.path
-          d="M 900 0 Q 900 350 500 350"
+          d="M 900 0 V 150 H 750 L 650 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
           className="text-black dark:text-accent"
