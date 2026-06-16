@@ -1,6 +1,6 @@
 import { DollarSign, TrendingUp, Calendar, ArrowUpRight } from "lucide-react";
 
-export default function EarningsPage() {
+export default function EarningsView() {
   const performanceFeed = [
     { id: 1, video: "Finance Hacks #4", views: "1.2M", earned: "$120.00", date: "Today" },
     { id: 2, video: "Podcast Clip - Marketing", views: "450K", earned: "$45.00", date: "Yesterday" },
@@ -8,9 +8,9 @@ export default function EarningsPage() {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
-        <h1 className="font-display text-4xl font-bold uppercase tracking-tight">Earnings & Payouts</h1>
+        <h1 className="font-display text-4xl font-bold uppercase tracking-tight text-white">Earnings & Payouts</h1>
         <p className="mt-2 text-neutral-400">Track your performance and upcoming bi-weekly payouts.</p>
       </div>
 
@@ -47,7 +47,7 @@ export default function EarningsPage() {
       {/* Performance Feed */}
       <section>
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="flex items-center gap-2 font-display text-xl font-bold uppercase tracking-widest">
+          <h2 className="flex items-center gap-2 font-display text-xl font-bold uppercase tracking-widest text-white">
             <TrendingUp className="h-5 w-5" /> Recent Performance
           </h2>
           <button className="text-sm font-bold text-neutral-400 hover:text-white transition-colors">View All</button>

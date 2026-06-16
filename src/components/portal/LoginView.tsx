@@ -1,9 +1,12 @@
-import Link from "next/link";
 import { ArrowRight, Scissors } from "lucide-react";
 
-export default function LoginPage() {
+interface LoginViewProps {
+  onLogin: () => void;
+}
+
+export default function LoginView({ onLogin }: LoginViewProps) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-6">
+    <div className="flex min-h-screen items-center justify-center bg-background px-6 pt-20">
       {/* Background Effect */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
         <div className="h-[40rem] w-[40rem] rounded-full bg-accent blur-[150px]" />
@@ -22,7 +25,13 @@ export default function LoginPage() {
           </p>
         </div>
 
-        <form className="flex flex-col gap-5">
+        <form 
+          className="flex flex-col gap-5"
+          onSubmit={(e) => {
+            e.preventDefault();
+            onLogin();
+          }}
+        >
           <div>
             <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-500">
               Email Address
@@ -46,16 +55,16 @@ export default function LoginPage() {
             />
           </div>
 
-          <Link 
-            href="/portal/dashboard"
+          <button 
+            type="submit"
             className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-accent px-8 font-bold uppercase tracking-wide text-black transition-colors hover:bg-accent/90"
           >
             Sign In <ArrowRight className="h-5 w-5" />
-          </Link>
+          </button>
         </form>
 
         <p className="mt-8 text-center text-xs text-neutral-500">
-          For demo purposes, clicking Sign In will bypass authentication.
+          For demo purposes, clicking Sign In will instantly log you in.
         </p>
       </div>
     </div>

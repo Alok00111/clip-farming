@@ -1,6 +1,6 @@
 import { Play, Download, Upload, Clock } from "lucide-react";
 
-export default function DashboardPage() {
+export default function DashboardView() {
   const availableProjects = [
     { id: 1, client: "Top Podcast", length: "45m Raw", reward: "$50 + CPM", tag: "Viral Potential" },
     { id: 2, client: "Fitness Brand", length: "10m Raw", reward: "$30 + CPM", tag: "Urgent" },
@@ -12,9 +12,9 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div>
-        <h1 className="font-display text-4xl font-bold uppercase tracking-tight">Dashboard</h1>
+        <h1 className="font-display text-4xl font-bold uppercase tracking-tight text-white">Dashboard</h1>
         <p className="mt-2 text-neutral-400">Welcome back. You have {availableProjects.length} new raw clips available to claim.</p>
       </div>
 
@@ -35,7 +35,7 @@ export default function DashboardPage() {
                 <span className="rounded bg-accent/20 px-2 py-1 text-xs font-bold text-accent">{project.status}</span>
               </div>
               <div className="mt-6 flex gap-3">
-                <button className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-white/10 py-2 text-sm font-bold transition-colors hover:bg-white/20">
+                <button className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-white/10 py-2 text-sm font-bold text-white transition-colors hover:bg-white/20">
                   <Download className="h-4 w-4" /> Raw
                 </button>
                 <button className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-accent py-2 text-sm font-bold text-black transition-colors hover:bg-accent/90">
@@ -49,7 +49,7 @@ export default function DashboardPage() {
 
       {/* Available Projects */}
       <section>
-        <h2 className="mb-6 font-display text-xl font-bold uppercase tracking-widest">Available to Claim</h2>
+        <h2 className="mb-6 font-display text-xl font-bold uppercase tracking-widest text-white">Available to Claim</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {availableProjects.map((project) => (
             <div key={project.id} className="rounded-2xl border border-white/5 bg-neutral-900/50 p-6 transition-colors hover:bg-neutral-800/50">
