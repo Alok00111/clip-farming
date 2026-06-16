@@ -77,12 +77,12 @@ export default function AboutClient() {
           {/* Metric Blocks */}
           <motion.div variants={itemVariants} className="flex flex-col justify-between gap-8">
             <div className="group rounded-3xl border-2 border-border bg-accent p-10 sm:p-14 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--border)]">
-              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-accent-foreground group-hover:scale-105 transition-transform origin-left">170k+</h3>
+              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-accent-foreground group-hover:scale-105 transition-transform origin-left">3000+</h3>
               <p className="mt-4 text-2xl font-bold uppercase tracking-widest text-accent-foreground/80">Active Clippers</p>
             </div>
             
             <div className="group rounded-3xl border-2 border-border bg-muted/50 p-10 sm:p-14 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--foreground)] hover:border-foreground hover:bg-background">
-              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-foreground group-hover:scale-105 transition-transform origin-left">10B+</h3>
+              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-foreground group-hover:scale-105 transition-transform origin-left">1.2B+</h3>
               <p className="mt-4 text-2xl font-bold uppercase tracking-widest text-muted-foreground">Views Generated</p>
             </div>
           </motion.div>
