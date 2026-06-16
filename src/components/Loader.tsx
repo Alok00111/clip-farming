@@ -48,7 +48,7 @@ export default function Loader() {
               {percentage}%
             </div>
             <div className="text-xl font-bold uppercase tracking-[0.5em] text-[#555555] mt-4">
-              Initializing
+              ClipUp Media
             </div>
           </div>
         </motion.div>
