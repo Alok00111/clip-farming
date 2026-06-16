@@ -1,6 +1,77 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, Variants, AnimatePresence } from "framer-motion";
+
+const CustomSelect = ({ options, placeholder, name }: { options: {value: string, label: string}[], placeholder: string, name: string }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedLabel = options.find(opt => opt.value === selected)?.label || placeholder;
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <input type="hidden" name={name} value={selected} required />
+      
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-full cursor-pointer rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium outline-none transition-all flex justify-between items-center
+          ${isOpen ? "bg-accent text-accent-foreground shadow-[6px_6px_0px_0px_var(--border)] -translate-y-1 -translate-x-1" : "text-foreground"}
+          ${!selected && !isOpen ? "text-muted-foreground/50" : ""}
+        `}
+      >
+        <span>{selectedLabel}</span>
+        <motion.svg 
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          className={`h-6 w-6 ${isOpen ? "text-accent-foreground" : "text-foreground"}`} 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7"></path>
+        </motion.svg>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="absolute left-0 top-full mt-4 w-full z-50 rounded-2xl border-4 border-border bg-accent p-2 shadow-[8px_8px_0px_0px_var(--border)]"
+          >
+            {options.map((option) => (
+              <div
+                key={option.value}
+                onClick={() => {
+                  setSelected(option.value);
+                  setIsOpen(false);
+                }}
+                className={`cursor-pointer rounded-xl p-4 text-lg font-medium transition-colors
+                  ${selected === option.value ? "bg-white text-black" : "text-accent-foreground hover:bg-white hover:text-black"}
+                `}
+              >
+                {option.label}
+              </div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -106,24 +177,16 @@ export default function ContactClient() {
 
               <div className="flex flex-col gap-2">
                 <label htmlFor="budget" className="font-display text-xl font-bold uppercase text-foreground">Monthly Short-Form Budget</label>
-                <div className="relative">
-                  <select 
-                    id="budget" 
-                    name="budget" 
-                    required
-                    defaultValue=""
-                    className="w-full appearance-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
-                  >
-                    <option value="" disabled>Select an investment tier...</option>
-                    <option value="under-1k">Under $1,000</option>
-                    <option value="1k-3k">$1,000 - $3,000</option>
-                    <option value="3k-10k">$3,000 - $10,000</option>
-                    <option value="10k+">$10,000+</option>
-                  </select>
-                  <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2">
-                    <svg className="h-6 w-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
-                </div>
+                <CustomSelect 
+                  name="budget"
+                  placeholder="Select an investment tier..."
+                  options={[
+                    { value: "under-1k", label: "Under $1,000" },
+                    { value: "1k-3k", label: "$1,000 - $3,000" },
+                    { value: "3k-10k", label: "$3,000 - $10,000" },
+                    { value: "10k+", label: "$10,000+" }
+                  ]}
+                />
               </div>
 
               <div className="flex flex-col gap-2">
