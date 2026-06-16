@@ -9,32 +9,27 @@ export default function Loader() {
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem("hasVisited");
-    
-    if (hasVisited || shouldReduceMotion) {
+    if (shouldReduceMotion) {
       setIsLoading(false);
-      if (shouldReduceMotion && !hasVisited) {
-        sessionStorage.setItem("hasVisited", "true");
-      }
-    } else {
-      let current = 0;
-      // 50 steps * 30ms = 1500ms duration
-      const interval = setInterval(() => {
-        current += 2;
-        if (current > 100) current = 100;
-        setPercentage(current);
-        
-        if (current === 100) {
-          clearInterval(interval);
-          setTimeout(() => {
-            setIsLoading(false);
-            sessionStorage.setItem("hasVisited", "true");
-          }, 400); // Pause at 100%
-        }
-      }, 30);
-      
-      return () => clearInterval(interval);
+      return;
     }
+
+    let current = 0;
+    // 50 steps * 20ms = 1000ms (1 second) duration
+    const interval = setInterval(() => {
+      current += 2;
+      if (current > 100) current = 100;
+      setPercentage(current);
+      
+      if (current === 100) {
+        clearInterval(interval);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 300); // Small pause at 100%
+      }
+    }, 20);
+    
+    return () => clearInterval(interval);
   }, [shouldReduceMotion]);
 
   if (shouldReduceMotion) return null;
