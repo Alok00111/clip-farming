@@ -35,9 +35,10 @@ export default function Loader() {
   if (shouldReduceMotion) return null;
 
   return (
-    <AnimatePresence>
+    <AnimatePresence initial={false}>
       {isLoading && (
         <motion.div
+          initial={false}
           exit={{ y: "-100vh" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-background border-b-[10px] border-accent"
