@@ -41,13 +41,13 @@ export default function Loader() {
           initial={false}
           exit={{ y: "-100vh" }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#0a0a0a] border-b-[10px] border-[#D4FF00]"
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#f4f4f0] border-b-[10px] border-[#000000]"
         >
           <div className="flex flex-col items-center">
-            <div className="font-display text-[15vw] leading-none font-black text-[#D4FF00] tracking-tighter">
+            <div className="font-display text-[15vw] leading-none font-black text-[#000000] tracking-tighter">
               {percentage}%
             </div>
-            <div className="text-xl font-bold uppercase tracking-[0.5em] text-[#D4FF00]/60 mt-4">
+            <div className="text-xl font-bold uppercase tracking-[0.5em] text-[#555555] mt-4">
               Initializing
             </div>
           </div>
