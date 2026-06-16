@@ -112,7 +112,7 @@ export default function AboutClient() {
             <div className="flex-1">
               <h2 className="font-display text-5xl sm:text-6xl font-black uppercase text-background mb-8">The War Room</h2>
               <p className="text-muted text-xl mb-10 leading-relaxed">
-                Managing 170,000 clippers isn't done on spreadsheets. We built a proprietary distribution and QA engine that automatically grades retention scores before a video is even published. 
+                Managing 3,000+ clippers isn't done on spreadsheets. We built a proprietary distribution and QA engine that automatically grades retention scores before a video is even published. 
               </p>
               <div className="inline-flex items-center gap-2 rounded-full border-2 border-border bg-accent px-6 py-3 font-bold uppercase tracking-wider text-accent-foreground shadow-[4px_4px_0px_0px_var(--border)] cursor-default">
                 Proprietary Tech Stack
@@ -135,7 +135,7 @@ export default function AboutClient() {
             {[
               { year: "2021", event: "The Origin", desc: "Started scaling single YouTubers manually. Realized traditional editing couldn't keep up with TikTok's volume requirements." },
               { year: "2023", event: "The Network", desc: "Built the automated ingestion pipeline. Scaled the first 10,000 remote clippers and hit 1 Billion total views." },
-              { year: "2026", event: "The Machine", desc: "170k active editors. Full proprietary QA engine. Dominating the short-form ecosystem." }
+              { year: "2026", event: "The Machine", desc: "3000+ active editors. Full proprietary QA engine. Dominating the short-form ecosystem." }
             ].map((step) => (
               <motion.div key={step.year} variants={itemVariants} className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center p-8 rounded-3xl border-2 border-border bg-background shadow-[6px_6px_0px_0px_var(--border)] group hover:bg-muted/30 transition-colors">
                 <div className="font-display text-5xl sm:text-6xl font-black text-accent bg-foreground px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_var(--border)] group-hover:scale-105 group-hover:-rotate-2 transition-transform">{step.year}</div>
