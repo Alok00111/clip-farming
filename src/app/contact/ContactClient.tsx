@@ -111,9 +111,10 @@ export default function ContactClient() {
                     id="budget" 
                     name="budget" 
                     required
+                    defaultValue=""
                     className="w-full appearance-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all focus:bg-accent focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                   >
-                    <option value="" disabled selected>Select an investment tier...</option>
+                    <option value="" disabled>Select an investment tier...</option>
                     <option value="under-1k">Under $1,000</option>
                     <option value="1k-3k">$1,000 - $3,000</option>
                     <option value="3k-10k">$3,000 - $10,000</option>
