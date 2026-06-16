@@ -80,7 +80,7 @@ export default function Stats() {
           {/* We duplicate the logos array twice to ensure seamless scrolling */}
           {[1, 2].map((group) => (
             <div key={group} className="flex w-1/2 items-center justify-around">
-              {["Spotify", "Netflix", "YouTube", "TikTok", "Instagram", "Twitch", "Patreon"].map((logo) => (
+              {["Spotify", "Netflix", "YouTube", "Instagram", "Twitch", "Patreon"].map((logo) => (
                 <div key={logo} className="mx-8 font-display text-2xl font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground">
                   {logo}
                 </div>
