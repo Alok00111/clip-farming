@@ -37,7 +37,7 @@ export default function MagneticButton({ children, className, ...props }: Magnet
       animate={{ x, y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       className={cn(
-        "relative flex items-center justify-center rounded-full bg-accent text-accent-foreground font-bold transition-colors hover:bg-accent/90",
+        "relative flex items-center justify-center rounded-full border border-border bg-accent text-accent-foreground font-bold shadow-brutal transition-transform hover:-translate-y-1 hover:bg-accent/90",
         className
       )}
       data-cursor-hover="true"

@@ -32,7 +32,7 @@ export default function FAQ() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative w-full bg-neutral-950 py-32">
+    <section className="relative w-full bg-background py-32">
       <div className="container mx-auto px-6 max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
@@ -40,7 +40,7 @@ export default function FAQ() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="font-display text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl">
+          <h2 className="font-display text-4xl font-bold uppercase tracking-tight text-foreground sm:text-5xl">
             Frequently Asked <span className="text-accent">Questions</span>
           </h2>
         </motion.div>
@@ -56,16 +56,16 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: shouldReduceMotion ? 0 : index * 0.1 }}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-black/50 transition-colors hover:border-white/20"
+                className="overflow-hidden rounded-2xl border border-border bg-muted/50 transition-colors hover:border-foreground/20"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between p-6 text-left"
                 >
-                  <span className="font-display text-lg font-bold text-white sm:text-xl">
+                  <span className="font-display text-lg font-bold text-foreground sm:text-xl">
                     {faq.question}
                   </span>
-                  <div className={`ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${isOpen ? 'bg-accent text-black' : 'bg-white/10 text-white'}`}>
+                  <div className={`ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors ${isOpen ? 'bg-accent text-accent-foreground' : 'bg-foreground/10 text-foreground'}`}>
                     {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
                   </div>
                 </button>
@@ -77,7 +77,7 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 pt-2 text-neutral-400">
+                      <div className="px-6 pb-6 pt-2 text-muted-foreground">
                         {faq.answer}
                       </div>
                     </motion.div>

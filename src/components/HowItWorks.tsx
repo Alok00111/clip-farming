@@ -72,7 +72,7 @@ export default function HowItWorks() {
     <section 
       id="how-it-works" 
       ref={containerRef} 
-      className="relative flex h-screen w-full items-center overflow-hidden bg-neutral-950"
+      className="relative flex h-screen w-full items-center overflow-hidden bg-background"
     >
       {/* Background Accent */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-full opacity-10">
@@ -99,17 +99,17 @@ export default function HowItWorks() {
       </svg>
 
       <div className="container relative z-10 mx-auto px-6 md:hidden">
-        <h2 className="mb-12 font-display text-4xl font-bold uppercase tracking-tight text-white">
+        <h2 className="mb-12 font-display text-4xl font-bold uppercase tracking-tight text-foreground">
           How It <span className="text-accent">Works</span>
         </h2>
         <div className="flex flex-col gap-8">
           {steps.map((step, i) => (
-            <div key={i} className="flex flex-col gap-4 rounded-2xl border border-white/5 bg-black/50 p-8">
+            <div key={i} className="flex flex-col gap-4 rounded-2xl border border-border bg-muted/50 p-8 shadow-brutal">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
                 <step.icon className="h-8 w-8 text-accent" />
               </div>
-              <h3 className="font-display text-2xl font-bold text-white">{step.title}</h3>
-              <p className="text-neutral-400">{step.description}</p>
+              <h3 className="font-display text-2xl font-bold text-foreground">{step.title}</h3>
+              <p className="text-muted-foreground">{step.description}</p>
             </div>
           ))}
         </div>
@@ -123,10 +123,10 @@ export default function HowItWorks() {
         {/* Intro Slide */}
         <div className="step-card flex h-full w-screen shrink-0 items-center justify-center px-16">
           <div className="max-w-3xl">
-            <h2 className="font-display text-7xl font-bold uppercase tracking-tight text-white">
+            <h2 className="font-display text-7xl font-bold uppercase tracking-tight text-foreground">
               The <span className="text-accent">Process</span>
             </h2>
-            <p className="mt-6 text-2xl text-neutral-400">
+            <p className="mt-6 text-2xl text-muted-foreground">
               Scroll to see how we turn your raw footage into millions of verified views.
             </p>
           </div>
@@ -135,12 +135,12 @@ export default function HowItWorks() {
         {/* The 3 Steps */}
         {steps.map((step, i) => (
           <div key={i} className="step-card flex h-full w-screen shrink-0 items-center justify-center px-16">
-            <div className="flex max-w-2xl flex-col gap-8 rounded-3xl border border-white/5 bg-black/40 p-16 shadow-2xl backdrop-blur-sm">
+            <div className="flex max-w-2xl flex-col gap-8 rounded-3xl border border-border bg-muted/50 p-16 shadow-brutal backdrop-blur-sm">
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
                 <step.icon className="h-10 w-10 text-accent" />
               </div>
-              <h3 className="font-display text-5xl font-bold text-white">{step.title}</h3>
-              <p className="text-xl leading-relaxed text-neutral-400">{step.description}</p>
+              <h3 className="font-display text-5xl font-bold text-foreground">{step.title}</h3>
+              <p className="text-xl leading-relaxed text-muted-foreground">{step.description}</p>
             </div>
           </div>
         ))}

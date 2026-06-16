@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Inter, Archivo_Black } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,13 +33,37 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${archivoBlack.variable} antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                  document.documentElement.style.colorScheme = 'dark';
+                } else {
+                  document.documentElement.classList.add('light');
+                  document.documentElement.style.colorScheme = 'light';
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
-        <div className="noise-overlay" />
-        <Cursor />
-        <SmoothScroll>
-          <main className="relative block">{children}</main>
-        </SmoothScroll>
+        <ThemeProvider>
+          <div className="noise-overlay" />
+          <Cursor />
+          <SmoothScroll>
+            <Navbar />
+            <main className="relative block">{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

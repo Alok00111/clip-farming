@@ -13,7 +13,7 @@ export default function Hero() {
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-20">
       {/* Background Animated Shapes (No Gradients, Solid Colors with Low Opacity) */}
       <motion.div
-        className="absolute top-[20%] left-[10%] h-64 w-64 rounded-full bg-white/5 blur-3xl"
+        className="absolute top-[20%] left-[10%] h-64 w-64 rounded-full bg-foreground/5 blur-3xl"
         animate={shouldReduceMotion ? {} : {
           x: [0, 50, 0],
           y: [0, 30, 0],
@@ -58,10 +58,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: shouldReduceMotion ? 0 : 0.8, duration: 0.8 }}
-          className="mx-auto mt-8 max-w-2xl text-lg font-medium text-neutral-400 sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-lg font-medium text-muted-foreground sm:text-xl"
         >
           Our massive network of clippers guarantees minimum views, driving organic traffic to your brand for as low as{" "}
-          <span className="font-bold text-white">$0.001 per view.</span>
+          <span className="font-bold text-foreground">$0.001 per view.</span>
         </motion.p>
 
         {/* CTA Button */}
@@ -87,7 +87,7 @@ export default function Hero() {
             {[1, 2, 3, 4, 5].map((i) => (
               <div
                 key={i}
-                className="h-10 w-10 rounded-full border-2 border-background bg-neutral-800"
+                className="h-10 w-10 rounded-full border-2 border-background bg-muted"
                 style={{
                   backgroundImage: `url('https://i.pravatar.cc/100?img=${i + 10}')`,
                   backgroundSize: "cover",
@@ -97,8 +97,8 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-accent" />
-            <p className="text-sm font-medium text-neutral-300">
-              Trusted by <span className="font-bold text-white">50+ Top Podcasters & Brands</span>
+            <p className="text-sm font-medium text-foreground">
+              Trusted by <span className="font-bold text-foreground">50+ Top Podcasters & Brands</span>
             </p>
           </div>
         </motion.div>
@@ -111,12 +111,12 @@ export default function Hero() {
         transition={{ delay: shouldReduceMotion ? 0 : 2, duration: 1 }}
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
-        <span className="text-xs font-bold uppercase tracking-widest text-neutral-500">Scroll</span>
+        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Scroll</span>
         <motion.div
           animate={shouldReduceMotion ? {} : { y: [0, 8, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown className="h-4 w-4 text-neutral-500" />
+          <ArrowDown className="h-4 w-4 text-muted-foreground" />
         </motion.div>
       </motion.div>
     </section>

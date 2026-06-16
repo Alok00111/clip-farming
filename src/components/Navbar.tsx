@@ -1,20 +1,26 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Case Studies", href: "#case-studies" },
-  { name: "For Clippers", href: "#for-clippers" },
-  { name: "FAQ", href: "#faq" },
+  { name: "Process", href: "/#how-it-works" },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "About", href: "/about" },
+  { name: "Compare", href: "/compare" },
+  { name: "Blog", href: "/blog" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,51 +34,59 @@ export default function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 z-50 w-full transition-all duration-300",
-          isScrolled 
-            ? "bg-background/80 py-4 backdrop-blur-md border-b border-white/5" 
+          "z-50 w-full transition-all duration-300",
+          isHome ? "absolute top-0" : "sticky top-0",
+          isScrolled && !isHome
+            ? "bg-background/80 py-4 backdrop-blur-xl border-b border-border shadow-sm" 
             : "bg-transparent py-6"
         )}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Logo */}
-          <a href="#" className="font-display text-xl font-bold uppercase tracking-tight sm:text-2xl" data-cursor-hover="true">
+          <Link href="/" className="font-display text-xl font-bold uppercase tracking-tight sm:text-2xl" data-cursor-hover="true">
             CA<span className="text-accent">.</span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-neutral-300 transition-colors hover:text-accent"
+                className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
                 data-cursor-hover="true"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
-            <a
-              href="#book-a-call"
+          {/* Desktop CTAs */}
+          <div className="hidden items-center gap-4 md:flex">
+            <ThemeToggle />
+            <Link 
+              href="/portal/login"
+              className="text-sm font-bold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Portal Login
+            </Link>
+            <Link
+              href="/contact"
               className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-transform hover:scale-105"
               data-cursor-hover="true"
             >
               Book a Call
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
             className="text-foreground md:hidden"
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             data-cursor-hover="true"
-            aria-label="Open menu"
+            aria-label="Toggle menu"
           >
-            <Menu className="h-6 w-6" />
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </header>
@@ -81,10 +95,9 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: -20 }}
             className="fixed inset-0 z-[100] flex flex-col bg-background px-6 py-6"
           >
             <div className="flex items-center justify-between">
@@ -102,29 +115,23 @@ export default function Navbar() {
 
             <div className="mt-20 flex flex-col gap-8">
               {navLinks.map((link, i) => (
-                <motion.a
+                <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 + 0.2, duration: 0.5 }}
                   className="font-display text-4xl font-bold uppercase tracking-tight hover:text-accent"
                 >
                   {link.name}
-                </motion.a>
+                </Link>
               ))}
               
-              <motion.a
-                href="#book-a-call"
+              <Link
+                href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.1 + 0.2, duration: 0.5 }}
                 className="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 font-display text-xl font-bold uppercase tracking-tight text-accent-foreground"
               >
                 Book a Call
-              </motion.a>
+              </Link>
             </div>
           </motion.div>
         )}

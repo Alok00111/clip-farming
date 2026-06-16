@@ -1,10 +1,26 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
+  /* Neo-Brutalist Light Theme */
+  --background: #f4f4f0;
+  --foreground: #000000;
+  --accent: #D4FF00;
+  --accent-foreground: #000000;
+  --muted: #e5e5df;
+  --muted-foreground: #555555;
+  --border: #000000;
+}
+
+:root.dark {
+  /* Original Dark Theme */
   --background: #0a0a0a;
   --foreground: #ededed;
   --accent: #D4FF00;
   --accent-foreground: #000000;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --border: #262626;
 }
 
 @theme inline {
@@ -12,6 +28,9 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
   --font-sans: var(--font-inter), sans-serif;
   --font-display: var(--font-archivo-black), sans-serif;
 }
@@ -62,4 +81,11 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Neo-Brutalism Utilities */
+@layer utilities {
+  .shadow-brutal {
+    box-shadow: 4px 4px 0px 0px var(--border);
+  }
 }

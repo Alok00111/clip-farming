@@ -46,7 +46,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative w-full border-t border-white/5 bg-background py-24">
+    <section className="relative w-full border-t border-border bg-background py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
           {stats.map((stat, i) => (
@@ -58,7 +58,7 @@ export default function Stats() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className="flex flex-col items-center text-center md:items-start md:text-left"
             >
-              <h3 className="font-display text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h3 className="font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                 {stat.prefix}
                 <Counter
                   value={stat.value}
@@ -66,7 +66,7 @@ export default function Stats() {
                 />
                 {stat.suffix}
               </h3>
-              <p className="mt-2 text-sm font-medium uppercase tracking-wider text-neutral-500">
+              <p className="mt-2 text-sm font-medium uppercase tracking-wider text-muted-foreground">
                 {stat.label}
               </p>
             </motion.div>
@@ -75,13 +75,13 @@ export default function Stats() {
       </div>
 
       {/* Infinite Logo Marquee */}
-      <div className="mt-24 w-full overflow-hidden border-t border-b border-white/5 bg-black/20 py-10">
+      <div className="mt-24 w-full overflow-hidden border-t border-b border-border bg-muted/30 py-10">
         <div className="flex w-[200%] items-center animate-marquee">
           {/* We duplicate the logos array twice to ensure seamless scrolling */}
           {[1, 2].map((group) => (
             <div key={group} className="flex w-1/2 items-center justify-around">
               {["Spotify", "Netflix", "YouTube", "TikTok", "Instagram", "Twitch", "Patreon"].map((logo) => (
-                <div key={logo} className="mx-8 font-display text-2xl font-bold uppercase tracking-widest text-neutral-600 transition-colors hover:text-white">
+                <div key={logo} className="mx-8 font-display text-2xl font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground">
                   {logo}
                 </div>
               ))}

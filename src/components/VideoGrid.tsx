@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const placeholderVideos = [
@@ -62,8 +62,10 @@ function VideoCard({ video, index }: { video: typeof placeholderVideos[0]; index
     >
       {/* Fallback pattern while video is missing */}
       <div className="absolute inset-0 z-0 flex flex-col items-center justify-center opacity-20">
-        <Play className="h-12 w-12 text-white mb-2" />
-        <span className="text-xs uppercase tracking-widest text-white">Missing .mp4</span>
+        <div className="flex items-center gap-1 text-accent">
+          <TrendingUp className="h-4 w-4" />
+          <span className="text-xs uppercase tracking-widest text-foreground">Missing .mp4</span>
+        </div>
       </div>
 
       <video
@@ -81,12 +83,14 @@ function VideoCard({ video, index }: { video: typeof placeholderVideos[0]; index
 
       {/* Info Overlay */}
       <div className="absolute bottom-0 left-0 z-30 flex w-full flex-col p-6 translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-        <span className="font-display text-3xl font-bold tracking-tight text-white">
-          {video.views}
-        </span>
-        <span className="text-sm font-medium uppercase tracking-wider text-accent">
-          {video.platform}
-        </span>
+        <h3 className="font-bold text-foreground line-clamp-2">
+          {video.title}
+        </h3>
+        <div className="mt-2 flex items-center gap-4 text-sm font-medium text-muted-foreground">
+          <span className="text-accent">{video.views} Views</span>
+          <span>•</span>
+          <span className="uppercase tracking-wider">{video.platform}</span>
+        </div>
       </div>
     </motion.div>
   );
@@ -101,7 +105,7 @@ export default function VideoGrid() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-display text-4xl font-bold uppercase tracking-tight text-white sm:text-6xl"
+            className="font-display text-4xl font-bold uppercase tracking-tight text-foreground sm:text-6xl"
           >
             Proof is in the <span className="text-accent">Pixels.</span>
           </motion.h2>
@@ -110,7 +114,7 @@ export default function VideoGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="mt-4 text-lg text-neutral-400"
+            className="mt-4 text-lg text-muted-foreground"
           >
             Hover to preview some of our highest-performing clips.
           </motion.p>
