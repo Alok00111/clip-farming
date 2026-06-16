@@ -44,8 +44,8 @@ export default function ROICalculator() {
             {/* Interactive Slider Area */}
             <div className="flex-1">
               <div className="mb-4 flex items-end justify-between">
-                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Monthly Budget</label>
-                <span className="font-display text-3xl font-bold text-foreground">${budget.toLocaleString()}</span>
+                <label className="text-sm font-bold uppercase tracking-wider text-neutral-400">Monthly Budget</label>
+                <span className="font-display text-3xl font-bold text-white">${budget.toLocaleString()}</span>
               </div>
               <input
                 type="range"
@@ -57,6 +57,7 @@ export default function ROICalculator() {
                 className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted-foreground/30 accent-accent"
               />
               <div className="mt-4 flex justify-between text-xs text-muted-foreground">
+              <div className="mt-4 flex justify-between text-xs text-neutral-400">
                 <span>$100</span>
                 <span>$10,000+</span>
               </div>
@@ -65,12 +66,12 @@ export default function ROICalculator() {
             {/* Results Output */}
             <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-accent/20 bg-accent/5 p-8 text-center">
               <span className="text-sm font-bold uppercase tracking-wider text-accent">Estimated Views</span>
-              <div className="mt-2 font-display text-5xl font-bold text-foreground sm:text-6xl">
+              <div className="mt-2 font-display text-5xl font-bold text-white sm:text-6xl">
                 {estimatedViews >= 1000000 
                   ? `${(estimatedViews / 1000000).toFixed(1)}M+` 
                   : `${(estimatedViews / 1000).toFixed(0)}K+`}
               </div>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-4 text-sm text-neutral-400">
                 At $0.001 Average Cost Per View
               </p>
             </div>
