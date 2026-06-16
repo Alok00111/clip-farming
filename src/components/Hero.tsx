@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { ArrowDown, TrendingUp, Users, CheckCircle } from "lucide-react";
 
-const headlineWords = "Scale Your Personal Brand To Millions.".split(" ");
+import SplitText from "./SplitText";
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -31,26 +31,9 @@ export default function Hero() {
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         {/* Main Headline */}
-        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
-          {headlineWords.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: shouldReduceMotion ? 0 : i * 0.1 + 0.2,
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="inline-block mr-[0.2em]"
-            >
-              {word.includes("Millions") ? (
-                <span className="text-accent">{word}</span>
-              ) : (
-                word
-              )}
-            </motion.span>
-          ))}
+        <h1 className="font-display flex flex-wrap justify-center gap-x-[0.25em] text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
+          <SplitText text="Scale Your Personal Brand To" delay={0.2} />
+          <SplitText text="Millions." className="text-accent" delay={1.4} />
         </h1>
 
         {/* Data-Driven Subheadline */}
