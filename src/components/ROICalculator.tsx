@@ -56,7 +56,6 @@ export default function ROICalculator() {
                 onChange={(e) => setBudget(Number(e.target.value))}
                 className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted-foreground/30 accent-accent"
               />
-              <div className="mt-4 flex justify-between text-xs text-muted-foreground">
               <div className="mt-4 flex justify-between text-xs text-neutral-400">
                 <span>$100</span>
                 <span>$10,000+</span>
