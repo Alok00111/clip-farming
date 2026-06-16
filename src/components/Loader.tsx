@@ -1,17 +1,14 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function Loader() {
   const [isLoading, setIsLoading] = useState(true);
   const [percentage, setPercentage] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-  const hasRun = useRef(false);
 
   useEffect(() => {
-    if (hasRun.current) return; // Prevent strict mode double-run
-    
     const hasVisited = sessionStorage.getItem("hasVisited");
     
     if (hasVisited || shouldReduceMotion) {
@@ -20,7 +17,6 @@ export default function Loader() {
         sessionStorage.setItem("hasVisited", "true");
       }
     } else {
-      hasRun.current = true;
       let animationFrameId: number;
       const startTime = performance.now();
       const duration = 1500;
