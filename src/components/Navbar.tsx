@@ -74,6 +74,8 @@ export default function Navbar() {
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-bold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground block"
               >
                 Portal Login
