@@ -104,21 +104,7 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: shouldReduceMotion ? 0 : 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-      >
-        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground">Scroll</span>
-        <motion.div
-          animate={shouldReduceMotion ? {} : { y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown className="h-4 w-4 text-muted-foreground" />
-        </motion.div>
-      </motion.div>
+
     </section>
   );
 }
