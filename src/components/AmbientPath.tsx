@@ -33,15 +33,16 @@ export default function AmbientPath() {
         <path
           d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
           fill="transparent"
-          stroke="rgba(255,255,255,0.05)"
+          stroke="var(--foreground)"
           strokeWidth="4"
+          style={{ opacity: 0.05 }}
         />
 
         {/* Bright Glowing Track (Optimized) */}
         <motion.path
           d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
           fill="transparent"
-          stroke="#D4FF00"
+          stroke="var(--path-color)"
           strokeWidth="6"
           style={{ 
             pathLength: pathDraw,
