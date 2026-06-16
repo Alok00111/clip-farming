@@ -7,10 +7,12 @@ interface SplitTextProps {
   text: string;
   className?: string;
   delay?: number;
+  highlightWords?: string[];
+  highlightClass?: string;
 }
 
-export default function SplitText({ text, className, delay = 0 }: SplitTextProps) {
-  // Split the text into words so we can keep words together (so they don't break mid-word on resize)
+export default function SplitText({ text, className, delay = 0, highlightWords = [], highlightClass = "" }: SplitTextProps) {
+  // Split the text into words so we can keep words together
   const words = text.split(" ");
 
   const container = {
@@ -44,26 +46,29 @@ export default function SplitText({ text, className, delay = 0 }: SplitTextProps
 
   return (
     <motion.div
-      style={{ display: "contents" }}
+      style={{ overflow: "hidden", display: "inline-flex", flexWrap: "wrap" }}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className={className}
+      className={cn("gap-[0.25em]", className)}
     >
-      {words.map((word, index) => (
-        <span key={index} style={{ overflow: "hidden", display: "inline-block" }}>
-          {word.split("").map((character, idx) => (
-            <motion.span
-              key={idx}
-              variants={child}
-              style={{ display: "inline-block" }}
-            >
-              {character}
-            </motion.span>
-          ))}
-        </span>
-      ))}
+      {words.map((word, index) => {
+        const isHighlight = highlightWords.includes(word);
+        return (
+          <span key={index} className={isHighlight ? highlightClass : undefined} style={{ overflow: "hidden", display: "inline-flex" }}>
+            {word.split("").map((character, idx) => (
+              <motion.span
+                key={idx}
+                variants={child}
+                style={{ display: "inline-block" }}
+              >
+                {character}
+              </motion.span>
+            ))}
+          </span>
+        );
+      })}
     </motion.div>
   );
 }

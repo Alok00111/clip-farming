@@ -31,9 +31,14 @@ export default function Hero() {
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         {/* Main Headline */}
-        <h1 className="font-display flex flex-wrap justify-center gap-x-[0.25em] text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
-          <SplitText text="Scale Your Personal Brand To" delay={0.2} />
-          <SplitText text="Millions." className="text-accent" delay={1.4} />
+        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
+          <SplitText 
+            text="Scale Your Personal Brand To Millions." 
+            highlightWords={["Millions."]} 
+            highlightClass="text-accent" 
+            className="justify-center"
+            delay={0.2} 
+          />
         </h1>
 
         {/* Data-Driven Subheadline */}
