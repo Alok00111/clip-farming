@@ -44,12 +44,12 @@ export default function SplitText({ text, className, delay = 0 }: SplitTextProps
 
   return (
     <motion.div
-      style={{ overflow: "hidden", display: "inline-flex", flexWrap: "wrap" }}
+      style={{ display: "contents" }}
       variants={container}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className={cn("gap-x-[0.25em]", className)}
+      className={className}
     >
       {words.map((word, index) => (
         <span key={index} style={{ overflow: "hidden", display: "inline-block" }}>
