@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { ArrowDown, TrendingUp, Users, CheckCircle } from "lucide-react";
 
-const headlineWords = "Turn 1 Podcast Into 30 Viral Clips.".split(" ");
+const headlineWords = "Scale Your Personal Brand To Millions.".split(" ");
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -44,7 +44,7 @@ export default function Hero() {
               }}
               className="inline-block mr-[0.2em]"
             >
-              {word === "Viral" ? (
+              {word.includes("Millions") ? (
                 <span className="text-accent">{word}</span>
               ) : (
                 word
@@ -60,7 +60,7 @@ export default function Hero() {
           transition={{ delay: shouldReduceMotion ? 0 : 0.8, duration: 0.8 }}
           className="mx-auto mt-8 max-w-2xl text-lg font-medium text-muted-foreground sm:text-xl"
         >
-          Our massive network of clippers guarantees minimum views, driving organic traffic to your brand for as low as{" "}
+          Our elite network of clippers runs hyper-targeted viral campaigns for Founders, Politicians, and Creators—driving massive organic traffic for as low as{" "}
           <span className="font-bold text-foreground">$0.001 per view.</span>
         </motion.p>
 
@@ -98,7 +98,7 @@ export default function Hero() {
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-accent" />
             <p className="text-sm font-medium text-foreground">
-              Trusted by <span className="font-bold text-foreground">50+ Top Podcasters & Brands</span>
+              Trusted by <span className="font-bold">50+ Top Leaders, Creators & Brands</span>
             </p>
           </div>
         </motion.div>
