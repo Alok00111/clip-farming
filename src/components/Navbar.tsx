@@ -24,6 +24,10 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
+  if (pathname.startsWith("/portal")) {
+    return null;
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);

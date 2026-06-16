@@ -4,10 +4,16 @@ import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import MagneticWrapper from "./MagneticWrapper";
 
 export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/portal")) {
+    return null;
+  }
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
