@@ -5,21 +5,13 @@ import LoginView from "@/components/portal/LoginView";
 import DashboardView from "@/components/portal/DashboardView";
 import EarningsView from "@/components/portal/EarningsView";
 import PortalSidebar from "@/components/portal/PortalSidebar";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 export default function PortalPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentTab, setCurrentTab] = useState("dashboard");
 
   if (!isAuthenticated) {
-    return (
-      <>
-        <Navbar />
-        <LoginView onLogin={() => setIsAuthenticated(true)} />
-        <Footer />
-      </>
-    );
+    return <LoginView onLogin={() => setIsAuthenticated(true)} />;
   }
 
   return (
