@@ -1,15 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useMotionValue } from "framer-motion";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, Scissors, BarChart3 } from "lucide-react";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 const steps = [
   {
@@ -31,119 +24,95 @@ const steps = [
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollWrapperRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
 
-  const pathProgress = useMotionValue(0);
-
-  useGSAP(() => {
-    // Only run horizontal scroll on desktop
-    const mm = gsap.matchMedia();
-
-    mm.add("(min-width: 768px)", () => {
-      const getScrollAmount = () => {
-        const sections = gsap.utils.toArray(".step-card");
-        return -(window.innerWidth * (sections.length - 1));
-      };
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          pin: true,
-          scrub: 1,
-          end: () => `+=${Math.abs(getScrollAmount())}`,
-          invalidateOnRefresh: true,
-          onUpdate: (self) => {
-            pathProgress.set(self.progress);
-          }
-        }
-      });
-
-      // Move cards horizontally
-      tl.to(scrollWrapperRef.current, {
-        x: getScrollAmount,
-        ease: "none",
-      }, 0);
-    });
-
-    return () => mm.revert();
-  }, { scope: containerRef });
+  // The glowing line scales down exactly with the scroll progress
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section 
       id="how-it-works" 
       ref={containerRef} 
-      className="relative flex h-screen w-full items-center overflow-hidden bg-background"
+      className="relative w-full py-32 bg-background overflow-hidden"
     >
       {/* Background Accent */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-full opacity-10">
-        <div className="absolute -left-[10%] top-[20%] h-[50vh] w-[50vh] rounded-full bg-accent blur-[120px]" />
+        <div className="absolute left-[50%] top-[20%] h-[50vh] w-[50vh] -translate-x-1/2 rounded-full bg-accent blur-[120px]" />
       </div>
 
-      {/* Custom Horizontal Circuit Board (Desktop Only) */}
-      <svg 
-        className="pointer-events-none absolute left-0 top-0 z-0 hidden h-full w-full md:block"
-        viewBox="0 0 1000 500"
-        preserveAspectRatio="none"
-      >
-        {/* Bright Glowing Track (Dynamically drawn by scroll) */}
-        <motion.path
-          d="M 0 250 C 50 250, 80 230, 100 250 S 150 270, 200 250 S 230 150, 250 100 S 280 50, 300 150 S 350 400, 400 350 S 450 250, 500 250 S 600 230, 700 250 S 750 100, 800 50 S 850 300, 900 250 S 950 250, 1000 250"
-          fill="transparent"
-          stroke="#D4FF00"
-          strokeWidth="3"
-          style={{ 
-            pathLength: pathProgress,
-            filter: "drop-shadow(0 0 8px #D4FF00)" 
-          }}
-        />
-      </svg>
-
-      <div className="container relative z-10 mx-auto px-6 md:hidden">
-        <h2 className="mb-12 font-display text-4xl font-bold uppercase tracking-tight text-foreground">
-          How It <span className="text-accent">Works</span>
-        </h2>
-        <div className="flex flex-col gap-8">
-          {steps.map((step, i) => (
-            <div key={i} className="flex flex-col gap-4 rounded-2xl border border-border bg-muted/50 p-8 shadow-brutal">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
-                <step.icon className="h-8 w-8 text-accent" />
-              </div>
-              <h3 className="font-display text-2xl font-bold text-foreground">{step.title}</h3>
-              <p className="text-muted-foreground">{step.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Desktop Horizontal Scroll Container */}
-      <div 
-        ref={scrollWrapperRef} 
-        className="hidden md:flex h-full w-max items-center"
-      >
-        {/* Intro Slide */}
-        <div className="step-card flex h-full w-screen shrink-0 items-center justify-center px-16">
-          <div className="max-w-3xl">
-            <h2 className="font-display text-7xl font-bold uppercase tracking-tight text-foreground">
-              The <span className="text-accent">Process</span>
-            </h2>
-            <p className="mt-6 text-2xl text-muted-foreground">
-              Scroll to see how we turn your raw footage into millions of verified views.
-            </p>
-          </div>
+      <div className="container relative z-10 mx-auto px-6">
+        <div className="mb-24 text-center">
+          <h2 className="font-display text-4xl font-bold uppercase tracking-tight sm:text-6xl">
+            The <span className="text-accent">Process.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+            We don't just edit videos. We engineer attention.
+          </p>
         </div>
 
-        {/* The 3 Steps */}
-        {steps.map((step, i) => (
-          <div key={i} className="step-card flex h-full w-screen shrink-0 items-center justify-center px-16">
-            <div className="flex max-w-2xl flex-col gap-8 rounded-3xl border border-border bg-muted/50 p-16 shadow-brutal backdrop-blur-sm">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent/10">
-                <step.icon className="h-10 w-10 text-accent" />
-              </div>
-              <h3 className="font-display text-5xl font-bold text-foreground">{step.title}</h3>
-              <p className="text-xl leading-relaxed text-muted-foreground">{step.description}</p>
-            </div>
+        <div className="relative mx-auto max-w-5xl">
+          {/* Vertical Neon Progress Line (Desktop Only) */}
+          <div className="absolute left-1/2 top-0 bottom-0 hidden w-1 -translate-x-1/2 bg-neutral-900 md:block">
+            <motion.div 
+              className="absolute left-0 top-0 w-full bg-accent shadow-[0_0_15px_#D4FF00]"
+              style={{ height: lineHeight }}
+            />
           </div>
-        ))}
+
+          <div className="flex flex-col gap-24 md:gap-40">
+            {steps.map((step, index) => {
+              const isEven = index % 2 === 0;
+              const Icon = step.icon;
+
+              return (
+                <div 
+                  key={index}
+                  className={`relative flex flex-col items-center gap-8 md:flex-row ${
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Central Node for the timeline */}
+                  <div className="absolute left-1/2 hidden -translate-x-1/2 items-center justify-center md:flex z-20">
+                    <motion.div 
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: "-50%" }}
+                      transition={{ type: "spring", stiffness: 150, delay: 0.2 }}
+                      className="h-8 w-8 rounded-full border-4 border-background bg-accent shadow-[0_0_15px_#D4FF00]"
+                    />
+                  </div>
+
+                  {/* Empty space for alternating layout */}
+                  <div className="hidden w-1/2 md:block" />
+
+                  {/* Content Card (Side Reveal) */}
+                  <motion.div 
+                    initial={{ x: isEven ? -150 : 150, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: "-20%" }}
+                    transition={{ type: "spring", stiffness: 80, damping: 15 }}
+                    className={`w-full md:w-1/2 ${isEven ? "md:pr-16" : "md:pl-16"}`}
+                  >
+                    <div className="group relative overflow-hidden rounded-3xl border-4 border-border bg-neutral-950 p-10 transition-all hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_var(--border)]">
+                      <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
+                        <Icon className="h-8 w-8 text-accent" />
+                      </div>
+                      <h3 className="mb-4 font-display text-3xl font-bold uppercase text-foreground">
+                        {step.title}
+                      </h3>
+                      <p className="text-lg leading-relaxed text-muted-foreground">
+                        {step.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
