@@ -41,11 +41,15 @@ export default function AmbientPath() {
           d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
           fill="transparent"
           stroke="#D4FF00"
-          strokeWidth="0.5"
-          style={{ 
-            pathLength: pathDraw,
-            filter: "drop-shadow(0 0 8px #D4FF00)"
-          }}
+          strokeWidth="1"
+          style={{ pathLength: pathDraw, opacity: 0.3 }}
+        />
+        <motion.path
+          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
+          fill="transparent"
+          stroke="#D4FF00"
+          strokeWidth="0.3"
+          style={{ pathLength: pathDraw }}
         />
       </svg>
     </div>

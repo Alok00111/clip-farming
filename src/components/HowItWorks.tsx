@@ -99,7 +99,7 @@ export default function HowItWorks() {
     <section 
       id="how-it-works" 
       ref={containerRef} 
-      className="relative w-full py-32 bg-background overflow-hidden"
+      className="relative w-full py-32 overflow-hidden"
     >
       {/* Background Accent */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-full opacity-10">

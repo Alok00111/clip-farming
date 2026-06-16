@@ -33,7 +33,7 @@ export default function UseCases() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative w-full bg-background py-32">
+    <section className="relative w-full py-32">
       <div className="mx-auto max-w-7xl px-6 text-center lg:px-8">
         <motion.h2
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}

@@ -13,7 +13,7 @@ export default function ROICalculator() {
   const estimatedViews = Math.floor(budget / 0.001);
 
   return (
-    <section className="relative w-full bg-background py-32">
+    <section className="relative w-full py-32">
       <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
