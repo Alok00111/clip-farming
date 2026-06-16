@@ -121,61 +121,7 @@ export default function CompareClient() {
           </div>
         </motion.div>
 
-        {/* The Scale Tiers */}
-        <motion.div variants={itemVariants} className="mb-40">
-          <h2 className="font-display text-5xl font-black uppercase text-foreground mb-12 text-center">The Scale Tiers</h2>
-          <div className="grid gap-8 lg:grid-cols-3 items-center">
-            
-            {/* Tier 1 */}
-            <div className="flex flex-col rounded-[2.5rem] border-4 border-border bg-background p-10 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_var(--foreground)]">
-              <h3 className="font-display text-4xl font-black uppercase text-foreground mb-2">The Spark</h3>
-              <p className="text-xl font-bold text-muted-foreground mb-8">30 Videos / Month</p>
-              <ul className="flex flex-col gap-4 mb-10">
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> 1 Video Per Day</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Basic Color & Sound</li>
-                <li className="flex items-center gap-3 text-lg font-medium text-muted-foreground"><X className="h-6 w-6 text-muted-foreground" /> No A/B Variants</li>
-                <li className="flex items-center gap-3 text-lg font-medium text-muted-foreground"><X className="h-6 w-6 text-muted-foreground" /> 48hr Turnaround</li>
-              </ul>
-              <Link href="/contact" className="mt-auto block w-full rounded-full border-4 border-border bg-muted/50 p-4 text-center font-display text-xl font-bold uppercase transition-colors hover:bg-foreground hover:text-background">
-                Apply Now
-              </Link>
-            </div>
 
-            {/* Tier 2 (Recommended) */}
-            <div className="relative flex flex-col rounded-[2.5rem] border-4 border-border bg-foreground p-10 shadow-[16px_16px_0px_0px_var(--border)] transition-transform hover:-translate-y-4 hover:shadow-[24px_24px_0px_0px_var(--accent)] lg:scale-105 z-10">
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border-4 border-border bg-accent px-6 py-2 font-display text-xl font-black uppercase text-accent-foreground shadow-[4px_4px_0px_0px_var(--border)]">
-                Most Popular
-              </div>
-              <h3 className="font-display text-5xl font-black uppercase text-background mb-2 mt-4">The Network</h3>
-              <p className="text-2xl font-bold text-accent mb-8">100 Videos / Month</p>
-              <ul className="flex flex-col gap-4 mb-10 text-muted">
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> 3+ Videos Per Day</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Subliminal Sound Design</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Full A/B Variant Testing</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Guaranteed 24hr Turnaround</li>
-              </ul>
-              <Link href="/contact" className="mt-auto block w-full rounded-full border-4 border-accent-foreground bg-accent p-6 text-center font-display text-2xl font-black uppercase text-accent-foreground transition-transform hover:scale-105 shadow-[6px_6px_0px_0px_var(--border)]">
-                Scale Now
-              </Link>
-            </div>
-
-            {/* Tier 3 */}
-            <div className="flex flex-col rounded-[2.5rem] border-4 border-border bg-background p-10 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_var(--foreground)]">
-              <h3 className="font-display text-4xl font-black uppercase text-foreground mb-2">The Monopoly</h3>
-              <p className="text-xl font-bold text-muted-foreground mb-8">300+ Videos / Month</p>
-              <ul className="flex flex-col gap-4 mb-10">
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> 10+ Videos Per Day</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Dedicated QA Engineer</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Proprietary Pipeline Access</li>
-                <li className="flex items-center gap-3 text-lg font-medium"><Check className="h-6 w-6 text-accent" /> Dedicated Slack Channel</li>
-              </ul>
-              <Link href="/contact" className="mt-auto block w-full rounded-full border-4 border-border bg-muted/50 p-4 text-center font-display text-xl font-bold uppercase transition-colors hover:bg-foreground hover:text-background">
-                Apply Now
-              </Link>
-            </div>
-
-          </div>
-        </motion.div>
 
         {/* ROI Calculator */}
         <motion.div variants={itemVariants} className="mt-40 mb-20">
