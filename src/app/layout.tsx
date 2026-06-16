@@ -42,6 +42,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
+                window.history.scrollRestoration = 'manual';
+                window.scrollTo(0, 0);
                 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.documentElement.classList.add('dark');
                   document.documentElement.style.colorScheme = 'dark';
