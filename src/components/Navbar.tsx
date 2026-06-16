@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import MagneticWrapper from "./MagneticWrapper";
 
 const navLinks = [
   { name: "Process", href: "/#how-it-works" },
@@ -44,40 +45,49 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="font-display text-xl font-bold uppercase tracking-tight sm:text-2xl" data-cursor-hover="true">
-            CA<span className="text-accent">.</span>
-          </Link>
+          <MagneticWrapper>
+            <Link href="/" className="font-display text-xl font-bold uppercase tracking-tight sm:text-2xl inline-block" data-cursor-hover="true">
+              CA<span className="text-accent">.</span>
+            </Link>
+          </MagneticWrapper>
 
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
-                data-cursor-hover="true"
-              >
-                {link.name}
-              </Link>
+              <MagneticWrapper key={link.name}>
+                <Link
+                  href={link.href}
+                  className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground block"
+                  data-cursor-hover="true"
+                >
+                  {link.name}
+                </Link>
+              </MagneticWrapper>
             ))}
           </nav>
 
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-4 md:flex">
-            <ThemeToggle />
-            <Link 
-              href="/portal/login"
-              className="text-sm font-bold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Portal Login
-            </Link>
-            <Link
-              href="/contact"
-              className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-transform hover:scale-105"
-              data-cursor-hover="true"
-            >
-              Book a Call
-            </Link>
+            <MagneticWrapper strength={0.1}>
+              <ThemeToggle />
+            </MagneticWrapper>
+            <MagneticWrapper strength={0.1}>
+              <Link 
+                href="/portal/login"
+                className="text-sm font-bold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground block"
+              >
+                Portal Login
+              </Link>
+            </MagneticWrapper>
+            <MagneticWrapper strength={0.2}>
+              <Link
+                href="/contact"
+                className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-transform hover:scale-105 block"
+                data-cursor-hover="true"
+              >
+                Book a Call
+              </Link>
+            </MagneticWrapper>
           </div>
 
           {/* Mobile Menu Toggle */}
