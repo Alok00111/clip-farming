@@ -17,12 +17,16 @@ export default function Home() {
       <Hero />
       <Stats />
       <VideoGrid />
-      <HowItWorks />
       
+      {/* Global Winding Path Wrapper */}
       <div className="relative overflow-hidden bg-background">
         <AmbientPath />
+        <HowItWorks />
         <UseCases />
         <ROICalculator />
+      </div>
+
+      <div className="relative overflow-hidden bg-background">
         <ForClippers />
         <FAQ />
       </div>

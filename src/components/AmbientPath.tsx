@@ -7,15 +7,12 @@ export default function AmbientPath() {
   const containerRef = useRef<HTMLDivElement>(null);
   const shouldReduceMotion = useReducedMotion();
 
-  // We track the scroll progress of the entire page
+  // We track the scroll progress of the grouped wrapper
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: ["start center", "end center"]
   });
 
-  // Since the horizontal pin happens near the top, we want the vertical line to start drawing
-  // AFTER we scroll past the horizontal pin. But to keep it simple, mapping the whole page works fine too,
-  // as the line will just fill up as you scroll down.
   // Path draws progressively from 0 to 1 as you scroll down
   const pathDraw = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
@@ -24,19 +21,27 @@ export default function AmbientPath() {
   return (
     <div 
       ref={containerRef}
-      className="pointer-events-none absolute inset-0 z-0 hidden w-full xl:block"
+      className="pointer-events-none absolute inset-0 z-0 hidden w-full xl:block opacity-50"
     >
       <svg 
         className="h-full w-full"
-        viewBox="0 0 1000 1000" 
+        viewBox="0 0 100 100" 
         preserveAspectRatio="none"
       >
+        {/* Faint Background Track */}
+        <path
+          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
+          fill="transparent"
+          stroke="rgba(255,255,255,0.05)"
+          strokeWidth="0.5"
+        />
+
         {/* Bright Glowing Track (Dynamically drawn by scroll) */}
         <motion.path
-          d="M 1000 0 C 1000 50, 800 100, 800 150 S 950 200, 900 250 S 500 300, 400 350 S 100 450, 200 500 S 700 550, 800 600 S 900 700, 800 750 S 400 800, 500 850 S 800 950, 800 1000"
+          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
           fill="transparent"
           stroke="#D4FF00"
-          strokeWidth="3"
+          strokeWidth="0.5"
           style={{ 
             pathLength: pathDraw,
             filter: "drop-shadow(0 0 8px #D4FF00)"

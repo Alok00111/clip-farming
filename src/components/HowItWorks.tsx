@@ -94,13 +94,6 @@ function TiltCard({ children, numberStr }: { children: React.ReactNode; numberSt
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
-
-  // The glowing line scales down exactly with the scroll progress
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
     <section 
@@ -124,13 +117,6 @@ export default function HowItWorks() {
         </div>
 
         <div className="relative mx-auto max-w-5xl">
-          {/* Vertical Neon Progress Line (Desktop Only) */}
-          <div className="absolute left-1/2 top-0 bottom-0 hidden w-1 -translate-x-1/2 bg-neutral-900 md:block z-0">
-            <motion.div 
-              className="absolute left-0 top-0 w-full bg-accent shadow-[0_0_15px_#D4FF00]"
-              style={{ height: lineHeight }}
-            />
-          </div>
 
           <div className="flex flex-col gap-24 md:gap-40">
             {steps.map((step, index) => {
