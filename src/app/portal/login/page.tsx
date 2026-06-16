@@ -9,15 +9,15 @@ export default function LoginPage() {
         <div className="h-[40rem] w-[40rem] rounded-full bg-accent blur-[150px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-white/5 bg-black/50 p-10 shadow-2xl backdrop-blur-xl">
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-neutral-200 bg-white p-10 shadow-2xl backdrop-blur-xl dark:border-white/5 dark:bg-black/50">
         <div className="mb-10 flex flex-col items-center text-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
             <Scissors className="h-8 w-8 text-accent" />
           </div>
-          <h1 className="mt-6 font-display text-3xl font-bold uppercase tracking-tight text-white">
+          <h1 className="mt-6 font-display text-3xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white">
             Clipper Portal
           </h1>
-          <p className="mt-2 text-sm text-neutral-400">
+          <p className="mt-2 text-sm text-neutral-500 dark:text-neutral-400">
             Sign in to claim videos and track payouts.
           </p>
         </div>
@@ -30,7 +30,7 @@ export default function LoginPage() {
             <input
               type="email"
               placeholder="you@example.com"
-              className="h-14 w-full rounded-xl border border-white/10 bg-white/5 px-6 text-white placeholder-neutral-600 outline-none transition-colors focus:border-accent focus:bg-white/10"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-neutral-900 placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-neutral-600 dark:focus:bg-white/10"
               required
             />
           </div>
@@ -41,7 +41,7 @@ export default function LoginPage() {
             <input
               type="password"
               placeholder="••••••••"
-              className="h-14 w-full rounded-xl border border-white/10 bg-white/5 px-6 text-white placeholder-neutral-600 outline-none transition-colors focus:border-accent focus:bg-white/10"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-neutral-900 placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-white dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder-neutral-600 dark:focus:bg-white/10"
               required
             />
           </div>
