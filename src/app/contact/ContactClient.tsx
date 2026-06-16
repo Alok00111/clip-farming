@@ -88,7 +88,7 @@ export default function ContactClient() {
                   name="name" 
                   required
                   placeholder="MrBeast"
-                  className="w-full rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
+                  className="w-full rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                 />
               </div>
 
@@ -100,7 +100,7 @@ export default function ContactClient() {
                   name="link" 
                   required
                   placeholder="youtube.com/@yourchannel"
-                  className="w-full rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
+                  className="w-full rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                 />
               </div>
 
@@ -112,7 +112,7 @@ export default function ContactClient() {
                     name="budget" 
                     required
                     defaultValue=""
-                    className="w-full appearance-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all focus:bg-accent focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
+                    className="w-full appearance-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                   >
                     <option value="" disabled>Select an investment tier...</option>
                     <option value="under-1k">Under $1,000</option>
@@ -134,7 +134,7 @@ export default function ContactClient() {
                   rows={4}
                   required
                   placeholder="e.g., I'm spending 20 hours a week editing instead of filming..."
-                  className="w-full resize-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
+                  className="w-full resize-none rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                 ></textarea>
               </div>
 
