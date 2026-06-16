@@ -6,12 +6,12 @@ import { Play, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const placeholderVideos = [
-  { id: 1, src: "/videos/clip1.mp4", views: "1.2M", platform: "TikTok" },
-  { id: 2, src: "/videos/clip2.mp4", views: "850K", platform: "Reels" },
-  { id: 3, src: "/videos/clip3.mp4", views: "3.4M", platform: "Shorts" },
-  { id: 4, src: "/videos/clip4.mp4", views: "500K", platform: "TikTok" },
-  { id: 5, src: "/videos/clip5.mp4", views: "2.1M", platform: "Reels" },
-  { id: 6, src: "/videos/clip6.mp4", views: "1.1M", platform: "Shorts" },
+  { id: 1, src: "/videos/clip1.mp4", views: "1.2M", platform: "TikTok", title: "How I made $100k in 30 days" },
+  { id: 2, src: "/videos/clip2.mp4", views: "850K", platform: "Reels", title: "The secret to virality" },
+  { id: 3, src: "/videos/clip3.mp4", views: "3.4M", platform: "Shorts", title: "Stop doing this to your videos" },
+  { id: 4, src: "/videos/clip4.mp4", views: "500K", platform: "TikTok", title: "My entire editing process" },
+  { id: 5, src: "/videos/clip5.mp4", views: "2.1M", platform: "Reels", title: "Why you are losing viewers" },
+  { id: 6, src: "/videos/clip6.mp4", views: "1.1M", platform: "Shorts", title: "The hook that changed everything" },
 ];
 
 function VideoCard({ video, index }: { video: typeof placeholderVideos[0]; index: number }) {

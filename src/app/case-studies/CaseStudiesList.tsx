@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Campaign } from "@/data/campaigns";
 
 const containerVariants = {
@@ -14,7 +14,7 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, scale: 0.9, y: 50 },
   show: { 
     opacity: 1, 
