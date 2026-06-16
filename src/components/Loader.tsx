@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, animate } from "framer-motion";
 
 export default function Loader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,20 +19,19 @@ export default function Loader() {
       }
     } else {
       // Counter Animation
-      import("framer-motion").then(({ animate }) => {
-        const controls = animate(0, 100, {
-          duration: 1.5,
-          ease: [0.83, 0, 0.17, 1], // Custom easing for cinematic feel
-          onUpdate: (val) => setPercentage(Math.floor(val)),
-          onComplete: () => {
-            setTimeout(() => {
-              setIsLoading(false);
-              sessionStorage.setItem("hasVisited", "true");
-            }, 300); // slight pause at 100%
-          }
-        });
-        return () => controls.stop();
+      const controls = animate(0, 100, {
+        duration: 1.5,
+        ease: [0.83, 0, 0.17, 1], // Custom easing for cinematic feel
+        onUpdate: (val) => setPercentage(Math.floor(val)),
+        onComplete: () => {
+          setTimeout(() => {
+            setIsLoading(false);
+            sessionStorage.setItem("hasVisited", "true");
+          }, 400); // Wait 400ms at 100% before sliding up
+        }
       });
+      
+      return () => controls.stop();
     }
   }, [shouldReduceMotion]);
 
