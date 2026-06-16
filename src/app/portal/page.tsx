@@ -15,7 +15,7 @@ export default function PortalPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-background text-white">
+    <div className="flex min-h-screen bg-neutral-50 text-neutral-900">
       <PortalSidebar 
         currentTab={currentTab} 
         onTabChange={setCurrentTab} 
@@ -26,13 +26,13 @@ export default function PortalPage() {
       />
       
       <main className="flex-1 sm:ml-64 relative">
-        <header className="sticky top-0 z-30 flex h-20 items-center justify-end border-b border-white/10 bg-black/50 px-8 backdrop-blur-xl">
+        <header className="sticky top-0 z-30 flex h-20 items-center justify-end border-b border-neutral-200 bg-white/80 px-8 backdrop-blur-xl">
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <div className="text-sm font-bold uppercase tracking-wider text-white">Clipper_09</div>
+              <div className="text-sm font-bold uppercase tracking-wider text-black">Clipper_09</div>
               <div className="text-xs text-accent">Pro Tier</div>
             </div>
-            <div className="h-10 w-10 rounded-full bg-neutral-800" />
+            <div className="h-10 w-10 rounded-full bg-neutral-200" />
           </div>
         </header>
 

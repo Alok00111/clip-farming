@@ -6,21 +6,21 @@ interface LoginViewProps {
 
 export default function LoginView({ onLogin }: LoginViewProps) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-6 pt-20">
+    <div className="flex min-h-screen items-center justify-center bg-neutral-50 px-6 pt-20">
       {/* Background Effect */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
         <div className="h-[40rem] w-[40rem] rounded-full bg-accent blur-[150px]" />
       </div>
 
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-white/5 bg-black/50 p-10 shadow-2xl backdrop-blur-xl">
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-neutral-200 bg-white p-10 shadow-xl">
         <div className="mb-10 flex flex-col items-center text-center">
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent/20">
             <Scissors className="h-8 w-8 text-accent" />
           </div>
-          <h1 className="mt-6 font-display text-3xl font-bold uppercase tracking-tight text-white">
+          <h1 className="mt-6 font-display text-3xl font-bold uppercase tracking-tight text-black">
             Clipper Portal
           </h1>
-          <p className="mt-2 text-sm text-neutral-400">
+          <p className="mt-2 text-sm text-neutral-500">
             Sign in to claim videos and track payouts.
           </p>
         </div>
@@ -39,7 +39,7 @@ export default function LoginView({ onLogin }: LoginViewProps) {
             <input
               type="email"
               placeholder="you@example.com"
-              className="h-14 w-full rounded-xl border border-white/10 bg-white/5 px-6 text-white placeholder-neutral-600 outline-none transition-colors focus:border-accent focus:bg-white/10"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-neutral-100"
               required
             />
           </div>
@@ -50,7 +50,7 @@ export default function LoginView({ onLogin }: LoginViewProps) {
             <input
               type="password"
               placeholder="••••••••"
-              className="h-14 w-full rounded-xl border border-white/10 bg-white/5 px-6 text-white placeholder-neutral-600 outline-none transition-colors focus:border-accent focus:bg-white/10"
+              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-accent focus:bg-neutral-100"
               required
             />
           </div>
