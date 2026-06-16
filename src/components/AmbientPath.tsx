@@ -79,7 +79,7 @@ export default function AmbientPath() {
           d="M -10 150 H 250 L 350 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
-          className="text-black dark:text-accent"
+          className="text-accent"
           strokeWidth="6"
           style={{ 
             pathLength: topSplitDraw,
@@ -90,7 +90,7 @@ export default function AmbientPath() {
           d="M 1010 150 H 750 L 650 250 V 300 L 500 350"
           fill="transparent"
           stroke="currentColor"
-          className="text-black dark:text-accent"
+          className="text-accent"
           strokeWidth="6"
           style={{ 
             pathLength: topSplitDraw,
@@ -103,7 +103,7 @@ export default function AmbientPath() {
           d="M 500 350 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 2950"
           fill="transparent"
           stroke="currentColor"
-          className="text-black dark:text-accent"
+          className="text-accent"
           strokeWidth="6"
           style={{ 
             pathLength: mainPathDraw,
@@ -116,7 +116,7 @@ export default function AmbientPath() {
           d="M 500 2950 H 100"
           fill="transparent"
           stroke="currentColor"
-          className="text-black dark:text-accent"
+          className="text-accent"
           strokeWidth="6"
           style={{ 
             pathLength: bottomSplitDraw,
@@ -127,7 +127,7 @@ export default function AmbientPath() {
           d="M 500 2950 H 900"
           fill="transparent"
           stroke="currentColor"
-          className="text-black dark:text-accent"
+          className="text-accent"
           strokeWidth="6"
           style={{ 
             pathLength: bottomSplitDraw,
