@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence, useReducedMotion, animate, useMotionValue, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function Loader() {
   const [isLoading, setIsLoading] = useState(true);
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.floor(latest) + "%");
+  const [percentage, setPercentage] = useState(0);
   const shouldReduceMotion = useReducedMotion();
+  const hasRun = useRef(false);
 
   useEffect(() => {
-    // Check if the user has already visited in this session
+    if (hasRun.current) return; // Prevent strict mode double-run
+    
     const hasVisited = sessionStorage.getItem("hasVisited");
     
     if (hasVisited || shouldReduceMotion) {
@@ -19,21 +20,36 @@ export default function Loader() {
         sessionStorage.setItem("hasVisited", "true");
       }
     } else {
-      // Counter Animation using MotionValues (Bypasses React State for 60fps)
-      const controls = animate(count, 100, {
-        duration: 1.5,
-        ease: [0.83, 0, 0.17, 1], // Custom easing for cinematic feel
-        onComplete: () => {
+      hasRun.current = true;
+      let animationFrameId: number;
+      const startTime = performance.now();
+      const duration = 1500;
+      
+      // Custom easing function (easeOutQuart)
+      const easeOutQuart = (x: number): number => 1 - Math.pow(1 - x, 4);
+
+      const updateCounter = (currentTime: number) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutQuart(progress);
+        
+        setPercentage(Math.floor(easedProgress * 100));
+        
+        if (progress < 1) {
+          animationFrameId = requestAnimationFrame(updateCounter);
+        } else {
           setTimeout(() => {
             setIsLoading(false);
             sessionStorage.setItem("hasVisited", "true");
-          }, 400); // Wait 400ms at 100% before sliding up
+          }, 400); // Pause at 100%
         }
-      });
+      };
+
+      animationFrameId = requestAnimationFrame(updateCounter);
       
-      return () => controls.stop();
+      return () => cancelAnimationFrame(animationFrameId);
     }
-  }, [shouldReduceMotion, count]);
+  }, [shouldReduceMotion]);
 
   if (shouldReduceMotion) return null;
 
@@ -52,9 +68,9 @@ export default function Loader() {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center"
           >
-            <motion.div className="font-display text-[15vw] leading-none font-black text-foreground tracking-tighter">
-              {rounded}
-            </motion.div>
+            <div className="font-display text-[15vw] leading-none font-black text-foreground tracking-tighter">
+              {percentage}%
+            </div>
             <div className="text-xl font-bold uppercase tracking-[0.5em] text-muted-foreground mt-4">
               Initializing
             </div>
