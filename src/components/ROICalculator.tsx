@@ -9,8 +9,8 @@ export default function ROICalculator() {
   const [budget, setBudget] = useState(1000);
   const shouldReduceMotion = useReducedMotion();
 
-  // Formula: $0.001 per view
-  const estimatedViews = Math.floor(budget / 0.001);
+  // Formula: $0.0005 per view ($0.50 per 1000 views)
+  const estimatedViews = Math.floor(budget / 0.0005);
 
   return (
     <section className="relative w-full py-32">
@@ -71,7 +71,7 @@ export default function ROICalculator() {
                   : `${(estimatedViews / 1000).toFixed(0)}K+`}
               </div>
               <p className="mt-4 text-sm text-neutral-400">
-                At $0.001 Average Cost Per View
+                At $0.50 per 1,000 Views
               </p>
             </div>
 
