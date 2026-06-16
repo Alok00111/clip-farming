@@ -21,35 +21,32 @@ export default function AmbientPath() {
   return (
     <div 
       ref={containerRef}
-      className="pointer-events-none absolute inset-0 z-0 hidden w-full xl:block opacity-50"
+      className="pointer-events-none absolute inset-0 z-0 hidden w-full xl:block opacity-40"
+      style={{ willChange: "transform" }}
     >
       <svg 
         className="h-full w-full"
-        viewBox="0 0 100 100" 
+        viewBox="0 0 1000 3000" 
         preserveAspectRatio="none"
       >
         {/* Faint Background Track */}
         <path
-          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
+          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
           fill="transparent"
           stroke="rgba(255,255,255,0.05)"
-          strokeWidth="0.5"
+          strokeWidth="4"
         />
 
-        {/* Bright Glowing Track (Dynamically drawn by scroll) */}
+        {/* Bright Glowing Track (Optimized) */}
         <motion.path
-          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
+          d="M 500 0 V 300 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 3000"
           fill="transparent"
           stroke="#D4FF00"
-          strokeWidth="1"
-          style={{ pathLength: pathDraw, opacity: 0.3 }}
-        />
-        <motion.path
-          d="M 50 0 V 10 L 80 15 V 30 H 20 L 10 35 V 50 L 90 55 V 70 H 30 L 15 75 V 90 L 50 95 V 100"
-          fill="transparent"
-          stroke="#D4FF00"
-          strokeWidth="0.3"
-          style={{ pathLength: pathDraw }}
+          strokeWidth="6"
+          style={{ 
+            pathLength: pathDraw,
+            willChange: "stroke-dashoffset"
+          }}
         />
       </svg>
     </div>

@@ -37,7 +37,7 @@ export default function ROICalculator() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
-          className="mt-16 rounded-3xl border border-border bg-muted/40 p-8 shadow-brutal backdrop-blur-md sm:p-12"
+          className="mt-16 rounded-3xl border border-border bg-neutral-950 p-8 shadow-brutal sm:p-12"
         >
           <div className="flex flex-col gap-12 md:flex-row md:items-center md:gap-16">
             
