@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Case Studies", href: "/case-studies" },
   { name: "About", href: "/about" },
   { name: "Compare", href: "/compare" },
+  { name: "Editors", href: "/editors" },
   { name: "Blog", href: "/blog" },
 ];
 
