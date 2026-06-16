@@ -1,26 +1,96 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import { Search, Scissors, BarChart3 } from "lucide-react";
 
 const steps = [
   {
+    id: "01",
     icon: Search,
-    title: "1. We Analyze",
+    title: "We Analyze",
     description: "Our team breaks down your long-form content, identifying the most engaging, high-retention moments that are primed for virality.",
   },
   {
+    id: "02",
     icon: Scissors,
-    title: "2. Clippers Create",
+    title: "Clippers Create",
     description: "Our network of 7,000+ clippers edit, caption, and distribute these moments across TikTok, Reels, and Shorts simultaneously.",
   },
   {
+    id: "03",
     icon: BarChart3,
-    title: "3. You Track Results",
+    title: "You Track Results",
     description: "Watch your views skyrocket. You pay purely based on performance, guaranteeing ROI and massive organic growth.",
   },
 ];
+
+// 3D Tilt Component
+function TiltCard({ children, numberStr }: { children: React.ReactNode; numberStr: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="group relative w-full perspective-[1000px]"
+    >
+      <div 
+        className="relative overflow-hidden rounded-3xl border-4 border-border bg-neutral-950 p-10 transition-shadow duration-300 hover:shadow-[16px_16px_0px_0px_var(--border)]"
+        style={{ transform: "translateZ(30px)" }}
+      >
+        {/* Massive Background Typography */}
+        <div className="pointer-events-none absolute -bottom-10 -right-10 z-0 select-none font-display text-[12rem] font-black leading-none text-white/[0.03] transition-all duration-500 group-hover:scale-110 group-hover:text-accent/10">
+          {numberStr}
+        </div>
+
+        {/* Glare effect */}
+        <div className="pointer-events-none absolute inset-0 z-20 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        
+        {/* Actual Content */}
+        <div className="relative z-10" style={{ transform: "translateZ(20px)" }}>
+          {children}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function HowItWorks() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -55,7 +125,7 @@ export default function HowItWorks() {
 
         <div className="relative mx-auto max-w-5xl">
           {/* Vertical Neon Progress Line (Desktop Only) */}
-          <div className="absolute left-1/2 top-0 bottom-0 hidden w-1 -translate-x-1/2 bg-neutral-900 md:block">
+          <div className="absolute left-1/2 top-0 bottom-0 hidden w-1 -translate-x-1/2 bg-neutral-900 md:block z-0">
             <motion.div 
               className="absolute left-0 top-0 w-full bg-accent shadow-[0_0_15px_#D4FF00]"
               style={{ height: lineHeight }}
@@ -88,15 +158,15 @@ export default function HowItWorks() {
                   {/* Empty space for alternating layout */}
                   <div className="hidden w-1/2 md:block" />
 
-                  {/* Content Card (Side Reveal) */}
+                  {/* Content Card (Side Reveal + 3D Tilt) */}
                   <motion.div 
                     initial={{ x: isEven ? -150 : 150, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: true, margin: "-20%" }}
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                    className={`w-full md:w-1/2 ${isEven ? "md:pr-16" : "md:pl-16"}`}
+                    className={`w-full md:w-1/2 z-10 ${isEven ? "md:pr-16" : "md:pl-16"}`}
                   >
-                    <div className="group relative overflow-hidden rounded-3xl border-4 border-border bg-neutral-950 p-10 transition-all hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_var(--border)]">
+                    <TiltCard numberStr={step.id}>
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
                         <Icon className="h-8 w-8 text-accent" />
                       </div>
@@ -106,7 +176,7 @@ export default function HowItWorks() {
                       <p className="text-lg leading-relaxed text-muted-foreground">
                         {step.description}
                       </p>
-                    </div>
+                    </TiltCard>
                   </motion.div>
                 </div>
               );
