@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import MagneticWrapper from '@/components/MagneticWrapper';
+import MagneticButton from '@/components/MagneticButton';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const COUNTRIES = [
@@ -405,15 +406,13 @@ export default function ApplyPage() {
                 <Input label="WhatsApp / Phone Number" name="phone" placeholder="+1 234 567 8900" value={formData.phone} onChange={handleChange} />
                 
                 <div className="mt-12 flex justify-end">
-                  <MagneticWrapper>
-                    <button 
-                      onClick={nextStep} 
-                      disabled={!formData.full_name || !formData.country}
-                      className="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
-                    >
-                      Next Step →
-                    </button>
-                  </MagneticWrapper>
+                  <MagneticButton 
+                    onClick={nextStep} 
+                    disabled={!formData.full_name || !formData.country}
+                    className="h-14 px-10 text-sm uppercase tracking-wide disabled:opacity-30 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+                  >
+                    Next Step →
+                  </MagneticButton>
                 </div>
               </motion.div>
             )}
@@ -455,15 +454,13 @@ export default function ApplyPage() {
                   >
                     ← Back
                   </button>
-                  <MagneticWrapper>
-                    <button 
-                      onClick={nextStep} 
-                      disabled={!formData.experience_level}
-                      className="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
-                    >
-                      Next Step →
-                    </button>
-                  </MagneticWrapper>
+                  <MagneticButton 
+                    onClick={nextStep} 
+                    disabled={!formData.experience_level}
+                    className="h-14 px-10 text-sm uppercase tracking-wide disabled:opacity-30 disabled:hover:translate-y-0 disabled:cursor-not-allowed"
+                  >
+                    Next Step →
+                  </MagneticButton>
                 </div>
               </motion.div>
             )}
@@ -511,25 +508,23 @@ export default function ApplyPage() {
                   </button>
                   
                   <div className="w-full sm:w-auto flex flex-col items-end gap-3">
-                    <MagneticWrapper>
-                      <button 
-                        onClick={handleGoogleSignInAndSubmit} 
-                        disabled={loading || !formData.sample_clip_url || !formData.primary_platform}
-                        className="inline-flex h-14 items-center justify-center rounded-full bg-foreground px-8 font-bold uppercase tracking-wide text-background transition-transform hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed shadow-brutal gap-3 w-full sm:w-auto"
-                      >
-                        {loading ? 'Processing...' : (session ? 'Submit Application' : 'Submit via Google')}
-                        {!loading && !session && (
-                          <div className="bg-white p-1 rounded-full flex items-center justify-center">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                            </svg>
-                          </div>
-                        )}
-                      </button>
-                    </MagneticWrapper>
+                    <MagneticButton 
+                      onClick={handleGoogleSignInAndSubmit} 
+                      disabled={loading || !formData.sample_clip_url || !formData.primary_platform}
+                      className="h-14 px-8 text-sm uppercase tracking-wide disabled:opacity-50 disabled:hover:translate-y-0 disabled:cursor-not-allowed w-full sm:w-auto"
+                    >
+                      {loading ? 'Processing...' : (session ? 'Submit Application' : 'Submit via Google')}
+                      {!loading && !session && (
+                        <div className="bg-white p-1 rounded-full flex items-center justify-center ml-3">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                          </svg>
+                        </div>
+                      )}
+                    </MagneticButton>
                     {!session && (
                       <p className="text-xs text-muted-foreground max-w-[200px] text-right">
                         Google Sign-In required to verify email.
@@ -556,14 +551,12 @@ export default function ApplyPage() {
                 <p className="text-muted-foreground mb-12 max-w-md mx-auto text-lg leading-relaxed">
                   We've sent a confirmation to your email. Our team will review your portfolio and get back to you within 48 hours.
                 </p>
-                <MagneticWrapper>
-                  <button 
-                    onClick={() => router.push('/')} 
-                    className="inline-flex h-14 items-center justify-center rounded-full border border-border bg-transparent px-10 font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-foreground hover:text-background"
-                  >
-                    Return to Home
-                  </button>
-                </MagneticWrapper>
+                <MagneticButton 
+                  onClick={() => router.push('/')} 
+                  className="h-14 px-10 text-sm uppercase tracking-wide bg-background text-foreground hover:bg-foreground hover:text-background"
+                >
+                  Return to Home
+                </MagneticButton>
               </motion.div>
             )}
           </AnimatePresence>

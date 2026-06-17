@@ -51,8 +51,8 @@ export default function Cursor() {
   return (
     <motion.div
       className={cn(
-        "pointer-events-none fixed top-0 left-0 z-[9999] hidden md:flex h-4 w-4 items-center justify-center rounded-full mix-blend-difference",
-        isHovering ? "bg-accent" : "bg-white"
+        "pointer-events-none fixed top-0 left-0 z-[9999] hidden md:flex h-4 w-4 items-center justify-center rounded-full shadow-lg",
+        isHovering ? "bg-foreground" : "bg-foreground"
       )}
       animate={{
         x: mousePosition.x - (isHovering ? 24 : 8),
@@ -67,7 +67,7 @@ export default function Cursor() {
       }}
     >
       {isHovering && (
-        <span className="text-[6px] font-bold text-accent-foreground opacity-100">
+        <span className="text-[6px] font-bold text-background opacity-100">
           GO
         </span>
       )}

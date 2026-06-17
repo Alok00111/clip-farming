@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
+import MagneticButton from "@/components/MagneticButton";
 
 const CustomSelect = ({ options, placeholder, name }: { options: {value: string, label: string}[], placeholder: string, name: string }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -201,12 +202,12 @@ export default function ContactClient() {
                 ></textarea>
               </div>
 
-              <button 
+              <MagneticButton 
                 type="submit"
-                className="mt-4 w-full rounded-2xl border-4 border-foreground bg-foreground p-6 font-display text-2xl font-black uppercase tracking-widest text-background transition-all hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_var(--accent)] hover:border-accent hover:bg-accent hover:text-accent-foreground"
+                className="mt-4 w-full h-auto p-6 font-display text-2xl font-black uppercase tracking-widest text-background transition-all"
               >
                 Submit Application
-              </button>
+              </MagneticButton>
 
             </form>
           </motion.div>
