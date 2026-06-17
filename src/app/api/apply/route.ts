@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase/server';
 
 export async function POST(request: Request) {
   try {
-    const supabase = createClient();
+    const supabase = await createClient();
     
     // 1. Verify user is authenticated
     const { data: { session }, error: authError } = await supabase.auth.getSession();
