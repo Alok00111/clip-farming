@@ -1,10 +1,10 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://dummy.supabase.co";
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "dummy-key";
 
-if (!supabaseUrl || !serviceRoleKey) {
-  throw new Error("Missing Supabase service role environment variables");
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.warn("⚠️ Missing Supabase service role environment variables. Supabase admin client will fail if used.");
 }
 
 /**
