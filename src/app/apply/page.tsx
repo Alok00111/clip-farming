@@ -7,23 +7,56 @@ import MagneticWrapper from '@/components/MagneticWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const COUNTRIES = [
-  { name: "United States", code: "+1" },
-  { name: "United Kingdom", code: "+44" },
-  { name: "Canada", code: "+1" },
+  // Major English-Speaking
   { name: "Australia", code: "+61" },
+  { name: "Canada", code: "+1" },
+  { name: "United Kingdom", code: "+44" },
+  { name: "United States", code: "+1" },
+  
+  // South Asian
+  { name: "Afghanistan", code: "+93" },
+  { name: "Bangladesh", code: "+880" },
+  { name: "Bhutan", code: "+975" },
   { name: "India", code: "+91" },
-  { name: "Germany", code: "+49" },
-  { name: "France", code: "+33" },
-  { name: "Spain", code: "+34" },
-  { name: "Italy", code: "+39" },
-  { name: "Netherlands", code: "+31" },
+  { name: "Maldives", code: "+960" },
+  { name: "Nepal", code: "+977" },
+  { name: "Pakistan", code: "+92" },
+  { name: "Sri Lanka", code: "+94" },
+  
+  // Middle Eastern
+  { name: "Bahrain", code: "+973" },
+  { name: "Egypt", code: "+20" },
+  { name: "Iran", code: "+98" },
+  { name: "Iraq", code: "+964" },
+  { name: "Israel", code: "+972" },
+  { name: "Jordan", code: "+962" },
+  { name: "Kuwait", code: "+965" },
+  { name: "Lebanon", code: "+961" },
+  { name: "Oman", code: "+968" },
+  { name: "Qatar", code: "+974" },
+  { name: "Saudi Arabia", code: "+966" },
+  { name: "Syria", code: "+963" },
+  { name: "Turkey", code: "+90" },
+  { name: "United Arab Emirates", code: "+971" },
+  { name: "Yemen", code: "+967" },
+  
+  // Others
   { name: "Brazil", code: "+55" },
+  { name: "France", code: "+33" },
+  { name: "Germany", code: "+49" },
+  { name: "Italy", code: "+39" },
   { name: "Mexico", code: "+52" },
-  { name: "South Africa", code: "+27" },
-  { name: "Philippines", code: "+63" },
+  { name: "Netherlands", code: "+31" },
   { name: "Nigeria", code: "+234" },
+  { name: "Philippines", code: "+63" },
+  { name: "South Africa", code: "+27" },
+  { name: "Spain", code: "+34" },
   { name: "Other", code: "" }
-];
+].sort((a, b) => {
+  if (a.name === "Other") return 1;
+  if (b.name === "Other") return -1;
+  return a.name.localeCompare(b.name);
+});
 
 // Mock UI Components to simulate the full design system
 const Input = ({ label, type = 'text', required, ...props }: any) => (
@@ -41,9 +74,18 @@ const Input = ({ label, type = 'text', required, ...props }: any) => (
   </div>
 );
 
-const Select = ({ label, options, required, value, onChange, name, placeholder = "Select an option" }: any) => {
+const Select = ({ label, options, required, value, onChange, name, placeholder = "Select an option", searchable = false }: any) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [highlightedIndex, setHighlightedIndex] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const filteredOptions = options.filter((opt: any) => {
+    if (!searchable || !searchTerm) return true;
+    const optName = typeof opt === 'string' ? opt : opt.name;
+    return optName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,6 +97,53 @@ const Select = ({ label, options, required, value, onChange, name, placeholder =
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      setSearchTerm("");
+      setHighlightedIndex(0);
+      if (searchable && inputRef.current) {
+        // slight delay to ensure the input is rendered and visible before focusing
+        setTimeout(() => inputRef.current?.focus(), 10);
+      }
+    }
+  }, [isOpen, searchable]);
+
+  useEffect(() => {
+    setHighlightedIndex(0);
+  }, [searchTerm]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isOpen) {
+      if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
+        e.preventDefault();
+        setIsOpen(true);
+      }
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setHighlightedIndex((prev) => (prev + 1) % filteredOptions.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setHighlightedIndex((prev) => (prev - 1 + filteredOptions.length) % filteredOptions.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (filteredOptions.length > 0) {
+        handleSelect(filteredOptions[highlightedIndex]);
+      }
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  const handleSelect = (opt: any) => {
+    const optName = typeof opt === 'string' ? opt : opt.name;
+    const optCode = typeof opt === 'string' ? '' : opt.code;
+    onChange({ target: { name, value: optName, dataset: { code: optCode } } } as any);
+    setIsOpen(false);
+  };
+
   return (
     <div className="flex flex-col space-y-2 mb-6 w-full relative" ref={dropdownRef}>
       <label className="text-sm font-bold tracking-wide text-foreground flex items-center gap-2">
@@ -64,13 +153,28 @@ const Select = ({ label, options, required, value, onChange, name, placeholder =
       
       <div 
         onClick={() => setIsOpen(!isOpen)}
-        className={`h-14 w-full rounded-2xl border ${isOpen ? 'border-accent bg-foreground/10' : 'border-border bg-foreground/5'} px-6 flex items-center justify-between text-foreground outline-none transition-all cursor-pointer`}
+        tabIndex={0}
+        onKeyDown={handleKeyDown}
+        className={`h-14 w-full rounded-2xl border ${isOpen ? 'border-accent bg-foreground/10 ring-2 ring-accent/20' : 'border-border bg-foreground/5'} px-6 flex items-center justify-between text-foreground outline-none transition-all cursor-pointer`}
       >
-        <span className={value ? "text-foreground" : "text-muted-foreground"}>
-          {value || placeholder}
-        </span>
+        {!isOpen || !searchable ? (
+          <span className={value ? "text-foreground" : "text-muted-foreground"}>
+            {value || placeholder}
+          </span>
+        ) : (
+          <input
+            ref={inputRef}
+            type="text"
+            className="w-full bg-transparent outline-none text-foreground"
+            placeholder="Type to search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onClick={(e) => e.stopPropagation()}
+          />
+        )}
         <svg 
-          className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent' : 'text-muted-foreground'}`} 
+          className={`w-4 h-4 ml-2 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent' : 'text-muted-foreground'}`} 
           xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
         >
           <polyline points="6 9 12 15 18 9"></polyline>
@@ -87,29 +191,34 @@ const Select = ({ label, options, required, value, onChange, name, placeholder =
             className="absolute top-[calc(100%+8px)] left-0 w-full bg-background border border-border rounded-2xl shadow-xl z-50 overflow-hidden"
           >
             <div className="max-h-60 overflow-y-auto py-2 custom-scrollbar">
-              {options.map((opt: string | { name: string, code?: string }) => {
-                const optName = typeof opt === 'string' ? opt : opt.name;
-                const optCode = typeof opt === 'string' ? '' : opt.code;
-                const isSelected = value === optName;
+              {filteredOptions.length === 0 ? (
+                <div className="px-6 py-4 text-sm text-muted-foreground">No matches found.</div>
+              ) : (
+                filteredOptions.map((opt: any, idx: number) => {
+                  const optName = typeof opt === 'string' ? opt : opt.name;
+                  const isSelected = value === optName;
+                  const isHighlighted = idx === highlightedIndex;
 
-                return (
-                  <div 
-                    key={optName}
-                    onClick={() => {
-                      onChange({ target: { name, value: optName, dataset: { code: optCode } } } as any);
-                      setIsOpen(false);
-                    }}
-                    className={`px-6 py-3 cursor-pointer transition-colors flex items-center justify-between ${isSelected ? 'bg-accent/10 text-accent font-bold' : 'hover:bg-muted text-foreground'}`}
-                  >
-                    <span>{optName}</span>
-                    {isSelected && (
-                      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                      </svg>
-                    )}
-                  </div>
-                );
-              })}
+                  return (
+                    <div 
+                      key={optName}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleSelect(opt);
+                      }}
+                      onMouseEnter={() => setHighlightedIndex(idx)}
+                      className={`px-6 py-3 cursor-pointer transition-colors flex items-center justify-between ${isSelected ? 'text-accent font-bold' : 'text-foreground'} ${isHighlighted ? 'bg-muted' : ''}`}
+                    >
+                      <span>{optName}</span>
+                      {isSelected && (
+                        <svg className="w-4 h-4 text-accent" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                      )}
+                    </div>
+                  );
+                })
+              )}
             </div>
           </motion.div>
         )}
@@ -292,7 +401,7 @@ export default function ApplyPage() {
                 )}
                 
                 <Input label="Full Name" name="full_name" placeholder="John Doe" value={formData.full_name} onChange={handleChange} required />
-                <Select label="Country" name="country" options={COUNTRIES} value={formData.country} onChange={handleChange} required />
+                <Select label="Country" name="country" options={COUNTRIES} value={formData.country} onChange={handleChange} required searchable />
                 <Input label="WhatsApp / Phone Number" name="phone" placeholder="+1 234 567 8900" value={formData.phone} onChange={handleChange} />
                 
                 <div className="mt-12 flex justify-end">
