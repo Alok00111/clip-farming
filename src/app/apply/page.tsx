@@ -1,21 +1,34 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import MagneticWrapper from '@/components/MagneticWrapper';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const COUNTRIES = [
-  "United States", "United Kingdom", "Canada", "Australia", "India", 
-  "Germany", "France", "Spain", "Italy", "Netherlands", 
-  "Brazil", "Mexico", "South Africa", "Philippines", "Nigeria", "Other"
+  { name: "United States", code: "+1" },
+  { name: "United Kingdom", code: "+44" },
+  { name: "Canada", code: "+1" },
+  { name: "Australia", code: "+61" },
+  { name: "India", code: "+91" },
+  { name: "Germany", code: "+49" },
+  { name: "France", code: "+33" },
+  { name: "Spain", code: "+34" },
+  { name: "Italy", code: "+39" },
+  { name: "Netherlands", code: "+31" },
+  { name: "Brazil", code: "+55" },
+  { name: "Mexico", code: "+52" },
+  { name: "South Africa", code: "+27" },
+  { name: "Philippines", code: "+63" },
+  { name: "Nigeria", code: "+234" },
+  { name: "Other", code: "" }
 ];
 
 // Mock UI Components to simulate the full design system
 const Input = ({ label, type = 'text', required, ...props }: any) => (
   <div className="flex flex-col space-y-2 mb-6 w-full">
-    <label className="text-sm font-bold tracking-wide text-foreground flex justify-between">
+    <label className="text-sm font-bold tracking-wide text-foreground flex items-center gap-2">
       {label}
       {!required && <span className="text-muted-foreground/60 font-normal text-xs">(Optional)</span>}
     </label>
@@ -28,25 +41,82 @@ const Input = ({ label, type = 'text', required, ...props }: any) => (
   </div>
 );
 
-const Select = ({ label, options, required, ...props }: any) => (
-  <div className="flex flex-col space-y-2 mb-6 w-full">
-    <label className="text-sm font-bold tracking-wide text-foreground flex justify-between">
-      {label}
-      {!required && <span className="text-muted-foreground/60 font-normal text-xs">(Optional)</span>}
-    </label>
-    <select
-      required={required}
-      className="h-14 w-full rounded-2xl border border-border bg-foreground/5 px-6 text-foreground outline-none transition-all focus:border-accent focus:bg-foreground/10 disabled:opacity-50 appearance-none cursor-pointer"
-      style={{ backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
-      {...props}
-    >
-      <option value="" disabled className="text-muted-foreground bg-background">Select an option</option>
-      {options.map((opt: string) => (
-        <option key={opt} value={opt} className="bg-background text-foreground font-sans">{opt}</option>
-      ))}
-    </select>
-  </div>
-);
+const Select = ({ label, options, required, value, onChange, name, placeholder = "Select an option" }: any) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="flex flex-col space-y-2 mb-6 w-full relative" ref={dropdownRef}>
+      <label className="text-sm font-bold tracking-wide text-foreground flex items-center gap-2">
+        {label}
+        {!required && <span className="text-muted-foreground/60 font-normal text-xs">(Optional)</span>}
+      </label>
+      
+      <div 
+        onClick={() => setIsOpen(!isOpen)}
+        className={`h-14 w-full rounded-2xl border ${isOpen ? 'border-accent bg-foreground/10' : 'border-border bg-foreground/5'} px-6 flex items-center justify-between text-foreground outline-none transition-all cursor-pointer`}
+      >
+        <span className={value ? "text-foreground" : "text-muted-foreground"}>
+          {value || placeholder}
+        </span>
+        <svg 
+          className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180 text-accent' : 'text-muted-foreground'}`} 
+          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-[calc(100%+8px)] left-0 w-full bg-background border border-border rounded-2xl shadow-xl z-50 overflow-hidden"
+          >
+            <div className="max-h-60 overflow-y-auto py-2 custom-scrollbar">
+              {options.map((opt: string | { name: string, code?: string }) => {
+                const optName = typeof opt === 'string' ? opt : opt.name;
+                const optCode = typeof opt === 'string' ? '' : opt.code;
+                const isSelected = value === optName;
+
+                return (
+                  <div 
+                    key={optName}
+                    onClick={() => {
+                      onChange({ target: { name, value: optName, dataset: { code: optCode } } } as any);
+                      setIsOpen(false);
+                    }}
+                    className={`px-6 py-3 cursor-pointer transition-colors flex items-center justify-between ${isSelected ? 'bg-accent/10 text-accent font-bold' : 'hover:bg-muted text-foreground'}`}
+                  >
+                    <span>{optName}</span>
+                    {isSelected && (
+                      <svg className="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export default function ApplyPage() {
   const router = useRouter();
@@ -80,8 +150,22 @@ export default function ApplyPage() {
     });
   }, [supabase.auth]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (e: any) => {
+    const { name, value, dataset } = e.target;
+    
+    setFormData(prev => {
+      const newData = { ...prev, [name]: value };
+      
+      // Auto-update phone country code if country changes
+      if (name === 'country' && dataset?.code) {
+        // Only override if phone is empty or already starts with a '+'
+        if (!prev.phone || prev.phone.startsWith('+')) {
+          newData.phone = dataset.code + ' ';
+        }
+      }
+      
+      return newData;
+    });
   };
 
   const nextStep = () => setStep(s => s + 1);
