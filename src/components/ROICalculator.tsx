@@ -37,15 +37,15 @@ export default function ROICalculator() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: shouldReduceMotion ? 0 : 0.2 }}
-          className="mt-16 rounded-3xl border border-border bg-neutral-950 p-8 shadow-brutal sm:p-12"
+          className="mt-16 rounded-3xl border border-border bg-background p-8 shadow-brutal sm:p-12"
         >
           <div className="flex flex-col gap-12 md:flex-row md:items-center md:gap-16">
             
             {/* Interactive Slider Area */}
             <div className="flex-1">
               <div className="mb-4 flex items-end justify-between">
-                <label className="text-sm font-bold uppercase tracking-wider text-neutral-400">Monthly Budget</label>
-                <span className="font-display text-3xl font-bold text-white">${budget.toLocaleString()}</span>
+                <label className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Monthly Budget</label>
+                <span className="font-display text-3xl font-bold text-foreground">${budget.toLocaleString()}</span>
               </div>
               <input
                 type="range"
@@ -56,7 +56,7 @@ export default function ROICalculator() {
                 onChange={(e) => setBudget(Number(e.target.value))}
                 className="h-2 w-full cursor-pointer appearance-none rounded-full bg-muted-foreground/30 accent-accent"
               />
-              <div className="mt-4 flex justify-between text-xs text-neutral-400">
+              <div className="mt-4 flex justify-between text-xs text-muted-foreground">
                 <span>$100</span>
                 <span>$10,000+</span>
               </div>
@@ -65,12 +65,12 @@ export default function ROICalculator() {
             {/* Results Output */}
             <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-accent/20 bg-accent/5 p-8 text-center">
               <span className="text-sm font-bold uppercase tracking-wider text-accent">Estimated Views</span>
-              <div className="mt-2 font-display text-5xl font-bold text-white sm:text-6xl">
+              <div className="mt-2 font-display text-5xl font-bold text-foreground sm:text-6xl">
                 {estimatedViews >= 1000000 
                   ? `${(estimatedViews / 1000000).toFixed(1)}M+` 
                   : `${(estimatedViews / 1000).toFixed(0)}K+`}
               </div>
-              <p className="mt-4 text-sm text-neutral-400">
+              <p className="mt-4 text-sm text-muted-foreground">
                 At $0.50 per 1,000 Views
               </p>
             </div>

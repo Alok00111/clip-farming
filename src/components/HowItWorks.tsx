@@ -72,11 +72,11 @@ function TiltCard({ children, numberStr }: { children: React.ReactNode; numberSt
       className="group relative w-full perspective-[1000px]"
     >
       <div 
-        className="relative overflow-hidden rounded-3xl border-4 border-border bg-neutral-950 p-10 transition-shadow duration-300 hover:shadow-[16px_16px_0px_0px_var(--border)]"
+        className="relative overflow-hidden rounded-3xl border-4 border-border bg-background p-10 transition-shadow duration-300 hover:shadow-[16px_16px_0px_0px_var(--border)]"
         style={{ transform: "translateZ(30px)" }}
       >
         {/* Massive Background Typography */}
-        <div className="pointer-events-none absolute -bottom-10 -right-10 z-0 select-none font-display text-[12rem] font-black leading-none text-white/[0.03] transition-all duration-500 group-hover:scale-110 group-hover:text-accent/10">
+        <div className="pointer-events-none absolute -bottom-10 -right-10 z-0 select-none font-display text-[12rem] font-black leading-none text-foreground/[0.03] transition-all duration-500 group-hover:scale-110 group-hover:text-accent/10">
           {numberStr}
         </div>
 
@@ -137,7 +137,7 @@ export default function HowItWorks() {
                       whileInView={{ scale: 1, opacity: 1 }}
                       viewport={{ once: false, margin: "-50%" }}
                       transition={{ type: "spring", stiffness: 150, delay: 0.2 }}
-                      className="h-8 w-8 rounded-full border-4 border-background bg-accent shadow-[0_0_15px_#D4FF00]"
+                      className="h-8 w-8 rounded-full border-4 border-background bg-accent shadow-[0_0_15px_var(--accent)]"
                     />
                   </div>
 
@@ -156,10 +156,10 @@ export default function HowItWorks() {
                       <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10">
                         <Icon className="h-8 w-8 text-accent" />
                       </div>
-                      <h3 className="mb-4 font-display text-3xl font-bold uppercase text-white">
+                      <h3 className="mb-4 font-display text-3xl font-bold uppercase text-foreground">
                         {step.title}
                       </h3>
-                      <p className="text-lg leading-relaxed text-neutral-400">
+                      <p className="text-lg leading-relaxed text-muted-foreground">
                         {step.description}
                       </p>
                     </TiltCard>
