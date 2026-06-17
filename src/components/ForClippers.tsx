@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Zap, DollarSign, Award, FastForward } from "lucide-react";
+import Link from "next/link";
 
 export default function ForClippers() {
   const shouldReduceMotion = useReducedMotion();
@@ -54,25 +55,14 @@ export default function ForClippers() {
               We are always looking for hungry, talented short-form editors. If you know how to find the hook, retain attention, and drive views, we have clients waiting for you.
             </p>
 
-            <form 
-              action="https://formspree.io/f/xqeonynr" 
-              method="POST"
-              className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
-            >
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="Enter your email address"
-                className="h-14 w-full rounded-full border border-border bg-foreground/5 px-6 text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-accent focus:bg-foreground/10 sm:w-72"
-              />
-              <button
-                type="submit"
-                className="flex h-14 items-center justify-center rounded-full bg-foreground px-8 font-bold uppercase tracking-wide text-background transition-colors hover:bg-foreground/80"
+            <div className="mt-10">
+              <Link
+                href="/apply"
+                className="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-105"
               >
                 Apply Now
-              </button>
-            </form>
+              </Link>
+            </div>
             <p className="mt-4 text-xs text-muted-foreground">Limited spots available. Portfolio required upon application.</p>
           </motion.div>
         </div>

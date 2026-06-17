@@ -3,30 +3,32 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { Button } from '@/components/ui/Button';
+import MagneticWrapper from '@/components/MagneticWrapper';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Mock UI Components to simulate the full design system
 const Input = ({ label, type = 'text', ...props }: any) => (
-  <div className="flex flex-col space-y-1 mb-4">
-    <label className="text-sm font-medium text-foreground/80">{label}</label>
+  <div className="flex flex-col space-y-2 mb-6 w-full">
+    <label className="text-sm font-bold tracking-wide text-foreground">{label}</label>
     <input
       type={type}
-      className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+      className="h-14 w-full rounded-2xl border border-border bg-foreground/5 px-6 text-foreground placeholder-muted-foreground outline-none transition-all focus:border-accent focus:bg-foreground/10 disabled:opacity-50"
       {...props}
     />
   </div>
 );
 
 const Select = ({ label, options, ...props }: any) => (
-  <div className="flex flex-col space-y-1 mb-4">
-    <label className="text-sm font-medium text-foreground/80">{label}</label>
+  <div className="flex flex-col space-y-2 mb-6 w-full">
+    <label className="text-sm font-bold tracking-wide text-foreground">{label}</label>
     <select
-      className="flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+      className="h-14 w-full rounded-2xl border border-border bg-foreground/5 px-6 text-foreground outline-none transition-all focus:border-accent focus:bg-foreground/10 disabled:opacity-50 appearance-none cursor-pointer"
+      style={{ backgroundImage: 'url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3e%3cpolyline points=\'6 9 12 15 18 9\'%3e%3c/polyline%3e%3c/svg%3e")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 1rem center', backgroundSize: '1em' }}
       {...props}
     >
-      <option value="" disabled>Select an option</option>
+      <option value="" disabled className="text-muted-foreground bg-background">Select an option</option>
       {options.map((opt: string) => (
-        <option key={opt} value={opt} className="bg-background text-foreground">{opt}</option>
+        <option key={opt} value={opt} className="bg-background text-foreground font-sans">{opt}</option>
       ))}
     </select>
   </div>
@@ -61,15 +63,9 @@ export default function ApplyPage() {
     setLoading(true);
     setError('');
 
-    // In a real flow with PKCE, we'd sign in, redirect back to a callback, 
-    // and THEN submit the form. For simplicity in this mock, we'll try to 
-    // trigger sign in. If they are already signed in, we submit directly.
-
     const { data: { session } } = await supabase.auth.getSession();
 
     if (!session) {
-      // Trigger Google OAuth. We need to save form state in local storage
-      // because the page will redirect.
       localStorage.setItem('pendingApplication', JSON.stringify(formData));
       
       const { error } = await supabase.auth.signInWithOAuth({
@@ -86,7 +82,6 @@ export default function ApplyPage() {
       return;
     }
 
-    // If already signed in, submit directly
     try {
       const res = await fetch('/api/apply', {
         method: 'POST',
@@ -100,7 +95,7 @@ export default function ApplyPage() {
         throw new Error(data.error || 'Submission failed');
       }
 
-      setStep(4); // Success step
+      setStep(4); 
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -109,130 +104,223 @@ export default function ApplyPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 max-w-2xl mx-auto">
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold font-archivo-black tracking-tight mb-4">
-          Join the Network
-        </h1>
-        <p className="text-foreground/70 text-lg">
-          Apply to become a vetted clipper. Earn money editing short-form content.
-        </p>
+    <div className="min-h-screen pt-32 pb-20 px-6 relative overflow-hidden bg-background">
+      
+      {/* Background Noise & Blur */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-5">
+        <div className="h-[40rem] w-[40rem] rounded-full bg-accent blur-[150px] absolute -top-40 -right-40" />
       </div>
-
-      <div className="bg-foreground/5 border border-foreground/10 rounded-2xl p-6 md:p-10 shadow-sm backdrop-blur-sm">
+      
+      <div className="max-w-3xl mx-auto relative z-10">
         
-        {error && (
-          <div className="bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400 p-4 rounded-lg mb-6 text-sm">
-            {error}
-          </div>
-        )}
+        <div className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-accent font-bold uppercase tracking-widest text-sm mb-4 block">For Editors</span>
+            <h1 className="text-5xl md:text-7xl font-bold font-display uppercase tracking-tight text-foreground leading-[0.9]">
+              Join The <br/>
+              <span className="text-muted-foreground">Network.</span>
+            </h1>
+          </motion.div>
+        </div>
 
-        {step === 1 && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background text-xs">1</span>
-              Personal Details
-            </h2>
-            <Input label="Full Name" name="full_name" value={formData.full_name} onChange={handleChange} required />
-            <Input label="Country" name="country" value={formData.country} onChange={handleChange} required />
-            <Input label="WhatsApp / Phone" name="phone" value={formData.phone} onChange={handleChange} />
-            
-            <div className="mt-8 flex justify-end">
-              <Button onClick={nextStep} disabled={!formData.full_name || !formData.country}>
-                Next Step →
-              </Button>
+        <div className="rounded-3xl border border-border bg-muted/50 p-6 md:p-12 shadow-brutal relative overflow-hidden">
+          
+          {/* Progress Indicator */}
+          {step < 4 && (
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-border">
+              <div 
+                className="h-full bg-accent transition-all duration-500 ease-out" 
+                style={{ width: `${(step / 3) * 100}%` }}
+              />
             </div>
-          </div>
-        )}
+          )}
 
-        {step === 2 && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background text-xs">2</span>
-              Experience
-            </h2>
-            <Select 
-              label="Experience Level" 
-              name="experience_level" 
-              value={formData.experience_level} 
-              onChange={handleChange}
-              options={['Beginner (< 1 year)', 'Intermediate (1-3 years)', 'Pro (3+ years)']}
-            />
-            <Select 
-              label="How many hours can you commit per week?" 
-              name="hours_per_week" 
-              value={formData.hours_per_week} 
-              onChange={handleChange}
-              options={['< 10 hours', '10-20 hours', '20-40 hours', '40+ hours']}
-            />
-            
-            <div className="mt-8 flex justify-between">
-              <Button variant="outline" onClick={prevStep}>← Back</Button>
-              <Button onClick={nextStep} disabled={!formData.experience_level}>Next Step →</Button>
+          {error && (
+            <div className="bg-red-500/10 border-l-4 border-red-500 text-red-600 dark:text-red-400 p-4 mb-8 font-medium rounded-r-xl">
+              {error}
             </div>
-          </div>
-        )}
+          )}
 
-        {step === 3 && (
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-xl font-bold mb-6 flex items-center gap-2">
-              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-foreground text-background text-xs">3</span>
-              Portfolio
-            </h2>
-            <p className="text-sm text-foreground/60 mb-6">Show us what you can do. We look for pacing, hook retention, and clean captions.</p>
-            
-            <Select 
-              label="Primary Platform" 
-              name="primary_platform" 
-              value={formData.primary_platform} 
-              onChange={handleChange}
-              options={['instagram', 'youtube', 'tiktok']}
-            />
-            <Input label="Social Handle (e.g. @username)" name="primary_social_handle" value={formData.primary_social_handle} onChange={handleChange} />
-            <Input label="Link to your BEST edited clip (Drive/YT/Insta)" name="sample_clip_url" type="url" value={formData.sample_clip_url} onChange={handleChange} required />
-            
-            <div className="mt-8 flex justify-between items-center pt-6 border-t border-foreground/10">
-              <Button variant="outline" onClick={prevStep}>← Back</Button>
-              
-              <Button 
-                onClick={handleGoogleSignInAndSubmit} 
-                disabled={loading || !formData.sample_clip_url || !formData.primary_platform}
-                className="gap-2"
+          <AnimatePresence mode="wait">
+            {step === 1 && (
+              <motion.div 
+                key="step1"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
               >
-                {loading ? 'Processing...' : 'Submit via Google'}
-                {!loading && (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center text-foreground font-display font-bold text-xl">1</div>
+                  <h2 className="text-3xl font-display font-bold tracking-tight">Personal Details</h2>
+                </div>
+                
+                <Input label="Full Name" name="full_name" placeholder="John Doe" value={formData.full_name} onChange={handleChange} required />
+                <Input label="Country" name="country" placeholder="United States" value={formData.country} onChange={handleChange} required />
+                <Input label="WhatsApp / Phone Number" name="phone" placeholder="+1 234 567 8900" value={formData.phone} onChange={handleChange} />
+                
+                <div className="mt-12 flex justify-end">
+                  <MagneticWrapper>
+                    <button 
+                      onClick={nextStep} 
+                      disabled={!formData.full_name || !formData.country}
+                      className="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                    >
+                      Next Step →
+                    </button>
+                  </MagneticWrapper>
+                </div>
+              </motion.div>
+            )}
+
+            {step === 2 && (
+              <motion.div 
+                key="step2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-4 mb-10">
+                  <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center text-foreground font-display font-bold text-xl">2</div>
+                  <h2 className="text-3xl font-display font-bold tracking-tight">Experience</h2>
+                </div>
+
+                <Select 
+                  label="Experience Level" 
+                  name="experience_level" 
+                  value={formData.experience_level} 
+                  onChange={handleChange}
+                  options={['Beginner (< 1 year)', 'Intermediate (1-3 years)', 'Pro (3+ years)']}
+                />
+                <Select 
+                  label="Weekly Availability" 
+                  name="hours_per_week" 
+                  value={formData.hours_per_week} 
+                  onChange={handleChange}
+                  options={['< 10 hours', '10-20 hours', '20-40 hours', '40+ hours']}
+                />
+                
+                <div className="mt-12 flex items-center justify-between">
+                  <button 
+                    onClick={prevStep}
+                    className="text-sm font-bold uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    ← Back
+                  </button>
+                  <MagneticWrapper>
+                    <button 
+                      onClick={nextStep} 
+                      disabled={!formData.experience_level}
+                      className="inline-flex h-14 items-center justify-center rounded-full bg-accent px-10 font-bold uppercase tracking-wide text-accent-foreground transition-transform hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                    >
+                      Next Step →
+                    </button>
+                  </MagneticWrapper>
+                </div>
+              </motion.div>
+            )}
+
+            {step === 3 && (
+              <motion.div 
+                key="step3"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-foreground/10 flex items-center justify-center text-foreground font-display font-bold text-xl">3</div>
+                  <h2 className="text-3xl font-display font-bold tracking-tight">Portfolio</h2>
+                </div>
+                <p className="text-base text-muted-foreground mb-10 font-medium">Show us what you can do. We look for pacing, hook retention, and clean captions.</p>
+                
+                <Select 
+                  label="Primary Platform" 
+                  name="primary_platform" 
+                  value={formData.primary_platform} 
+                  onChange={handleChange}
+                  options={[
+                    'Instagram Reels', 
+                    'YouTube Shorts', 
+                    'TikTok', 
+                    'X / Twitter', 
+                    'LinkedIn', 
+                    'Facebook Reels', 
+                    'Pinterest', 
+                    'Other'
+                  ]}
+                />
+                <Input label="Social Handle" placeholder="@username" name="primary_social_handle" value={formData.primary_social_handle} onChange={handleChange} />
+                <Input label="Link to your BEST edited clip" placeholder="https://..." name="sample_clip_url" type="url" value={formData.sample_clip_url} onChange={handleChange} required />
+                
+                <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-6">
+                  <button 
+                    onClick={prevStep}
+                    className="text-sm font-bold uppercase tracking-wide text-muted-foreground hover:text-foreground transition-colors w-full sm:w-auto text-left"
+                  >
+                    ← Back
+                  </button>
+                  
+                  <div className="w-full sm:w-auto flex flex-col items-end gap-3">
+                    <MagneticWrapper>
+                      <button 
+                        onClick={handleGoogleSignInAndSubmit} 
+                        disabled={loading || !formData.sample_clip_url || !formData.primary_platform}
+                        className="inline-flex h-14 items-center justify-center rounded-full bg-foreground px-8 font-bold uppercase tracking-wide text-background transition-transform hover:scale-105 disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed shadow-brutal gap-3 w-full sm:w-auto"
+                      >
+                        {loading ? 'Processing...' : 'Submit via Google'}
+                        {!loading && (
+                          <div className="bg-white p-1 rounded-full flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                          </div>
+                        )}
+                      </button>
+                    </MagneticWrapper>
+                    <p className="text-xs text-muted-foreground max-w-[200px] text-right">
+                      Google Sign-In required to verify email.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+
+            {step === 4 && (
+              <motion.div 
+                key="step4"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-16"
+              >
+                <div className="w-24 h-24 bg-foreground/10 text-foreground rounded-full flex items-center justify-center mx-auto mb-8 border border-border">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter">
+                    <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
-                )}
-              </Button>
-            </div>
-            <p className="text-xs text-center text-foreground/50 mt-4">
-              We require Google Sign-In to verify your email and prevent spam applications.
-            </p>
-          </div>
-        )}
-
-        {step === 4 && (
-          <div className="animate-in zoom-in-95 duration-500 text-center py-10">
-            <div className="w-16 h-16 bg-green-500/20 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold mb-2">Application Received!</h2>
-            <p className="text-foreground/70 mb-8 max-w-sm mx-auto">
-              Thanks for applying. We've sent a confirmation to your email. Our team will review your portfolio and get back to you within 48 hours.
-            </p>
-            <Button onClick={() => router.push('/')} variant="outline">
-              Return to Home
-            </Button>
-          </div>
-        )}
-
+                </div>
+                <h2 className="text-4xl font-display font-bold uppercase tracking-tight mb-6">Application Received</h2>
+                <p className="text-muted-foreground mb-12 max-w-md mx-auto text-lg leading-relaxed">
+                  We've sent a confirmation to your email. Our team will review your portfolio and get back to you within 48 hours.
+                </p>
+                <MagneticWrapper>
+                  <button 
+                    onClick={() => router.push('/')} 
+                    className="inline-flex h-14 items-center justify-center rounded-full border border-border bg-transparent px-10 font-bold uppercase tracking-wide text-foreground transition-colors hover:bg-foreground hover:text-background"
+                  >
+                    Return to Home
+                  </button>
+                </MagneticWrapper>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </div>
   );
