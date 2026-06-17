@@ -5,7 +5,7 @@
   /* Neo-Brutalist Light Theme */
   --background: #f4f4f0;
   --foreground: #000000;
-  --accent: #D4FF00;
+  --accent: #FF5500;
   --accent-foreground: #000000;
   --muted: #e5e5df;
   --muted-foreground: #555555;
@@ -17,12 +17,12 @@
   /* Original Dark Theme */
   --background: #0a0a0a;
   --foreground: #ededed;
-  --accent: #D4FF00;
+  --accent: #FF5500;
   --accent-foreground: #000000;
   --muted: #262626;
   --muted-foreground: #a3a3a3;
   --border: #262626;
-  --path-color: #D4FF00;
+  --path-color: #FF5500;
 }
 
 @theme inline {
@@ -45,11 +45,11 @@ body {
 
 /* Custom Play/Pause Cursors */
 * {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0bDE1IDgtMTUgOHoiIGZpbGw9IiNENEZGMDAiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+") 6 4, auto !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0bDE1IDgtMTUgOHoiIGZpbGw9IiNGRjU1MDAiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+") 6 4, auto !important;
 }
 
 input, textarea, [contenteditable="true"] {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0aDR2MTZINnptOCAwaDR2MTZoLTR6IiBmaWxsPSIjRDRGRjAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==") 12 12, text !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0aDR2MTZINnptOCAwaDR2MTZoLTR6IiBmaWxsPSIjRkY1NTAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==") 12 12, text !important;
 }
 
 /* Subtle Film Grain Noise */

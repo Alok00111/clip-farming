@@ -190,7 +190,7 @@ const Select = ({ label, options, required, value, onChange, name, placeholder =
             transition={{ duration: 0.15 }}
             className="absolute top-[calc(100%+8px)] left-0 w-full bg-background border border-border rounded-2xl shadow-xl z-50 overflow-hidden"
           >
-            <div className="max-h-60 overflow-y-auto py-2 custom-scrollbar">
+            <div className="max-h-60 overflow-y-auto py-2 custom-scrollbar overscroll-contain">
               {filteredOptions.length === 0 ? (
                 <div className="px-6 py-4 text-sm text-muted-foreground">No matches found.</div>
               ) : (
