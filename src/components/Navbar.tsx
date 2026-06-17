@@ -12,9 +12,9 @@ import MagneticWrapper from "./MagneticWrapper";
 const navLinks = [
   { name: "Process", href: "/#how-it-works" },
   { name: "Case Studies", href: "/case-studies" },
+  { name: "Apply to Edit", href: "/apply" },
   { name: "About", href: "/about" },
   { name: "Compare", href: "/compare" },
-  { name: "Editors", href: "/editors" },
   { name: "Blog", href: "/blog" },
 ];
 
