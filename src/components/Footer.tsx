@@ -26,7 +26,7 @@ export default function Footer() {
     <footer className="relative w-full overflow-hidden bg-background pt-32">
       {/* Crowd Canvas Background */}
       <div className="absolute bottom-0 left-0 w-full h-[600px] pointer-events-none opacity-40 mix-blend-multiply">
-        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} />
+        <CrowdCanvas src="/images/peeps/all-peeps.svg" rows={15} cols={7} />
       </div>
 
       {/* Massive CTA Section */}
