@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 import MagneticWrapper from "./MagneticWrapper";
+import Logo from "./Logo";
 
 const navLinks = [
   { name: "Process", href: "/#how-it-works" },
@@ -50,8 +51,8 @@ export default function Navbar() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Logo */}
           <MagneticWrapper>
-            <Link href="/" className="font-display text-xl font-bold uppercase tracking-tight sm:text-2xl inline-block" data-cursor-hover="true">
-              CA<span className="text-accent">.</span>
+            <Link href="/" className="inline-block" data-cursor-hover="true">
+              <Logo />
             </Link>
           </MagneticWrapper>
 
@@ -118,9 +119,7 @@ export default function Navbar() {
             className="fixed inset-0 z-[100] flex flex-col bg-background px-6 py-6"
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-xl font-bold uppercase tracking-tight">
-                CA<span className="text-accent">.</span>
-              </span>
+              <Logo />
               <button
                 className="text-foreground"
                 onClick={() => setIsMobileMenuOpen(false)}

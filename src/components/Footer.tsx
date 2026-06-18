@@ -6,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MagneticWrapper from "./MagneticWrapper";
+import Logo from "./Logo";
 
 export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
@@ -48,14 +49,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 border-t border-border pt-12 md:flex-row">
           
           <MagneticWrapper strength={0.1}>
-            <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <span className="font-display font-bold">CA</span>
-              </div>
-              <span className="font-display text-xl font-bold uppercase tracking-tight text-foreground">
-                Clipping Agency
-              </span>
-            </div>
+            <Logo />
           </MagneticWrapper>
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium uppercase tracking-wider text-muted-foreground">
