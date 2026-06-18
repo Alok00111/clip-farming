@@ -26,7 +26,6 @@ export default function AmbientPath() {
     <div 
       ref={containerRef}
       className="pointer-events-none absolute inset-0 z-0 hidden w-full xl:block"
-      style={{ willChange: "transform" }}
     >
       <svg 
         className="h-full w-full"

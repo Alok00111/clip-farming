@@ -135,7 +135,7 @@ export default function HowItWorks() {
                     <motion.div 
                       initial={{ scale: 0, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
-                      viewport={{ once: false, margin: "-50%" }}
+                      viewport={{ once: true, margin: "-50%" }}
                       transition={{ type: "spring", stiffness: 150, delay: 0.2 }}
                       className="h-8 w-8 rounded-full border-4 border-background bg-accent shadow-[0_0_15px_var(--accent)]"
                     />
@@ -148,7 +148,7 @@ export default function HowItWorks() {
                   <motion.div 
                     initial={{ x: isEven ? -150 : 150, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: false, margin: "-20%" }}
+                    viewport={{ once: true, margin: "-20%" }}
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
                     className={`w-full md:w-1/2 z-10 ${isEven ? "md:pr-16" : "md:pl-16"}`}
                   >

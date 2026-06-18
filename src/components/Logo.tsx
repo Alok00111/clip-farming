@@ -15,7 +15,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
         <defs>
           <mask id="diagonal-cut">
             <rect width="200" height="200" x="-50" y="-50" fill="white" />
-            <line x1="-20" y1="120" x2="120" y2="-20" stroke="black" strokeWidth="16" />
+            <line x1="0" y1="100" x2="100" y2="0" stroke="black" strokeWidth="16" />
           </mask>
         </defs>
 
@@ -29,7 +29,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
 
         {/* Solid arrowhead */}
         <path 
-          d="M 95 5 L 75 5 L 82 18 L 95 25 Z" 
+          d="M 95 5 L 65 15 L 80 20 L 85 35 Z" 
           className="text-foreground"
           fill="currentColor" 
         />
