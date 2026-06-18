@@ -2,15 +2,15 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  /* Bright Orange Theme */
-  --background: #FF6600;
-  --foreground: #ffffff;
-  --accent: #000000;
+  /* Clean White Theme */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --accent: #FF6600;
   --accent-foreground: #ffffff;
-  --muted: #cc5200;
-  --muted-foreground: #ffffff;
-  --border: #000000;
-  --path-color: #ffffff;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --path-color: #FF6600;
 }
 
 @theme inline {

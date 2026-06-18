@@ -32,7 +32,7 @@ export default function Hero() {
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         {/* Main Headline */}
-        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl text-white">
+        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl text-foreground">
           <SplitText 
             text="Scale Your Personal Brand To Millions." 
             highlightWords={["Millions."]} 
@@ -50,7 +50,7 @@ export default function Hero() {
           className="mx-auto mt-8 max-w-2xl text-lg font-medium text-muted-foreground sm:text-xl"
         >
           Our elite network of clippers runs hyper-targeted viral campaigns for Founders, Politicians, and Creators—driving massive organic traffic for as low as{" "}
-          <span className="font-bold text-white">$0.001 per view.</span>
+          <span className="font-bold text-foreground">$0.001 per view.</span>
         </motion.p>
 
         {/* CTA Button */}
@@ -86,7 +86,7 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <CheckCircle className="h-5 w-5 text-accent" />
-            <p className="text-sm font-medium text-white">
+            <p className="text-sm font-medium text-foreground">
               Trusted by <span className="font-bold">50+ Top Leaders, Creators & Brands</span>
             </p>
           </div>
