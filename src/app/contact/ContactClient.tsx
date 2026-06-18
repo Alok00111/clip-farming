@@ -130,10 +130,10 @@ export default function ContactClient() {
                 <a href="#" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Community</p>
-                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">Discord Server</p>
+                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">WhatsApp Community</p>
                   </div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#5865F2] text-white border-2 border-border font-bold">
-                    DC
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white border-2 border-border font-bold">
+                    WA
                   </div>
                 </a>
               </div>

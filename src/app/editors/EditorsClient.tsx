@@ -132,7 +132,7 @@ export default function EditorsClient() {
             </div>
             <div className="font-display text-3xl font-black uppercase text-foreground">Elite Network</div>
             <p className="text-muted-foreground font-medium text-lg leading-relaxed">
-              Join an exclusive Discord of the top 1% of editors. Share project files, learn new techniques, and level up your skills.
+              Join an exclusive WhatsApp Community of the top 1% of editors. Share project files, learn new techniques, and level up your skills.
             </p>
           </div>
         </motion.div>
@@ -162,13 +162,13 @@ export default function EditorsClient() {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label htmlFor="discord" className="font-display text-xl font-bold uppercase text-foreground">Discord Username</label>
+                <label htmlFor="whatsapp" className="font-display text-xl font-bold uppercase text-foreground">WhatsApp Number</label>
                 <input 
                   type="text" 
-                  id="discord" 
-                  name="discord" 
+                  id="whatsapp" 
+                  name="whatsapp" 
                   required
-                  placeholder="editor_john#1234"
+                  placeholder="+1 234 567 8900"
                   className="w-full rounded-2xl border-4 border-border bg-background p-6 text-lg font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/50 focus:bg-accent focus:text-accent-foreground focus:shadow-[6px_6px_0px_0px_var(--border)] focus:-translate-y-1 focus:-translate-x-1"
                 />
               </div>

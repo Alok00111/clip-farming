@@ -92,7 +92,7 @@ export async function POST(request: Request) {
             Thanks for applying to join the ClippingAgency network. Our team will review your portfolio and social handle.
           </p>
           <p style="color: #444; font-size: 16px; line-height: 1.5;">
-            Expect to hear back from us within 48 hours. If approved, we'll send you your portal login link and Discord invite.
+            Expect to hear back from us within 48 hours. If approved, we'll send you your portal login link and WhatsApp community invite.
           </p>
           <br/>
           <p style="color: #666; font-size: 14px;">
