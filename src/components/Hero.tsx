@@ -37,7 +37,7 @@ export default function Hero() {
             highlightWords={["Millions."]} 
             highlightClass="text-accent" 
             className="justify-center"
-            delay={1.5} 
+            delay={0.1} 
           />
         </h1>
 
@@ -45,7 +45,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: shouldReduceMotion ? 0 : 2.1, duration: 0.8 }}
+          transition={{ delay: shouldReduceMotion ? 0 : 0.6, duration: 0.8 }}
           className="mx-auto mt-8 max-w-2xl text-lg font-medium text-muted-foreground sm:text-xl"
         >
           Our elite network of clippers runs hyper-targeted viral campaigns for Founders, Politicians, and Creators—driving massive organic traffic for as low as{" "}
@@ -56,7 +56,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, scale: shouldReduceMotion ? 1 : 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: shouldReduceMotion ? 0 : 2.3, duration: 0.8 }}
+          transition={{ delay: shouldReduceMotion ? 0 : 0.8, duration: 0.8 }}
           className="mt-12 flex justify-center"
         >
           <MagneticButton className="h-16 px-10 text-lg uppercase tracking-wider">
@@ -68,7 +68,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: shouldReduceMotion ? 0 : 2.7, duration: 1 }}
+          transition={{ delay: shouldReduceMotion ? 0 : 1.2, duration: 1 }}
           className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <div className="flex -space-x-3">

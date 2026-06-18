@@ -5,33 +5,39 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <svg 
-        width="36" 
-        height="36" 
+        width="42" 
+        height="42" 
         viewBox="0 0 100 100" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg" 
         className={cn("overflow-visible shrink-0 text-foreground", iconClassName)}
       >
-        {/* Rounded Box */}
-        <path 
-          d="M 50 15 H 30 A 15 15 0 0 0 15 30 V 70 A 15 15 0 0 0 30 85 H 70 A 15 15 0 0 0 85 70 V 50" 
-          stroke="currentColor" 
-          strokeWidth="12" 
-          strokeLinecap="round" 
-          fill="none" 
+        <defs>
+          <mask id="diagonal-cut">
+            <rect width="100" height="100" fill="white" />
+            <line x1="-10" y1="100" x2="100" y2="-10" stroke="black" strokeWidth="16" />
+          </mask>
+        </defs>
+
+        {/* Solid rounded square with diagonal cut */}
+        <rect 
+          x="10" 
+          y="10" 
+          width="70" 
+          height="70" 
+          rx="18" 
+          fill="currentColor" 
+          mask="url(#diagonal-cut)" 
         />
-        {/* Outward Arrow */}
+
+        {/* Solid orange arrowhead shooting out */}
         <path 
-          d="M 45 55 L 85 15 M 55 15 H 85 V 45" 
-          className="stroke-accent" 
-          strokeWidth="12" 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          fill="none" 
+          d="M 85 5 L 65 5 L 75 15 L 85 25 Z" 
+          className="fill-accent text-accent" 
         />
       </svg>
-      <span className={cn("font-display text-xl font-bold uppercase tracking-[0.2em] text-foreground pt-1", textClassName)}>
-        Media
+      <span className={cn("font-display text-2xl font-black uppercase tracking-[0.25em] text-foreground pt-1", textClassName)}>
+        MEDIA
       </span>
     </div>
   );
