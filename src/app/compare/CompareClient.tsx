@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { Check, X } from "lucide-react";
-import ViralArchitecture from "@/components/ViralArchitecture";
+import ROICalculator from "@/components/ROICalculator";
 import Link from "next/link";
 
 const containerVariants = {
@@ -123,9 +123,9 @@ export default function CompareClient() {
 
 
 
-        {/* Viral Architecture replacement for ROI Calculator */}
+        {/* ROI Calculator */}
         <motion.div variants={itemVariants} className="mt-40 mb-20">
-          <ViralArchitecture />
+          <ROICalculator />
         </motion.div>
 
       </div>
