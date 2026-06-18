@@ -3,14 +3,14 @@
 
 :root {
   /* Bright Orange Theme */
-  --background: #000000;
+  --background: #FF6600;
   --foreground: #ffffff;
-  --accent: #FF5500;
+  --accent: #000000;
   --accent-foreground: #ffffff;
-  --muted: #1a1a1a;
-  --muted-foreground: #a3a3a3;
-  --border: #333333;
-  --path-color: #FF5500;
+  --muted: #cc5200;
+  --muted-foreground: #ffffff;
+  --border: #000000;
+  --path-color: #ffffff;
 }
 
 :root.dark {
