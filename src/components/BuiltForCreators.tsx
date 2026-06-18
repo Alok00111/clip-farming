@@ -13,7 +13,7 @@ const creators = [
 
 export default function BuiltForCreators() {
   return (
-    <section className="relative w-full bg-accent py-24 overflow-hidden border-b-4 border-border">
+    <section className="relative w-full bg-accent pb-24 pt-12 overflow-hidden border-b-4 border-border">
       {/* Decorative black border right-angle frame */}
       <div className="absolute bottom-12 right-12 h-32 w-48 border-b-8 border-r-8 border-black z-0 pointer-events-none hidden md:block" />
 
