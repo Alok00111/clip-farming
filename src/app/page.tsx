@@ -1,4 +1,3 @@
-import Loader from "@/components/Loader";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
 import VideoGrid from "@/components/VideoGrid";
@@ -13,7 +12,6 @@ import AmbientPath from "@/components/AmbientPath";
 export default function Home() {
   return (
     <>
-      <Loader />
       <Hero />
       <Stats />
       <VideoGrid />

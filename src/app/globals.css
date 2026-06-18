@@ -13,18 +13,6 @@
   --path-color: #ffffff;
 }
 
-:root.dark {
-  /* Dark Theme */
-  --background: #000000;
-  --foreground: #ffffff;
-  --accent: #FF5500;
-  --accent-foreground: #ffffff;
-  --muted: #1a1a1a;
-  --muted-foreground: #a3a3a3;
-  --border: #333333;
-  --path-color: #FF5500;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import Cursor from "@/components/Cursor";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -36,28 +35,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <Script
-          id="theme-script"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                window.history.scrollRestoration = 'manual';
-                window.scrollTo(0, 0);
-                if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                  document.documentElement.classList.add('dark');
-                  document.documentElement.style.colorScheme = 'dark';
-                } else {
-                  document.documentElement.classList.add('light');
-                  document.documentElement.style.colorScheme = 'light';
-                }
-              } catch (_) {}
-            `,
-          }}
-        />
       </head>
       <body className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
-        <ThemeProvider>
           <div className="noise-overlay" />
           <Cursor />
           <SmoothScroll>
@@ -65,7 +44,6 @@ export default function RootLayout({
             <main className="relative block">{children}</main>
             <Footer />
           </SmoothScroll>
-        </ThemeProvider>
       </body>
     </html>
   );

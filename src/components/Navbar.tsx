@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./ThemeToggle";
 import MagneticWrapper from "./MagneticWrapper";
 import Logo from "./Logo";
 
@@ -73,9 +72,6 @@ export default function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-4 md:flex">
-            <MagneticWrapper strength={0.1}>
-              <ThemeToggle />
-            </MagneticWrapper>
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"
