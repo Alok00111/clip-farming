@@ -42,28 +42,39 @@ export default function ViralArchitecture() {
             {/* Abstract Network Graphic */}
             <div className="absolute inset-0 z-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
               <div className="relative w-full h-full">
-                {[...Array(20)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute bg-accent rounded-full blur-[2px]"
-                    style={{
-                      width: Math.random() * 8 + 4 + "px",
-                      height: Math.random() * 8 + 4 + "px",
-                      top: Math.random() * 100 + "%",
-                      left: Math.random() * 100 + "%",
-                    }}
-                    animate={{
-                      y: [0, Math.random() * -30 - 10, 0],
-                      opacity: [0.2, 1, 0.2],
-                    }}
-                    transition={{
-                      duration: Math.random() * 3 + 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
+                {[...Array(20)].map((_, i) => {
+                  // Deterministic pseudo-random values based on index to avoid hydration mismatch
+                  const width = ((i * 7) % 8) + 4;
+                  const height = ((i * 11) % 8) + 4;
+                  const top = ((i * 23) % 100);
+                  const left = ((i * 37) % 100);
+                  const yAnim = ((i * 13) % 30) + 10;
+                  const duration = ((i * 17) % 3) + 2;
+                  const delay = ((i * 19) % 2);
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute bg-accent rounded-full blur-[2px]"
+                      style={{
+                        width: `${width}px`,
+                        height: `${height}px`,
+                        top: `${top}%`,
+                        left: `${left}%`,
+                      }}
+                      animate={{
+                        y: [0, -yAnim, 0],
+                        opacity: [0.2, 1, 0.2],
+                      }}
+                      transition={{
+                        duration: duration,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: delay,
+                      }}
+                    />
+                  );
+                })}
               </div>
             </div>
 
