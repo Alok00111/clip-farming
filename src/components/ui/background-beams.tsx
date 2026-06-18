@@ -65,6 +65,8 @@ export const BackgroundBeams = React.memo(
       "M12 -637C12 -637 80 -232 544 -105C1008 22 1076 427 1076 427",
       "M19 -645C19 -645 87 -240 551 -113C1015 14 1083 419 1083 419"
     ];
+    const filteredPaths = paths.filter((_, i) => i % 4 === 0);
+
     return (
       <div
         className={cn(
@@ -87,7 +89,7 @@ export const BackgroundBeams = React.memo(
             strokeWidth="0.5"
           ></path>
 
-          {paths.map((path, index) => (
+          {filteredPaths.map((path, index) => (
             <motion.path
               key={`path-` + index}
               d={path}
@@ -97,7 +99,7 @@ export const BackgroundBeams = React.memo(
             ></motion.path>
           ))}
           <defs>
-            {paths.map((path, index) => (
+            {filteredPaths.map((path, index) => (
               <motion.linearGradient
                 id={`linearGradient-${index}`}
                 key={`gradient-${index}`}
