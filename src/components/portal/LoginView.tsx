@@ -25,47 +25,17 @@ export default function LoginView({ onLogin }: LoginViewProps) {
           </p>
         </div>
 
-        <form 
-          className="flex flex-col gap-5"
-          onSubmit={(e) => {
-            e.preventDefault();
-            onLogin();
-          }}
-        >
-          <div>
-            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-500">
-              Email Address
-            </label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-black focus:bg-neutral-100"
-              required
-            />
+        <div className="flex flex-col items-center gap-6">
+          <div className="inline-flex rounded-full border border-accent/20 bg-accent/10 px-4 py-1.5">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent">
+              Coming Soon
+            </span>
           </div>
-          <div>
-            <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-neutral-500">
-              Password
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="h-14 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-6 text-black placeholder-neutral-400 outline-none transition-colors focus:border-black focus:bg-neutral-100"
-              required
-            />
-          </div>
-
-          <button 
-            type="submit"
-            className="mt-4 flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-black px-8 font-bold uppercase tracking-wide text-white transition-colors hover:bg-neutral-800"
-          >
-            Sign In <ArrowRight className="h-5 w-5" />
-          </button>
-        </form>
-
-        <p className="mt-8 text-center text-xs text-neutral-500">
-          For demo purposes, clicking Sign In will instantly log you in.
-        </p>
+          <p className="text-center text-sm leading-relaxed text-neutral-500">
+            We are currently building the ultimate portal for our network of clippers. 
+            Check back later to access your personalized dashboard, claim videos, and track your payouts.
+          </p>
+        </div>
       </div>
     </div>
   );
