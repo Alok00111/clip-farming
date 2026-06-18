@@ -7,10 +7,10 @@
   --foreground: #000000;
   --accent: #000000;
   --accent-foreground: #ffffff;
-  --muted: #e64d00;
-  --muted-foreground: #ffccb3;
+  --muted: #cccc00;
+  --muted-foreground: #333333;
   --border: #000000;
-  --path-color: #ffffff;
+  --path-color: #000000;
 }
 
 :root.dark {
