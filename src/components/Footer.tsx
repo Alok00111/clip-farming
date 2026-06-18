@@ -8,6 +8,8 @@ import { usePathname } from "next/navigation";
 import MagneticWrapper from "./MagneticWrapper";
 import Logo from "./Logo";
 
+import { CrowdCanvas } from "./CrowdCanvas";
+
 export default function Footer() {
   const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
@@ -22,6 +24,11 @@ export default function Footer() {
 
   return (
     <footer className="relative w-full overflow-hidden bg-background pt-32">
+      {/* Crowd Canvas Background */}
+      <div className="absolute bottom-0 left-0 w-full h-[600px] pointer-events-none opacity-40 mix-blend-multiply">
+        <CrowdCanvas src="/images/peeps/all-peeps.png" rows={15} cols={7} />
+      </div>
+
       {/* Massive CTA Section */}
       <div className="container relative z-10 mx-auto px-6 text-center">
         <motion.div
@@ -45,7 +52,7 @@ export default function Footer() {
       </div>
 
       {/* Actual Footer Links */}
-      <div className="container mx-auto mt-20 px-6 pb-12">
+      <div className="container relative z-10 mx-auto mt-20 px-6 pb-12">
         <div className="flex flex-col items-center justify-between gap-8 border-t border-border pt-12 md:flex-row">
           
           <MagneticWrapper strength={0.1}>
