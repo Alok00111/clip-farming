@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useInView, useMotionValue, useSpring, motion } from "framer-motion";
+import TestimonialMarquee from "./TestimonialMarquee";
 
 function Counter({
   value,
@@ -74,20 +75,12 @@ export default function Stats() {
         </div>
       </div>
 
-      {/* Infinite Logo Marquee */}
-      <div className="mt-24 w-full overflow-hidden border-t border-b border-border bg-muted/30 py-10">
-        <div className="flex w-[200%] items-center animate-marquee">
-          {/* We duplicate the logos array twice to ensure seamless scrolling */}
-          {[1, 2].map((group) => (
-            <div key={group} className="flex w-1/2 items-center justify-around">
-              {["Spotify", "Netflix", "YouTube", "Instagram", "Twitch", "Patreon"].map((logo) => (
-                <div key={logo} className="mx-8 font-display text-2xl font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground">
-                  {logo}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+      {/* Client Testimonials Carousel */}
+      <div className="mt-24 w-full overflow-hidden pt-10 flex flex-col items-center">
+        <h3 className="text-center font-display text-3xl font-bold uppercase tracking-tight text-foreground mb-12">
+          Don't just take our word for it
+        </h3>
+        <TestimonialMarquee direction="left" speed="normal" />
       </div>
     </section>
   );
