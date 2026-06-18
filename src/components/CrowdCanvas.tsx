@@ -260,7 +260,7 @@ export const CrowdCanvas = ({ src, rows = 15, cols = 7 }: CrowdCanvasProps) => {
     const init = () => {
       createPeeps();
       resize();
-      gsap.ticker.add(render);
+      // Animation will be started by intersection observer
     };
 
     img.onload = init;
@@ -269,9 +269,23 @@ export const CrowdCanvas = ({ src, rows = 15, cols = 7 }: CrowdCanvasProps) => {
     const handleResize = () => resize();
     window.addEventListener("resize", handleResize);
 
+    // Performance optimization: Only animate when visible
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        gsap.ticker.add(render);
+      } else {
+        gsap.ticker.remove(render);
+      }
+    });
+
+    if (canvas) {
+      observer.observe(canvas);
+    }
+
     return () => {
       window.removeEventListener("resize", handleResize);
       gsap.ticker.remove(render);
+      if (canvas) observer.unobserve(canvas);
       crowd.forEach((peep) => {
         if (peep.walk) peep.walk.kill();
       });

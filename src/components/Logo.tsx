@@ -21,7 +21,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
 
         {/* Solid square with top-left and bottom-right rounded */}
         <path 
-          d="M 35 15 L 85 15 L 85 65 A 24 24 0 0 1 61 89 L 11 89 L 11 39 A 24 24 0 0 1 35 15 Z" 
+          d="M 36 20 L 80 20 L 80 64 A 16 16 0 0 1 64 80 L 20 80 L 20 36 A 16 16 0 0 1 36 20 Z" 
           className="text-accent"
           fill="currentColor" 
           mask="url(#diagonal-cut)" 
@@ -29,7 +29,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
 
         {/* Solid arrowhead */}
         <path 
-          d="M 105 -5 L 80 -5 L 93 7 L 105 20 Z" 
+          d="M 95 5 L 75 5 L 82 18 L 95 25 Z" 
           className="text-foreground"
           fill="currentColor" 
         />
