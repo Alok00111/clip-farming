@@ -4,7 +4,7 @@ import Stats from "@/components/Stats";
 import VideoGrid from "@/components/VideoGrid";
 import HowItWorks from "@/components/HowItWorks";
 import UseCases from "@/components/UseCases";
-import ROICalculator from "@/components/ROICalculator";
+import ViralArchitecture from "@/components/ViralArchitecture";
 import ForClippers from "@/components/ForClippers";
 import FAQ from "@/components/FAQ";
 
@@ -23,7 +23,7 @@ export default function Home() {
         <AmbientPath />
         <HowItWorks />
         <UseCases />
-        <ROICalculator />
+        <ViralArchitecture />
       </div>
 
       <div className="relative overflow-hidden bg-background">
