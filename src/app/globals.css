@@ -2,26 +2,26 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  /* Neo-Brutalist Light Theme */
-  --background: #f4f4f0;
-  --foreground: #000000;
-  --accent: #FF5500;
-  --accent-foreground: #000000;
-  --muted: #e5e5df;
-  --muted-foreground: #555555;
+  /* Bright Orange Theme */
+  --background: #FF5500;
+  --foreground: #ffffff;
+  --accent: #000000;
+  --accent-foreground: #ffffff;
+  --muted: #e64d00;
+  --muted-foreground: #ffccb3;
   --border: #000000;
-  --path-color: #000000;
+  --path-color: #ffffff;
 }
 
 :root.dark {
-  /* Original Dark Theme */
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Dark Theme */
+  --background: #000000;
+  --foreground: #ffffff;
   --accent: #FF5500;
-  --accent-foreground: #000000;
-  --muted: #262626;
+  --accent-foreground: #ffffff;
+  --muted: #1a1a1a;
   --muted-foreground: #a3a3a3;
-  --border: #262626;
+  --border: #333333;
   --path-color: #FF5500;
 }
 
@@ -45,11 +45,11 @@ body {
 
 /* Custom Play/Pause Cursors */
 * {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0bDE1IDgtMTUgOHoiIGZpbGw9IiNGRjU1MDAiIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+") 6 4, auto !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0bDE1IDgtMTUgOHoiIGZpbGw9IiMwMDAwMDAiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+") 6 4, auto !important;
 }
 
 input, textarea, [contenteditable="true"] {
-  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0aDR2MTZINnptOCAwaDR2MTZoLTR6IiBmaWxsPSIjRkY1NTAwIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==") 12 12, text !important;
+  cursor: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNNiA0aDR2MTZINnptOCAwaDR2MTZoLTR6IiBmaWxsPSIjMDAwMDAwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==") 12 12, text !important;
 }
 
 /* Subtle Film Grain Noise */
@@ -73,11 +73,11 @@ input, textarea, [contenteditable="true"] {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--accent);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--muted);
 }
 
 /* Marquee Animation */
