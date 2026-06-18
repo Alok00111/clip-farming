@@ -10,16 +10,32 @@ export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-accent pt-20">
-
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden pt-20">
+      {/* Background Animated Shapes (No Gradients, Solid Colors with Low Opacity) */}
+      <motion.div
+        className="absolute top-[20%] left-[10%] h-64 w-64 rounded-full bg-foreground/5 blur-3xl"
+        animate={shouldReduceMotion ? {} : {
+          x: [0, 50, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-[10%] right-[10%] h-96 w-96 rounded-full bg-accent/5 blur-3xl"
+        animate={shouldReduceMotion ? {} : {
+          x: [0, -40, 0],
+          y: [0, -50, 0],
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="container relative z-10 mx-auto px-6 text-center">
         {/* Main Headline */}
-        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl text-white">
+        <h1 className="font-display text-5xl font-bold uppercase leading-[1.1] tracking-tight sm:text-7xl lg:text-8xl">
           <SplitText 
             text="Scale Your Personal Brand To Millions." 
             highlightWords={["Millions."]} 
-            highlightClass="text-black" 
+            highlightClass="text-accent" 
             className="justify-center"
             delay={0.1} 
           />
@@ -30,10 +46,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: shouldReduceMotion ? 0 : 0.6, duration: 0.8 }}
-          className="mx-auto mt-8 max-w-2xl text-lg font-medium text-white sm:text-xl"
+          className="mx-auto mt-8 max-w-2xl text-lg font-medium text-muted-foreground sm:text-xl"
         >
           Our elite network of clippers runs hyper-targeted viral campaigns for Founders, Politicians, and Creators—driving massive organic traffic for as low as{" "}
-          <span className="font-bold text-white">$0.001 per view.</span>
+          <span className="font-bold text-foreground">$0.001 per view.</span>
         </motion.p>
 
         {/* CTA Button */}
@@ -43,7 +59,7 @@ export default function Hero() {
           transition={{ delay: shouldReduceMotion ? 0 : 0.8, duration: 0.8 }}
           className="mt-12 flex justify-center"
         >
-          <MagneticButton className="h-16 px-10 text-lg uppercase tracking-wider bg-black text-white hover:bg-black/90 border-none">
+          <MagneticButton className="h-16 px-10 text-lg uppercase tracking-wider">
             Book a Strategy Call
           </MagneticButton>
         </motion.div>
@@ -68,8 +84,8 @@ export default function Hero() {
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle className="h-5 w-5 text-black" />
-            <p className="text-sm font-medium text-white">
+            <CheckCircle className="h-5 w-5 text-accent" />
+            <p className="text-sm font-medium text-foreground">
               Trusted by <span className="font-bold">50+ Top Leaders, Creators & Brands</span>
             </p>
           </div>
