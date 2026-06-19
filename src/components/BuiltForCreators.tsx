@@ -24,7 +24,7 @@ export default function BuiltForCreators() {
       <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-background to-transparent z-10" />
 
       <div className="container mx-auto px-6 flex flex-col items-center text-center mb-8">
-        <h2 className="font-display text-sm md:text-base font-bold uppercase tracking-widest text-muted-foreground">
+        <h2 className="font-display text-xl md:text-2xl font-bold uppercase tracking-widest text-muted-foreground">
           Built to scale <span className="text-accent">every</span> type of creator
         </h2>
       </div>
