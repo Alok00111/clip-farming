@@ -57,7 +57,7 @@ export default function Navbar() {
             </MagneticWrapper>
           </div>
 
-          <nav className="hidden items-center justify-center gap-8 lg:flex">
+          <nav className="hidden items-center justify-center gap-2 lg:flex">
             {navLinks.map((link) => {
               // Exact match for hash links on home, otherwise startsWith for nested routes
               const isActive = link.href.includes('#') 
@@ -69,8 +69,8 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     className={cn(
-                      "relative text-sm font-bold uppercase tracking-widest transition-colors block py-1",
-                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                      "relative text-sm font-bold uppercase tracking-widest transition-colors block px-5 py-2.5 rounded-full z-10",
+                      isActive ? "text-accent-foreground" : "text-muted-foreground hover:text-foreground"
                     )}
                     data-cursor-hover="true"
                   >
@@ -78,7 +78,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.div
                         layoutId="navbar-indicator"
-                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
+                        className="absolute inset-0 bg-accent rounded-full -z-10 border-2 border-border shadow-[2px_2px_0px_0px_var(--border)]"
                         transition={{ type: "spring", stiffness: 350, damping: 30 }}
                       />
                     )}
