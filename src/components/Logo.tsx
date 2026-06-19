@@ -3,7 +3,20 @@ import { cn } from "@/lib/utils";
 
 export default function Logo({ className, iconClassName, textClassName }: { className?: string, iconClassName?: string, textClassName?: string }) {
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-4", className)}>
+      
+      {/* New Text Layout on the Left */}
+      <div className={cn("flex items-center", textClassName)}>
+        <span className="text-accent text-[4rem] font-light italic leading-none mr-2">/</span>
+        <div className="flex flex-col font-display font-black text-4xl leading-[0.85] tracking-tight text-slate-600 dark:text-slate-400">
+          <span>CLIP</span>
+          <span>UP</span>
+        </div>
+        <span className="font-display text-[12px] font-normal uppercase tracking-[0.5em] text-slate-400 dark:text-slate-500 ml-4 mt-2">
+          MEDIA
+        </span>
+      </div>
+
       <svg 
         width="64" 
         height="64" 
@@ -46,9 +59,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
           />
         </g>
       </svg>
-      <span className={cn("font-display text-[13px] font-black uppercase tracking-[0.6em] text-foreground pl-[0.6em]", textClassName)}>
-        MEDIA
-      </span>
+      
     </div>
   );
 }
