@@ -11,7 +11,6 @@ import Logo from "./Logo";
 
 const navLinks = [
   { name: "Process", href: "/#how-it-works" },
-  { name: "Case Studies", href: "/case-studies" },
   { name: "Apply", href: "/apply" },
   { name: "About", href: "/about" },
   { name: "Compare", href: "/compare" },

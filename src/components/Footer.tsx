@@ -64,7 +64,6 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium uppercase tracking-wider text-muted-foreground">
             <MagneticWrapper strength={0.2}><Link href="/" className="transition-colors hover:text-foreground inline-block">Home</Link></MagneticWrapper>
             <MagneticWrapper strength={0.2}><Link href="/about" className="transition-colors hover:text-foreground inline-block">About</Link></MagneticWrapper>
-            <MagneticWrapper strength={0.2}><Link href="/case-studies" className="transition-colors hover:text-foreground inline-block">Case Studies</Link></MagneticWrapper>
             <MagneticWrapper strength={0.2}><Link href="/compare" className="transition-colors hover:text-foreground inline-block">Compare</Link></MagneticWrapper>
             <MagneticWrapper strength={0.2}><Link href="/blog" className="transition-colors hover:text-foreground inline-block">Success Stories</Link></MagneticWrapper>
           </div>
