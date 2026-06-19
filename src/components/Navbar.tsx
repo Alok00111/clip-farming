@@ -47,16 +47,18 @@ export default function Navbar() {
             : "bg-transparent py-6"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl items-center grid-cols-2 lg:grid-cols-[1fr_auto_1fr] px-6 lg:px-8">
           {/* Logo */}
-          <MagneticWrapper>
-            <Link href="/" className="inline-block" data-cursor-hover="true">
-              <Logo />
-            </Link>
-          </MagneticWrapper>
+          <div className="flex justify-start">
+            <MagneticWrapper>
+              <Link href="/" className="inline-block" data-cursor-hover="true">
+                <Logo />
+              </Link>
+            </MagneticWrapper>
+          </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center justify-center gap-8 lg:flex">
             {navLinks.map((link) => (
               <MagneticWrapper key={link.name}>
                 <Link
@@ -71,7 +73,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center justify-end gap-4 lg:flex">
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"
@@ -85,7 +87,7 @@ export default function Navbar() {
             <MagneticWrapper strength={0.2}>
               <Link
                 href="/contact"
-                className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-transform hover:scale-105 block"
+                className="rounded-full bg-accent px-6 py-2.5 text-sm font-bold text-accent-foreground transition-transform hover:scale-105 block whitespace-nowrap"
                 data-cursor-hover="true"
               >
                 Book a Call
@@ -94,14 +96,16 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            className="text-foreground md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            data-cursor-hover="true"
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="flex justify-end lg:hidden">
+            <button
+              className="text-foreground"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              data-cursor-hover="true"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
       </header>
 
