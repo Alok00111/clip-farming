@@ -5,8 +5,8 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
   return (
     <div className={cn("flex flex-col items-center gap-2", className)}>
       <svg 
-        width="84" 
-        height="84" 
+        width="64" 
+        height="64" 
         viewBox="-15 -25 140 145" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -46,7 +46,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
           />
         </g>
       </svg>
-      <span className={cn("font-display text-[16px] font-black uppercase tracking-[0.6em] text-foreground pl-[0.6em]", textClassName)}>
+      <span className={cn("font-display text-[13px] font-black uppercase tracking-[0.6em] text-foreground pl-[0.6em]", textClassName)}>
         MEDIA
       </span>
     </div>
