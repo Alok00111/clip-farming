@@ -4,7 +4,7 @@ import BlogListClient from "./BlogListClient";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Creator Success Stories | ClipupMedia",
+  title: "Who We Help | ClipupMedia",
   description: "See how we scale every type of creator.",
 };
 

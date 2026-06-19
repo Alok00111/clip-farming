@@ -14,7 +14,7 @@ const navLinks = [
   { name: "Apply", href: "/apply" },
   { name: "About", href: "/about" },
   { name: "Compare", href: "/compare" },
-  { name: "Success Stories", href: "/blog" },
+  { name: "Who We Help", href: "/blog" },
 ];
 
 export default function Navbar() {
