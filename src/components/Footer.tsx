@@ -37,14 +37,14 @@ export default function Footer() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-[3rem] border-4 border-border bg-accent p-12 sm:p-20 shadow-[16px_16px_0px_0px_var(--border)]"
+            className="rounded-[3rem] border-4 border-border bg-black p-12 sm:p-20 shadow-[16px_16px_0px_0px_var(--border)]"
           >
-            <h2 className="font-display text-5xl font-black uppercase tracking-tight text-accent-foreground sm:text-7xl lg:text-8xl">
-              Stop Leaving <br /> Views on the Table.
+            <h2 className="font-display text-5xl font-black uppercase tracking-tight text-white sm:text-7xl lg:text-8xl">
+              Stop Leaving <br /> <span className="text-accent">Views</span> on the Table.
             </h2>
             <div className="mt-12 flex justify-center">
               <MagneticWrapper strength={0.1}>
-                <Link href="/contact" className="inline-flex items-center justify-center rounded-full border-4 border-accent-foreground bg-accent-foreground px-10 h-16 font-display text-xl font-black uppercase tracking-widest text-accent transition-transform hover:scale-105 hover:shadow-[6px_6px_0px_0px_var(--border)]" data-cursor-hover="true">
+                <Link href="/contact" className="inline-flex items-center justify-center rounded-full border-4 border-white bg-white px-10 h-16 font-display text-xl font-black uppercase tracking-widest text-accent transition-transform hover:scale-105 hover:shadow-[6px_6px_0px_0px_var(--border)]" data-cursor-hover="true">
                   Book Your Strategy Call
                 </Link>
               </MagneticWrapper>
