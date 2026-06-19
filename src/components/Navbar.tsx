@@ -47,9 +47,9 @@ export default function Navbar() {
             : "bg-transparent py-6"
         )}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
+        <div className="mx-auto flex max-w-[90rem] items-center justify-between px-6 lg:px-8">
           {/* Logo */}
-          <div className="flex justify-start">
+          <div className="flex flex-1 justify-start">
             <MagneticWrapper>
               <Link href="/" className="inline-block" data-cursor-hover="true">
                 <Logo />
@@ -88,7 +88,7 @@ export default function Navbar() {
             })}
           </nav>
 
-          <div className="hidden items-center justify-end gap-4 lg:flex">
+          <div className="hidden flex-1 items-center justify-end gap-4 lg:flex">
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"

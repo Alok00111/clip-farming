@@ -6,7 +6,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
     <div className={cn("flex items-center gap-6", className)}>
       
       {/* New Text Layout on the Left */}
-      <div className={cn("flex items-center -ml-4", textClassName)}>
+      <div className={cn("flex items-center", textClassName)}>
         <span className="text-accent text-[4.5rem] font-black italic leading-none mr-2 -mt-1">/</span>
         <div className="flex flex-col font-display font-black text-4xl leading-[0.85] tracking-tighter text-slate-700 dark:text-slate-200">
           <span>CLIP</span>
