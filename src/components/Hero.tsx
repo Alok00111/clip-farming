@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { Mic, MonitorPlay, Music, Tv, GraduationCap, UserCircle2, Briefcase, Gamepad2, Landmark } from "lucide-react";
-
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const creators = [
@@ -20,6 +20,7 @@ const creators = [
 
 export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const router = useRouter();
 
   return (
     <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background pt-32 md:pt-40 pb-16">
@@ -89,7 +90,10 @@ export default function Hero() {
           transition={{ delay: shouldReduceMotion ? 0 : 0.6, duration: 0.8 }}
           className="mt-12 flex justify-center"
         >
-          <MagneticButton className="h-16 px-10 text-lg uppercase tracking-wider">
+          <MagneticButton 
+            className="h-16 px-10 text-lg uppercase tracking-wider"
+            onClick={() => router.push('/contact')}
+          >
             Book a Strategy Call
           </MagneticButton>
         </motion.div>
