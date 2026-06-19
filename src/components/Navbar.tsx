@@ -88,14 +88,13 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTAs */}
           <div className="hidden items-center justify-end gap-4 lg:flex">
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-bold uppercase tracking-wide text-muted-foreground transition-colors hover:text-foreground block"
+                className="rounded-full border-2 border-border bg-transparent px-5 py-2 text-sm font-bold uppercase tracking-wide text-foreground transition-all hover:bg-muted hover:scale-105 block whitespace-nowrap"
               >
                 Portal Login
               </Link>
