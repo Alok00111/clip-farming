@@ -110,7 +110,25 @@ export default function ClipperSwarm() {
             >
               <div className="h-16 w-16 rounded-full border border-white/10 bg-muted/30 backdrop-blur-md flex items-center justify-center relative group cursor-pointer hover:bg-accent/10 hover:border-accent/30 transition-colors">
                 <Users className="h-6 w-6 text-muted-foreground group-hover:text-accent transition-colors" />
-                <div className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full animate-pulse shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+                
+                {/* Synchronized Blinking Dot */}
+                {!shouldReduceMotion ? (
+                  <motion.div 
+                    initial={{ opacity: 0.3, scale: 0.8 }}
+                    whileInView={{ opacity: [0.3, 0.3, 1, 0.3], scale: [0.8, 0.8, 1.5, 0.8] }}
+                    viewport={{ once: false, margin: "-100px" }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: clipper.delay,
+                      times: [0, 0.8, 0.95, 1],
+                      ease: "easeOut"
+                    }}
+                    className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full shadow-[0_0_15px_rgba(249,115,22,1)]" 
+                  />
+                ) : (
+                  <div className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+                )}
                 
                 {/* Tooltip */}
                 <div className="absolute -bottom-8 whitespace-nowrap bg-background/80 backdrop-blur border border-border px-3 py-1 rounded-full text-[10px] font-bold text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
