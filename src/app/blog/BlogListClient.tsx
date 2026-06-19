@@ -3,20 +3,59 @@
 import { motion, Variants } from "framer-motion";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { testimonials } from "@/data/testimonials";
-import { UserCircle2, Briefcase, Gamepad2, Landmark, Mic, MonitorPlay, Music, Tv, GraduationCap } from "lucide-react";
+import { Briefcase, Gamepad2, Landmark, Mic, MonitorPlay, Music, Tv, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import MagneticButton from "@/components/MagneticButton";
 
 const categories = [
-  { name: "Public Figures", slug: "public-figures", icon: UserCircle2 },
-  { name: "Brands/Startups", slug: "brands-startups", icon: Briefcase },
-  { name: "Gamers", slug: "gamers", icon: Gamepad2 },
-  { name: "Politicians", slug: "politicians", icon: Landmark },
-  { name: "Podcasters", slug: "podcasters", icon: Mic },
-  { name: "YouTubers", slug: "youtubers", icon: MonitorPlay },
-  { name: "Music Artists", slug: "music-artists", icon: Music },
-  { name: "Movies & TV", slug: "movies-tv", icon: Tv },
-  { name: "Educators", slug: "educators", icon: GraduationCap },
+  { 
+    name: "Brands/Startups", 
+    slug: "brands-startups", 
+    icon: Briefcase,
+    copy: "Customer acquisition shouldn't be a gamble. We take your core messaging, product demos, and corporate assets, and engineer them into highly engaging viral clips. We bypass traditional marketing fatigue, lower your CAC, and turn organic attention into a relentless driver for new signups and brand authority."
+  },
+  { 
+    name: "Gamers", 
+    slug: "gamers", 
+    icon: Gamepad2,
+    copy: "You just game; we handle the algorithm. We capture the chaos, the high-skill moments, and the hilarious reactions from your streams, transforming them into punchy, high-retention gold for TikTok and Shorts. We turn your active viewers into a massive top-of-funnel audience."
+  },
+  { 
+    name: "Politicians", 
+    slug: "politicians", 
+    icon: Landmark,
+    copy: "Modern campaigns are won on screens, not just streets. We distill complex policy discussions, town halls, and debates into compelling short-form content. Connect instantly with younger demographics and dominate the digital narrative with hyper-targeted organic reach."
+  },
+  { 
+    name: "Podcasters", 
+    slug: "podcasters", 
+    icon: Mic,
+    copy: "Your 2-hour conversations are goldmines hiding in plain sight. We meticulously scrub your episodes for the perfect hooks, controversial takes, and deepest insights, turning them into viral assets that dominate the short-form ecosystem and funnel listeners straight to your full episodes."
+  },
+  { 
+    name: "YouTubers", 
+    slug: "youtubers", 
+    icon: MonitorPlay,
+    copy: "Don't let your long-form masterpieces die after the first week. Our retention-obsessed editors slice your existing catalog into highly addictive Shorts. It's like having a dedicated 24/7 team working in the background to skyrocket your subscriber count and channel momentum."
+  },
+  { 
+    name: "Music Artists", 
+    slug: "music-artists", 
+    icon: Music,
+    copy: "Stop relying on luck for your next release. We take your unreleased tracks, behind-the-scenes studio sessions, and live performances, and spark massive organic trends. We build authentic hype that translates directly into unprecedented streaming numbers."
+  },
+  { 
+    name: "Movies & TV", 
+    slug: "movies-tv", 
+    icon: Tv,
+    copy: "Bypass the traditional trailer format. We extract the most gripping angles, cliffhangers, and emotional hooks from your footage, crafting retention-optimized clips that keep audiences addicted from the very first second. We build massive anticipation long before premiere night."
+  },
+  { 
+    name: "Educators", 
+    slug: "educators", 
+    icon: GraduationCap,
+    copy: "We make learning highly addictive. By translating deep, complex concepts into bite-sized, visually captivating viral clips, we prove that educational content can dominate the algorithm. Watch your course enrollments and student traffic surge as we package your knowledge for maximum attention."
+  },
 ];
 
 const containerVariants = {
@@ -39,11 +78,15 @@ export default function BlogListClient() {
   const defaultCategory = categories[0].slug;
   const urlCategory = searchParams.get("category");
   
-  const [activeCategory, setActiveCategory] = useState(urlCategory || defaultCategory);
+  // If the url category isn't in our current list (e.g., they click an old public-figures link), default to the first
+  const isValidCategory = categories.some(c => c.slug === urlCategory);
+  const initialCategory = isValidCategory && urlCategory ? urlCategory : defaultCategory;
+  
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
 
   // Sync state if URL changes
   useEffect(() => {
-    if (urlCategory) {
+    if (urlCategory && categories.some(c => c.slug === urlCategory)) {
       setActiveCategory(urlCategory);
     }
   }, [urlCategory]);
@@ -53,7 +96,8 @@ export default function BlogListClient() {
     router.push(`/blog?category=${slug}`, { scroll: false });
   };
 
-  const activeTestimonials = testimonials.filter(t => t.category === activeCategory);
+  const activeCategoryData = categories.find(c => c.slug === activeCategory) || categories[0];
+  const ActiveIcon = activeCategoryData.icon;
 
   return (
     <motion.div 
@@ -70,7 +114,7 @@ export default function BlogListClient() {
             PROVEN <span className="text-accent">RESULTS.</span>
           </h1>
           <p className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl font-medium text-muted-foreground">
-            Don't just take our word for it. See how we've scaled every type of creator in the ecosystem.
+            See exactly how we scale every type of creator in the ecosystem.
           </p>
         </motion.div>
 
@@ -102,48 +146,37 @@ export default function BlogListClient() {
             </div>
           </motion.div>
 
-          {/* Testimonials Grid */}
+          {/* Main Content Area */}
           <div className="w-full lg:w-3/4">
-            <div className="grid gap-8 md:grid-cols-2">
-              {activeTestimonials.length > 0 ? (
-                activeTestimonials.map((testimonial) => (
-                  <motion.div 
-                    key={testimonial.id} 
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate="show"
-                    className="flex flex-col justify-between rounded-3xl border-4 border-border bg-muted/30 p-8 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_var(--accent)]"
-                  >
-                    <div className="mb-8">
-                      <svg className="h-10 w-10 text-accent mb-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                      </svg>
-                      <p className="text-xl font-medium leading-relaxed text-foreground">
-                        "{testimonial.quote}"
-                      </p>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 border-t-2 border-border/50 pt-6">
-                      <img 
-                        src={testimonial.avatar} 
-                        alt={testimonial.name} 
-                        className="h-14 w-14 rounded-full border-2 border-accent object-cover"
-                      />
-                      <div>
-                        <h4 className="font-bold text-foreground">{testimonial.name}</h4>
-                        <p className="text-sm font-bold uppercase tracking-wider text-muted-foreground mt-1">
-                          {categories.find(c => c.slug === testimonial.category)?.name}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))
-              ) : (
-                <div className="col-span-2 text-center py-20 text-muted-foreground font-medium text-lg border-2 border-dashed border-border rounded-3xl">
-                  No testimonials found for this category yet.
+            <motion.div 
+              key={activeCategoryData.slug} 
+              variants={itemVariants}
+              initial="hidden"
+              animate="show"
+              className="flex flex-col rounded-3xl border-4 border-border bg-muted/30 p-10 sm:p-16 shadow-[8px_8px_0px_0px_var(--border)]"
+            >
+              <div className="flex items-center gap-6 mb-8 border-b-2 border-border/50 pb-8">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-accent-foreground border-2 border-border shadow-[4px_4px_0px_0px_var(--border)]">
+                  <ActiveIcon className="h-8 w-8" />
                 </div>
-              )}
-            </div>
+                <h2 className="font-display text-4xl font-black uppercase text-foreground">
+                  {activeCategoryData.name}
+                </h2>
+              </div>
+              
+              <p className="text-2xl font-medium leading-relaxed text-foreground mb-12">
+                {activeCategoryData.copy}
+              </p>
+              
+              <div className="flex justify-start">
+                <MagneticButton 
+                  onClick={() => router.push('/contact')}
+                  className="h-16 px-10 text-lg uppercase tracking-wider shadow-[4px_4px_0px_0px_var(--border)] hover:shadow-[6px_6px_0px_0px_var(--border)]"
+                >
+                  Book a Strategy Call
+                </MagneticButton>
+              </div>
+            </motion.div>
           </div>
 
         </div>

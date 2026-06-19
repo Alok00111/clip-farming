@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const creators = [
-  { name: "Public Figures", slug: "public-figures", icon: UserCircle2 },
   { name: "Brands/Startups", slug: "brands-startups", icon: Briefcase },
   { name: "Gamers", slug: "gamers", icon: Gamepad2 },
   { name: "Politicians", slug: "politicians", icon: Landmark },
