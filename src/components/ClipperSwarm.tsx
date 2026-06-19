@@ -114,8 +114,18 @@ export default function ClipperSwarm() {
                 {/* Synchronized Blinking Dot */}
                 {!shouldReduceMotion ? (
                   <motion.div 
-                    initial={{ opacity: 0.3, scale: 0.8 }}
-                    whileInView={{ opacity: [0.3, 0.3, 1, 0.3], scale: [0.8, 0.8, 1.5, 0.8] }}
+                    initial={{ opacity: 0.5, scale: 1 }}
+                    whileInView={{ 
+                      opacity: [0.5, 0.5, 1, 0.5], 
+                      scale: [1, 1, 2.2, 1],
+                      backgroundColor: ["#f97316", "#f97316", "#ffffff", "#f97316"],
+                      boxShadow: [
+                        "0 0 10px rgba(249,115,22,0.5)",
+                        "0 0 10px rgba(249,115,22,0.5)",
+                        "0 0 40px rgba(249,115,22,1)",
+                        "0 0 10px rgba(249,115,22,0.5)"
+                      ]
+                    }}
                     viewport={{ once: false, margin: "-100px" }}
                     transition={{
                       duration: 2,
@@ -124,10 +134,10 @@ export default function ClipperSwarm() {
                       times: [0, 0.8, 0.95, 1],
                       ease: "easeOut"
                     }}
-                    className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full shadow-[0_0_15px_rgba(249,115,22,1)]" 
+                    className="absolute -top-2 -right-2 h-4 w-4 rounded-full" 
                   />
                 ) : (
-                  <div className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+                  <div className="absolute -top-2 -right-2 h-4 w-4 bg-accent rounded-full shadow-[0_0_15px_rgba(249,115,22,0.8)]" />
                 )}
                 
                 {/* Tooltip */}
