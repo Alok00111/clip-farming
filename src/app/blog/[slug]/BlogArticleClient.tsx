@@ -55,7 +55,7 @@ export default function BlogArticleClient({ post }: { post: BlogPost }) {
         >
           <h2 className="font-display text-4xl font-black uppercase text-accent-foreground mb-6">Stop reading. Start scaling.</h2>
           <p className="text-xl font-medium text-accent-foreground/80 mb-8 max-w-2xl mx-auto">
-            If you found this strategy valuable, imagine what our network of 3000+ editors could do for your actual content.
+            If you found this strategy valuable, imagine what our network of 4000+ editors could do for your actual content.
           </p>
           <Link href="/contact" className="inline-flex items-center justify-center rounded-full border-4 border-accent-foreground bg-background px-10 py-5 font-display text-2xl font-black uppercase tracking-widest text-foreground shadow-[6px_6px_0px_0px_var(--border)] transition-transform hover:scale-105 hover:bg-foreground hover:text-background">
             Book a Strategy Call

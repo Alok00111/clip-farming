@@ -5,33 +5,33 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    quote: "ClipFarming took my podcast from 10k to 5M monthly views across TikTok and Shorts. Absolute game changer.",
+    quote: "ClipupMedia took my podcast to incredible monthly views across TikTok and Shorts. Absolute game changer.",
     name: "Alex H.",
-    title: "Top 100 Business Podcast",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=11",
   },
   {
-    quote: "We spent thousands on ads. This network delivered 10x the organic reach for a fraction of the cost.",
+    quote: "We spent heavily on ads. This network delivered massive organic reach for a fraction of the cost.",
     name: "Sarah Jenkins",
-    title: "Startup Founder",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=47",
   },
   {
-    quote: "The virality is insane. Every single video they clipped for me hit over 500k views within 48 hours.",
+    quote: "The virality is insane. Every single video they clipped for me went viral within hours.",
     name: "Marcus T.",
-    title: "Fitness Influencer",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=33",
   },
   {
-    quote: "I didn't have time to edit. I just handed them my 3-hour streams and they turned me into a multi-platform star.",
+    quote: "I didn't have time to edit. I just handed them my long streams and they turned me into a multi-platform star.",
     name: "Elena R.",
-    title: "Twitch Streamer",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=44",
   },
   {
-    quote: "Unbelievable ROI. Our brand awareness skyrocketed and our CAC dropped by 80%.",
+    quote: "Unbelievable ROI. Our brand awareness skyrocketed and our CAC dropped massively.",
     name: "David Chen",
-    title: "CMO @ TechBrand",
+    title: "",
     avatar: "https://i.pravatar.cc/150?img=15",
   },
 ];
@@ -130,12 +130,9 @@ export default function TestimonialMarquee({
                   alt={item.name}
                   className="h-10 w-10 rounded-full border border-border object-cover"
                 />
-                <span className="flex flex-col gap-1 ml-4">
+                <span className="flex flex-col gap-1 ml-4 justify-center">
                   <span className="text-sm font-bold leading-[1.6] text-foreground">
                     {item.name}
-                  </span>
-                  <span className="text-xs leading-[1.6] text-muted-foreground uppercase tracking-widest">
-                    {item.title}
                   </span>
                 </span>
               </div>

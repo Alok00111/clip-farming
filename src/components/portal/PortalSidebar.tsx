@@ -14,7 +14,7 @@ export default function PortalSidebar({ currentTab, onTabChange, onLogout }: Por
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/20">
           <Scissors className="h-5 w-5 text-accent" />
         </div>
-        <span className="font-display font-bold uppercase tracking-widest text-black">ClipFarming</span>
+        <span className="font-display font-bold uppercase tracking-widest text-black">ClipupMedia</span>
       </div>
 
       <nav className="mt-12 flex flex-1 flex-col gap-2">

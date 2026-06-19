@@ -39,10 +39,10 @@ function Counter({
 }
 
 const stats = [
-  { value: 1.2, suffix: "B+", label: "Verified Views", decimals: 1 },
+  { value: 600, suffix: "M+", label: "Verified Views", decimals: 0 },
   { prefix: "+", value: 450, suffix: "%", label: "Client Growth", decimals: 0 },
   { prefix: "$", value: 0.001, suffix: "", label: "Lowest CPV", decimals: 3 },
-  { value: 3000, suffix: "+", label: "Active Clippers", decimals: 0 },
+  { value: 4000, suffix: "+", label: "Active Clippers", decimals: 0 },
 ];
 
 export default function Stats() {

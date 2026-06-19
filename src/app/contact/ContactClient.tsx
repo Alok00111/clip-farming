@@ -117,10 +117,10 @@ export default function ContactClient() {
               <h2 className="font-display text-3xl font-black uppercase text-background mb-8">Direct Access</h2>
               
               <div className="flex flex-col gap-6">
-                <a href="mailto:scale@clipfarming.com" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Email</p>
-                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">scale@clipfarming.com</p>
+                <a href="mailto:scale@clipupmedia.com" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
+                  <div className="flex items-center gap-4">
+                    <Mail className="h-8 w-8 text-muted-foreground group-hover:text-accent transition-colors" />
+                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">scale@clipupmedia.com</p>
                   </div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground border-2 border-border font-bold">
                     →

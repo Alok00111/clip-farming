@@ -77,12 +77,12 @@ export default function AboutClient() {
           {/* Metric Blocks */}
           <motion.div variants={itemVariants} className="flex flex-col justify-between gap-8">
             <div className="group rounded-3xl border-2 border-border bg-accent p-10 sm:p-14 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--border)]">
-              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-accent-foreground group-hover:scale-105 transition-transform origin-left">3000+</h3>
+              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-accent-foreground group-hover:scale-105 transition-transform origin-left">4000+</h3>
               <p className="mt-4 text-2xl font-bold uppercase tracking-widest text-accent-foreground/80">Active Clippers</p>
             </div>
             
             <div className="group rounded-3xl border-2 border-border bg-muted/50 p-10 sm:p-14 shadow-[8px_8px_0px_0px_var(--border)] transition-transform hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--foreground)] hover:border-foreground hover:bg-background">
-              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-foreground group-hover:scale-105 transition-transform origin-left">1.2B+</h3>
+              <h3 className="font-display text-7xl sm:text-8xl font-black uppercase text-foreground group-hover:scale-105 transition-transform origin-left">600M+</h3>
               <p className="mt-4 text-2xl font-bold uppercase tracking-widest text-muted-foreground">Views Generated</p>
             </div>
           </motion.div>
@@ -135,7 +135,7 @@ export default function AboutClient() {
             {[
               { year: "2021", event: "The Origin", desc: "Started scaling single YouTubers manually. Realized traditional editing couldn't keep up with TikTok's volume requirements." },
               { year: "2023", event: "The Network", desc: "Built the automated ingestion pipeline. Scaled the first 10,000 remote clippers and hit 1 Billion total views." },
-              { year: "2026", event: "The Machine", desc: "3000+ active editors. Full proprietary QA engine. Dominating the short-form ecosystem." }
+              { year: "2026", event: "The Machine", desc: "4000+ active editors. Full proprietary QA engine. Dominating the short-form ecosystem." }
             ].map((step) => (
               <motion.div key={step.year} variants={itemVariants} className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center p-8 rounded-3xl border-2 border-border bg-background shadow-[6px_6px_0px_0px_var(--border)] group hover:bg-muted/30 transition-colors">
                 <div className="font-display text-5xl sm:text-6xl font-black text-accent bg-foreground px-8 py-4 rounded-2xl shadow-[4px_4px_0px_0px_var(--border)] group-hover:scale-105 group-hover:-rotate-2 transition-transform">{step.year}</div>
