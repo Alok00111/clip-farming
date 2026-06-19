@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mic, MonitorPlay, Music, Tv, GraduationCap, UserCircle2, Briefcase, Gamepad2 } from "lucide-react";
+import { Mic, MonitorPlay, Music, Tv, GraduationCap, UserCircle2, Briefcase, Gamepad2, Landmark } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const creators = [
@@ -13,6 +13,7 @@ const creators = [
   { name: "Public Figures", icon: UserCircle2 },
   { name: "Brands/Startups", icon: Briefcase },
   { name: "Gamers", icon: Gamepad2 },
+  { name: "Politicians", icon: Landmark },
 ];
 
 export default function BuiltForCreators() {
@@ -29,19 +30,19 @@ export default function BuiltForCreators() {
       </div>
 
       {/* Infinite Scrolling Pills */}
-      <div className="relative flex overflow-hidden w-full mask-image-fade py-4">
+      <div className="relative flex w-full py-8">
         <div className="flex w-max animate-scroll" style={{ "--animation-duration": "30s" } as React.CSSProperties}>
           {[1, 2].map((group) => (
-            <div key={group} className="flex gap-4 px-2 items-center">
+            <div key={group} className="flex gap-6 px-3 items-center">
               {creators.map((creator, i) => {
                 const Icon = creator.icon;
                 return (
                   <div
                     key={i}
-                    className="flex items-center gap-2.5 rounded-full border border-border/50 bg-muted/20 px-6 py-3 transition-colors hover:bg-muted/50 hover:border-border cursor-default whitespace-nowrap"
+                    className="flex items-center gap-3 rounded-full border-2 border-border bg-white shadow-md px-8 py-4 transition-transform hover:-translate-y-1 hover:shadow-lg cursor-default whitespace-nowrap"
                   >
-                    <Icon className="h-5 w-5 text-accent" />
-                    <span className="font-bold text-foreground text-sm tracking-wide">{creator.name}</span>
+                    <Icon className="h-6 w-6 text-accent" />
+                    <span className="font-bold text-foreground text-base tracking-wide uppercase">{creator.name}</span>
                   </div>
                 );
               })}
