@@ -49,7 +49,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
           {/* Logo */}
-          <div className="flex flex-1 justify-start">
+          <div className="flex justify-start">
             <MagneticWrapper>
               <Link href="/" className="inline-block" data-cursor-hover="true">
                 <Logo />
@@ -73,7 +73,7 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop CTAs */}
-          <div className="hidden items-center justify-end gap-4 lg:flex flex-1">
+          <div className="hidden items-center justify-end gap-4 lg:flex">
             <MagneticWrapper strength={0.1}>
               <Link 
                 href="/portal"
@@ -96,7 +96,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex flex-1 justify-end lg:hidden">
+          <div className="flex justify-end lg:hidden">
             <button
               className="text-foreground"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

@@ -15,7 +15,7 @@ const steps = [
     id: "02",
     icon: Scissors,
     title: "Clippers Create",
-    description: "Our network of 7,000+ clippers edit, caption, and distribute these moments across TikTok, Reels, and Shorts simultaneously.",
+    description: "Our network of 4,000+ clippers edit, caption, and distribute these moments across TikTok, Reels, and Shorts simultaneously.",
   },
   {
     id: "03",
