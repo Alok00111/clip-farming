@@ -22,6 +22,13 @@ export const testimonials: Testimonial[] = [
     name: "Aisha M.",
     avatar: "https://i.pravatar.cc/150?img=47",
   },
+  {
+    id: "pf-3",
+    category: "public-figures",
+    quote: "They understand the nuances of personal branding perfectly. My organic reach has never been stronger.",
+    name: "Rohan M.",
+    avatar: "https://i.pravatar.cc/150?img=61",
+  },
   
   // Brands/Startups
   {
@@ -38,6 +45,13 @@ export const testimonials: Testimonial[] = [
     name: "Elena R.",
     avatar: "https://i.pravatar.cc/150?img=5",
   },
+  {
+    id: "bs-3",
+    category: "brands-startups",
+    quote: "The ROI on their content engine is unmatched. Our startup gained incredible visibility entirely organically.",
+    name: "Priya S.",
+    avatar: "https://i.pravatar.cc/150?img=20",
+  },
 
   // Gamers
   {
@@ -53,6 +67,13 @@ export const testimonials: Testimonial[] = [
     quote: "I just game. They handle the rest. The edits are insanely fast, punchy, and exactly what the algorithm wants.",
     name: "Sam J.",
     avatar: "https://i.pravatar.cc/150?img=12",
+  },
+  {
+    id: "g-3",
+    category: "gamers",
+    quote: "My stream highlights used to go unnoticed. Now, every single clip they touch pulls in massive engagement.",
+    name: "Karan D.",
+    avatar: "https://i.pravatar.cc/150?img=53",
   },
 
   // Politicians
@@ -86,6 +107,13 @@ export const testimonials: Testimonial[] = [
     name: "Chloe S.",
     avatar: "https://i.pravatar.cc/150?img=20",
   },
+  {
+    id: "pd-3",
+    category: "podcasters",
+    quote: "Finding the perfect hook is an art, and they have mastered it. My listener base has grown purely from their brilliant edits.",
+    name: "Neha K.",
+    avatar: "https://i.pravatar.cc/150?img=35",
+  },
 
   // YouTubers
   {
@@ -102,6 +130,13 @@ export const testimonials: Testimonial[] = [
     name: "Mia B.",
     avatar: "https://i.pravatar.cc/150?img=35",
   },
+  {
+    id: "yt-3",
+    category: "youtubers",
+    quote: "Their retention editing techniques are unbelievable. Every single short they cut performs exceptionally well.",
+    name: "Vikram P.",
+    avatar: "https://i.pravatar.cc/150?img=11",
+  },
 
   // Music Artists
   {
@@ -117,6 +152,13 @@ export const testimonials: Testimonial[] = [
     quote: "Before this, marketing my music felt like a chore. Now, they handle the heavy lifting and the results speak for themselves.",
     name: "Olivia H.",
     avatar: "https://i.pravatar.cc/150?img=32",
+  },
+  {
+    id: "ma-3",
+    category: "music-artists",
+    quote: "The way they build hype around a drop using short-form content is incredible. My streams have never been higher.",
+    name: "Ananya M.",
+    avatar: "https://i.pravatar.cc/150?img=47",
   },
 
   // Movies & TV
@@ -149,5 +191,12 @@ export const testimonials: Testimonial[] = [
     quote: "My courses have never seen this much traffic. They know exactly how to package information for maximum attention.",
     name: "Jessica L.",
     avatar: "https://i.pravatar.cc/150?img=41",
+  },
+  {
+    id: "ed-3",
+    category: "educators",
+    quote: "Translating deep concepts into bite-sized viral clips is their superpower. My student enrollment has surged.",
+    name: "Dr. Arjun D.",
+    avatar: "https://i.pravatar.cc/150?img=33",
   },
 ];
