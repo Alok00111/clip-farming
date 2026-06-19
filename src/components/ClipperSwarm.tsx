@@ -30,7 +30,7 @@ export default function ClipperSwarm() {
             The <span className="text-accent">Swarm</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            A decentralized network of 3,000+ elite human clippers operating in unison. We flood the algorithm to guarantee your omnipresence.
+            A decentralized network of 4,000+ elite human clippers operating in unison. We flood the algorithm to guarantee your omnipresence.
           </p>
         </motion.div>
 

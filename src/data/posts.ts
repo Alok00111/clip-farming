@@ -28,7 +28,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subliminal-sound-design",
-    title: "Subliminal Sound Design: The Secret Weapon of 1.2B Views.",
+    title: "Subliminal Sound Design: The Secret Weapon of 600M Views.",
     excerpt: "You don't just watch a viral video. You feel it. Here is how we use low-frequency rumbles and high-end risers to hijack the viewer's subconscious.",
     category: "Production",
     readTime: "6 Min Read",

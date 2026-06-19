@@ -110,15 +110,7 @@ export default function VideoGrid() {
 
           {/* Featured Info */}
           <div className="absolute bottom-0 left-0 w-full z-40 p-8 md:p-12 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 text-xs font-bold uppercase tracking-wider bg-accent text-white rounded-full">
-                Featured
-              </span>
-              <div className="flex items-center gap-2 text-accent bg-background/50 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-                <TrendingUp className="h-4 w-4" />
-                <span className="text-xs font-bold text-white">{featuredVideo.views} Views</span>
-              </div>
-            </div>
+
             
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight max-w-4xl">
               {featuredVideo.title}
@@ -129,29 +121,7 @@ export default function VideoGrid() {
             </p>
           </div>
 
-          {/* Top right floating info */}
-          <div className="absolute top-8 right-8 z-40 flex gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-             <div 
-               className="bg-black/50 backdrop-blur-md border border-white/10 p-3 rounded-full text-white cursor-pointer hover:bg-accent transition-colors"
-               onClick={(e) => {
-                 e.stopPropagation(); // Prevent triggering the mute toggle
-                 if (videoRef.current) {
-                   if (videoRef.current.requestFullscreen) {
-                     videoRef.current.requestFullscreen();
-                   } else if ((videoRef.current as any).webkitRequestFullscreen) {
-                     /* Safari */
-                     (videoRef.current as any).webkitRequestFullscreen();
-                   } else if ((videoRef.current as any).msRequestFullscreen) {
-                     /* IE11 */
-                     (videoRef.current as any).msRequestFullscreen();
-                   }
-                 }
-               }}
-               title="Fullscreen"
-             >
-               <Maximize2 className="h-5 w-5" />
-             </div>
-          </div>
+
         </motion.div>
 
       </div>

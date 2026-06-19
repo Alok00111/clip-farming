@@ -112,7 +112,7 @@ export default function AboutClient() {
             <div className="flex-1">
               <h2 className="font-display text-5xl sm:text-6xl font-black uppercase text-background mb-8">The War Room</h2>
               <p className="text-muted text-xl mb-10 leading-relaxed">
-                Managing 3,000+ clippers isn't done on spreadsheets. We built a proprietary distribution and QA engine that automatically grades retention scores before a video is even published. 
+                Managing 4,000+ clippers isn't done on spreadsheets. We built a proprietary distribution and QA engine that automatically grades retention scores before a video is even published. 
               </p>
               <div className="inline-flex items-center gap-2 rounded-full border-2 border-border bg-accent px-6 py-3 font-bold uppercase tracking-wider text-accent-foreground shadow-[4px_4px_0px_0px_var(--border)] cursor-default">
                 Proprietary Tech Stack

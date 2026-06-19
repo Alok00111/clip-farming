@@ -62,13 +62,13 @@ export const campaigns: Campaign[] = [
   {
     slug: "streamer-a-live",
     client: "Streamer A",
-    stats: "100M+",
+    stats: "600M+",
     metric: "Total Views",
     shortDescription: "A live-clipping pipeline pushing Twitch highlights to TikTok within 10 minutes of the live event happening.",
     challenge: "The streamer was generating incredible live moments, but clipping them out manually took hours. By the time the clips hit TikTok, the trend was dead and fan accounts had already stolen the views.",
     solution: "We built a dedicated live-clipping war room. While the streamer is live, our team is simultaneously clipping, editing, and publishing the highlights directly to TikTok with a 10-minute delay.",
     results: [
-      { label: "Total Views", value: "100M+" },
+      { label: "Total Views", value: "600M+" },
       { label: "Publish Speed", value: "< 10 Mins" },
       { label: "Stolen Views Reclaimed", value: "85%" }
     ],
