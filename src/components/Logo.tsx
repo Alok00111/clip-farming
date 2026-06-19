@@ -7,22 +7,22 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
       <svg 
         width="84" 
         height="84" 
-        viewBox="-10 -15 130 130" 
+        viewBox="-15 -25 140 145" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg" 
         className={cn("overflow-visible shrink-0", iconClassName)}
       >
         <defs>
-          <linearGradient id="shape-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#2a2a2a" />
-            <stop offset="100%" stopColor="#0a0a0a" />
+          <linearGradient id="shape-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3f3f46" />
+            <stop offset="100%" stopColor="#09090b" />
           </linearGradient>
-          <linearGradient id="arrow-grad" x1="80" y1="20" x2="105" y2="-5" gradientUnits="userSpaceOnUse">
+          <linearGradient id="arrow-grad" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ea580c" />
-            <stop offset="100%" stopColor="#ff8a00" />
+            <stop offset="100%" stopColor="#f97316" />
           </linearGradient>
           <filter id="logo-shadow" x="-20%" y="-20%" width="150%" height="150%">
-            <feDropShadow dx="2" dy="5" stdDeviation="4" floodOpacity="0.3" floodColor="#000000" />
+            <feDropShadow dx="3" dy="8" stdDeviation="6" floodOpacity="0.4" floodColor="#000000" />
           </filter>
         </defs>
 
@@ -41,7 +41,7 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
 
           {/* Orange Arrow */}
           <path 
-            d="M 105 -5 L 80 5 L 80 20 L 95 20 Z" 
+            d="M 115 -15 L 80 5 L 70 30 L 95 20 Z" 
             fill="url(#arrow-grad)" 
           />
         </g>
