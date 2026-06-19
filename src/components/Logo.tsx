@@ -17,9 +17,13 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
             <stop offset="0%" stopColor="#3f3f46" />
             <stop offset="100%" stopColor="#09090b" />
           </linearGradient>
-          <linearGradient id="arrow-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <linearGradient id="arrow-left-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#c2410c" />
+            <stop offset="100%" stopColor="#ea580c" />
+          </linearGradient>
+          <linearGradient id="arrow-right-grad" x1="0%" y1="100%" x2="100%" y2="0%">
             <stop offset="0%" stopColor="#ea580c" />
-            <stop offset="100%" stopColor="#f97316" />
+            <stop offset="100%" stopColor="#fb923c" />
           </linearGradient>
           <filter id="logo-shadow" x="-20%" y="-20%" width="150%" height="150%">
             <feDropShadow dx="3" dy="8" stdDeviation="6" floodOpacity="0.4" floodColor="#000000" />
@@ -39,10 +43,16 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
             fill="url(#shape-grad)" 
           />
 
-          {/* Orange Arrow */}
+          {/* Full Arrow Base (Darker Left side for 3D fold) */}
           <path 
-            d="M 115 -15 L 80 5 L 70 30 L 95 20 Z" 
-            fill="url(#arrow-grad)" 
+            d="M 110 -10 L 80 5 L 70 30 L 95 20 Z" 
+            fill="url(#arrow-left-grad)" 
+          />
+
+          {/* Right Arrow Half (Brighter, on top for 3D fold) */}
+          <path 
+            d="M 110 -10 L 70 30 L 95 20 Z" 
+            fill="url(#arrow-right-grad)" 
           />
         </g>
       </svg>
