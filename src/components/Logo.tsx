@@ -3,10 +3,10 @@ import { cn } from "@/lib/utils";
 
 export default function Logo({ className, iconClassName, textClassName }: { className?: string, iconClassName?: string, textClassName?: string }) {
   return (
-    <div className={cn("flex items-center gap-3", className)}>
+    <div className={cn("flex flex-col items-center gap-1", className)}>
       <svg 
-        width="42" 
-        height="42" 
+        width="48" 
+        height="48" 
         viewBox="0 0 100 100" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg" 
@@ -15,26 +15,26 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
         <defs>
           <mask id="diagonal-cut">
             <rect width="200" height="200" x="-50" y="-50" fill="white" />
-            <line x1="0" y1="100" x2="100" y2="0" stroke="black" strokeWidth="16" />
+            <line x1="5" y1="95" x2="95" y2="5" stroke="black" strokeWidth="18" />
           </mask>
         </defs>
 
-        {/* Solid square with top-left and bottom-right rounded */}
+        {/* Solid black square with top-left and bottom-right rounded */}
         <path 
-          d="M 36 20 L 80 20 L 80 64 A 16 16 0 0 1 64 80 L 20 80 L 20 36 A 16 16 0 0 1 36 20 Z" 
-          className="text-accent"
+          d="M 30 10 L 90 10 L 90 70 A 20 20 0 0 1 70 90 L 10 90 L 10 30 A 20 20 0 0 1 30 10 Z" 
+          className="text-foreground"
           fill="currentColor" 
           mask="url(#diagonal-cut)" 
         />
 
-        {/* Solid arrowhead */}
+        {/* Solid orange arrowhead in top right */}
         <path 
-          d="M 95 5 L 65 15 L 80 20 L 85 35 Z" 
-          className="text-foreground"
+          d="M 96 4 L 72 10 L 82 20 L 76 32 Z" 
+          className="text-accent"
           fill="currentColor" 
         />
       </svg>
-      <span className={cn("font-display text-2xl font-black uppercase tracking-[0.25em] text-foreground pt-1", textClassName)}>
+      <span className={cn("font-display text-[11px] font-bold uppercase tracking-[0.4em] text-foreground pl-[0.4em]", textClassName)}>
         MEDIA
       </span>
     </div>
