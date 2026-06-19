@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, Variants, AnimatePresence } from "framer-motion";
 import MagneticButton from "@/components/MagneticButton";
+import { Mail } from "lucide-react";
 
 const CustomSelect = ({ options, placeholder, name }: { options: {value: string, label: string}[], placeholder: string, name: string }) => {
   const [isOpen, setIsOpen] = useState(false);
