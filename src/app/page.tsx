@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import BuiltForCreators from "@/components/BuiltForCreators";
 import Stats from "@/components/Stats";
 import VideoGrid from "@/components/VideoGrid";
 import HowItWorks from "@/components/HowItWorks";
@@ -13,7 +12,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <BuiltForCreators />
       <Stats />
       <VideoGrid />
       
