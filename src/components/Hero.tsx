@@ -20,7 +20,7 @@ export default function Hero() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background pt-20 pb-16">
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background pt-32 md:pt-40 pb-16">
       {/* Background Animated Shapes */}
       <motion.div
         className="absolute top-[20%] left-[10%] h-64 w-64 rounded-full bg-accent/5 blur-3xl"
