@@ -162,7 +162,7 @@ export default function ClipperSwarm() {
             <span className="text-sm uppercase tracking-widest text-muted-foreground mt-2">Active Clippers</span>
           </div>
           <div className="flex flex-col items-center">
-            <h4 className="font-display text-5xl font-black text-accent">600M+</h4>
+            <h4 className="font-display text-5xl font-black text-accent">100M+</h4>
             <span className="text-sm uppercase tracking-widest text-muted-foreground mt-2">Monthly Views</span>
           </div>
         </motion.div>
