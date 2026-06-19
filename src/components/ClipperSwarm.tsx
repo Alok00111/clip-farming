@@ -127,7 +127,7 @@ export default function ClipperSwarm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
-          className="mt-12 flex justify-center gap-8"
+          className="mt-12 flex justify-center gap-24 sm:gap-40"
         >
           <div className="flex flex-col items-center">
             <h4 className="font-display text-5xl font-black text-foreground">3k+</h4>
