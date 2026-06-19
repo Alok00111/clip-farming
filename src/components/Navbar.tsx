@@ -57,19 +57,35 @@ export default function Navbar() {
             </MagneticWrapper>
           </div>
 
-          {/* Desktop Nav */}
           <nav className="hidden items-center justify-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <MagneticWrapper key={link.name}>
-                <Link
-                  href={link.href}
-                  className="text-sm font-bold uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground block"
-                  data-cursor-hover="true"
-                >
-                  {link.name}
-                </Link>
-              </MagneticWrapper>
-            ))}
+            {navLinks.map((link) => {
+              // Exact match for hash links on home, otherwise startsWith for nested routes
+              const isActive = link.href.includes('#') 
+                ? pathname === '/' 
+                : pathname.startsWith(link.href);
+
+              return (
+                <MagneticWrapper key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "relative text-sm font-bold uppercase tracking-widest transition-colors block py-1",
+                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                    )}
+                    data-cursor-hover="true"
+                  >
+                    {link.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-indicator"
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
+                        transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                </MagneticWrapper>
+              );
+            })}
           </nav>
 
           {/* Desktop CTAs */}
@@ -130,16 +146,25 @@ export default function Navbar() {
             </div>
 
             <div className="mt-20 flex flex-col gap-8">
-              {navLinks.map((link, i) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-display text-4xl font-bold uppercase tracking-tight hover:text-accent"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link, i) => {
+                const isActive = link.href.includes('#') 
+                  ? pathname === '/' 
+                  : pathname.startsWith(link.href);
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={cn(
+                      "font-display text-4xl font-bold uppercase tracking-tight transition-colors",
+                      isActive ? "text-accent" : "hover:text-accent/80 text-foreground"
+                    )}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
               
               <Link
                 href="/contact"
