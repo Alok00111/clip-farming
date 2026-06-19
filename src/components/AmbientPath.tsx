@@ -50,7 +50,7 @@ export default function AmbientPath() {
 
         {/* Faint Background Track - Main */}
         <path
-          d="M 500 350 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 2950"
+          d="M 500 350 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 L 500 2300 V 2950"
           fill="transparent"
           stroke="currentColor"
           className="text-transparent"
@@ -99,7 +99,7 @@ export default function AmbientPath() {
 
         {/* Bright Glowing Track - Main */}
         <motion.path
-          d="M 500 350 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 H 300 L 150 2250 V 2700 L 500 2850 V 2950"
+          d="M 500 350 L 800 450 V 900 H 200 L 100 1050 V 1500 L 900 1650 V 2100 L 500 2300 V 2950"
           fill="transparent"
           stroke="currentColor"
           className="text-accent"
