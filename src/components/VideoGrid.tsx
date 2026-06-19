@@ -70,15 +70,7 @@ export default function VideoGrid() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group cursor-pointer"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => {
-            if (videoRef.current) {
-              videoRef.current.muted = !videoRef.current.muted;
-              setIsMuted(!isMuted);
-            }
-          }}
+          className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group pointer-events-none"
         >
           {/* Fallback pattern while video is missing */}
           <div className="absolute inset-0 z-0 flex flex-col items-center justify-center opacity-30 bg-neutral-900">
@@ -100,26 +92,8 @@ export default function VideoGrid() {
 
           {/* Cinematic Overlays */}
           <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/20 to-black/40 opacity-80" />
-          
-          {/* Hover Play/Pause UI */}
-          <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-             <div className="bg-background/20 backdrop-blur-md border border-white/10 rounded-full p-6 text-white transform scale-90 group-hover:scale-100 transition-all duration-500">
-               {isMuted ? <VolumeX className="h-10 w-10" /> : <Volume2 className="h-10 w-10" />}
-             </div>
-          </div>
 
-          {/* Featured Info */}
-          <div className="absolute bottom-0 left-0 w-full z-40 p-8 md:p-12 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
 
-            
-            <h3 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight max-w-4xl">
-              {featuredVideo.title}
-            </h3>
-            
-            <p className="text-gray-300 md:text-lg max-w-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 hidden sm:block">
-              {featuredVideo.description}
-            </p>
-          </div>
 
 
         </motion.div>
