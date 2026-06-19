@@ -48,7 +48,7 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center justify-center space-y-8"
         >
-          <h1 className="font-display text-base md:text-xl font-bold uppercase tracking-[0.15em] text-muted-foreground">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight text-foreground/90">
             Built to scale <span className="text-accent">every</span> type of creator
           </h1>
           
