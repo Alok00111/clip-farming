@@ -3,16 +3,16 @@ import { cn } from "@/lib/utils";
 
 export default function Logo({ className, iconClassName, textClassName }: { className?: string, iconClassName?: string, textClassName?: string }) {
   return (
-    <div className={cn("flex items-center gap-4", className)}>
+    <div className={cn("flex items-center gap-6", className)}>
       
       {/* New Text Layout on the Left */}
-      <div className={cn("flex items-center", textClassName)}>
-        <span className="text-accent text-[4rem] font-light italic leading-none mr-2">/</span>
-        <div className="flex flex-col font-display font-black text-4xl leading-[0.85] tracking-tight text-slate-600 dark:text-slate-400">
+      <div className={cn("flex items-center -ml-4", textClassName)}>
+        <span className="text-accent text-[4.5rem] font-black italic leading-none mr-2 -mt-1">/</span>
+        <div className="flex flex-col font-display font-black text-4xl leading-[0.85] tracking-tighter text-slate-700 dark:text-slate-200">
           <span>CLIP</span>
           <span>UP</span>
         </div>
-        <span className="font-display text-[12px] font-normal uppercase tracking-[0.5em] text-slate-400 dark:text-slate-500 ml-4 mt-2">
+        <span className="font-display text-[14px] font-bold uppercase tracking-[0.4em] text-slate-500 dark:text-slate-400 ml-4 mt-2">
           MEDIA
         </span>
       </div>
