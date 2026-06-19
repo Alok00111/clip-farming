@@ -3,7 +3,7 @@ import BuiltForCreators from "@/components/BuiltForCreators";
 import Stats from "@/components/Stats";
 import VideoGrid from "@/components/VideoGrid";
 import HowItWorks from "@/components/HowItWorks";
-import AnatomyOfAClip from "@/components/AnatomyOfAClip";
+import ClipperSwarm from "@/components/ClipperSwarm";
 import ForClippers from "@/components/ForClippers";
 import FAQ from "@/components/FAQ";
 
@@ -21,7 +21,7 @@ export default function Home() {
       <div className="relative overflow-hidden bg-background">
         <AmbientPath />
         <HowItWorks />
-        <AnatomyOfAClip />
+        <ClipperSwarm />
       </div>
 
       <div className="relative overflow-hidden bg-background">
