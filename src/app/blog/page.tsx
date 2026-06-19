@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import BlogListClient from "./BlogListClient";
 
 export const metadata: Metadata = {
-  title: "Blog & Strategies | Clipping Agency",
-  description: "Field reports from the frontlines of viral engineering.",
+  title: "Creator Success Stories | ClipupMedia",
+  description: "See how we scale every type of creator.",
 };
 
 export default function BlogPage() {

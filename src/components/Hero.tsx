@@ -4,16 +4,18 @@ import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "./MagneticButton";
 import { Mic, MonitorPlay, Music, Tv, GraduationCap, UserCircle2, Briefcase, Gamepad2, Landmark } from "lucide-react";
 
+import Link from "next/link";
+
 const creators = [
-  { name: "Public Figures", icon: UserCircle2 },
-  { name: "Brands/Startups", icon: Briefcase },
-  { name: "Gamers", icon: Gamepad2 },
-  { name: "Politicians", icon: Landmark },
-  { name: "Podcasters", icon: Mic },
-  { name: "YouTubers", icon: MonitorPlay },
-  { name: "Music Artists", icon: Music },
-  { name: "Movies & TV", icon: Tv },
-  { name: "Educators", icon: GraduationCap },
+  { name: "Public Figures", slug: "public-figures", icon: UserCircle2 },
+  { name: "Brands/Startups", slug: "brands-startups", icon: Briefcase },
+  { name: "Gamers", slug: "gamers", icon: Gamepad2 },
+  { name: "Politicians", slug: "politicians", icon: Landmark },
+  { name: "Podcasters", slug: "podcasters", icon: Mic },
+  { name: "YouTubers", slug: "youtubers", icon: MonitorPlay },
+  { name: "Music Artists", slug: "music-artists", icon: Music },
+  { name: "Movies & TV", slug: "movies-tv", icon: Tv },
+  { name: "Educators", slug: "educators", icon: GraduationCap },
 ];
 
 export default function Hero() {
@@ -56,13 +58,14 @@ export default function Hero() {
             {creators.map((creator, i) => {
               const Icon = creator.icon;
               return (
-                <div
+                <Link
                   key={i}
-                  className="flex items-center gap-2 sm:gap-3 rounded-full border border-border bg-white shadow-sm px-5 py-2.5 sm:px-6 sm:py-3 transition-transform hover:-translate-y-1 hover:shadow-md cursor-default"
+                  href={`/blog?category=${creator.slug}`}
+                  className="flex items-center gap-2 sm:gap-3 rounded-full border border-border bg-white shadow-sm px-5 py-2.5 sm:px-6 sm:py-3 transition-transform hover:-translate-y-1 hover:shadow-md cursor-pointer hover:border-accent"
                 >
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-accent" />
                   <span className="font-bold text-foreground text-xs sm:text-sm tracking-wide uppercase">{creator.name}</span>
-                </div>
+                </Link>
               );
             })}
           </div>
