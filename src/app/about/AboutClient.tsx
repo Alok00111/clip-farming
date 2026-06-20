@@ -120,9 +120,7 @@ export default function AboutClient() {
             <div className="space-y-24">
               {[
                 { year: "2026", event: "The Inception", desc: "Recognized the massive gap between traditional editing and the aggressive retention requirements of modern algorithms.", align: "left" },
-                { year: "2026", event: "Assembling The Fleet", desc: "Started aggressively vetting and onboarding elite short-form specialists who understand pacing and psychology.", align: "right" },
-                { year: "2026", event: "Scaling Up", desc: "Hit our first major view milestones by utilizing rapid iteration and hyper-optimized sound design.", align: "left" },
-                { year: "2027", event: "The Future", desc: "Continuing to engineer attention, dominating feeds, and scaling the largest network of retention specialists.", align: "right" }
+                { year: "2026", event: "Assembling The Fleet", desc: "Started aggressively vetting and onboarding elite short-form specialists who understand pacing and psychology.", align: "right" }
               ].map((step, i) => (
                 <motion.div key={step.event} variants={itemVariants} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
                   
