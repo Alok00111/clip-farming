@@ -132,8 +132,8 @@ export default function AboutClient() {
 
           <div className="space-y-16 md:space-y-32">
             {[
-              { year: "2026", event: "The Inception", desc: "Recognized the massive gap between traditional editing and the aggressive retention requirements of modern algorithms.", align: "left" },
-              { year: "2026", event: "Assembling The Fleet", desc: "Started aggressively vetting and onboarding elite short-form specialists who understand pacing and psychology.", align: "right" }
+              { year: "2026", event: "How It Started", desc: "We noticed that most creators were struggling to keep their audience engaged. Traditional editing just wasn't working for today's fast-paced algorithms.", align: "left" },
+              { year: "2026", event: "Building The Team", desc: "We began sourcing and training the best short-form video editors across India, focusing on talent who truly understand viewer psychology and retention.", align: "right" }
             ].map((step, i) => (
               <div key={i} className={`relative flex flex-col md:flex-row items-center ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
                 
@@ -182,10 +182,10 @@ export default function AboutClient() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {[
-            { name: "Agent 01", role: "Head of Strategy" },
-            { name: "Agent 02", role: "Chief Pacing" },
-            { name: "Agent 03", role: "VFX & Sound" },
-            { name: "Agent 04", role: "Network Dir." }
+            { name: "Rahul S.", role: "Head of Strategy" },
+            { name: "Aditya V.", role: "Chief Editor" },
+            { name: "Rohan P.", role: "VFX & Sound" },
+            { name: "Karan M.", role: "Network Dir." }
           ].map((member, i) => (
             <motion.div 
               key={i} 
