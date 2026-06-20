@@ -124,7 +124,7 @@ export default function AboutClient() {
                 { year: "2026", event: "Scaling Up", desc: "Hit our first major view milestones by utilizing rapid iteration and hyper-optimized sound design.", align: "left" },
                 { year: "2027", event: "The Future", desc: "Continuing to engineer attention, dominating feeds, and scaling the largest network of retention specialists.", align: "right" }
               ].map((step, i) => (
-                <motion.div key={step.year} variants={itemVariants} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
+                <motion.div key={step.event} variants={itemVariants} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
                   
                   {/* Timeline Dot */}
                   <div className="absolute left-8 md:left-1/2 w-8 h-8 bg-accent border-4 border-background rounded-full -ml-3 md:-ml-4 z-10 shadow-[2px_2px_0px_0px_var(--border)]"></div>
