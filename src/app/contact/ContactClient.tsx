@@ -89,6 +89,20 @@ const itemVariants: Variants = {
 };
 
 export default function ContactClient() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const link = formData.get("link") as string;
+    const budget = formData.get("budget") as string;
+    const bottleneck = formData.get("bottleneck") as string;
+
+    const message = `Hi Clip Up Media! I'm interested in scaling my content.\n\n*Creator/Brand:* ${name}\n*Channel:* ${link}\n*Budget:* ${budget}\n*Bottleneck:* ${bottleneck}`;
+    
+    const whatsappUrl = `https://wa.me/917411486296?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <motion.div 
       variants={containerVariants}
@@ -128,10 +142,10 @@ export default function ContactClient() {
                   </div>
                 </a>
 
-                <a href="#" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
+                <a href="https://wa.me/917411486296" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">Community</p>
-                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">WhatsApp Community</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">WhatsApp</p>
+                    <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">+91 7411486296</p>
                   </div>
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white border-2 border-border font-bold">
                     WA
@@ -149,8 +163,7 @@ export default function ContactClient() {
           {/* Right Column: Brutalist Form */}
           <motion.div variants={itemVariants}>
             <form 
-              action="https://formspree.io/f/YOUR_FORM_ID_HERE" 
-              method="POST"
+              onSubmit={handleSubmit}
               className="flex flex-col gap-6 rounded-[2.5rem] border-4 border-border bg-muted/30 p-8 sm:p-14 shadow-[12px_12px_0px_0px_var(--border)]"
             >
               <div className="flex flex-col gap-2">
