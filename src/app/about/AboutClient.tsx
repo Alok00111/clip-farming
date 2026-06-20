@@ -180,12 +180,10 @@ export default function AboutClient() {
           <motion.div variants={fadeUpVariant} className="w-16 h-1 bg-accent mx-auto mt-8 rounded-full"></motion.div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-3xl mx-auto">
           {[
-            { name: "Rahul S.", role: "Head of Strategy" },
-            { name: "Aditya V.", role: "Chief Editor" },
-            { name: "Rohan P.", role: "VFX & Sound" },
-            { name: "Karan M.", role: "Network Dir." }
+            { name: "Ajay", role: "Co-Founder / Strategy" },
+            { name: "Alok", role: "Co-Founder / Creative" }
           ].map((member, i) => (
             <motion.div 
               key={i} 
@@ -195,7 +193,7 @@ export default function AboutClient() {
               className="group text-center cursor-pointer"
             >
               <div className="w-full aspect-[4/5] bg-muted/30 rounded-2xl mb-8 flex items-center justify-center transition-all duration-500 group-hover:bg-accent group-hover:shadow-2xl group-hover:shadow-accent/20">
-                <span className="font-display text-4xl text-muted-foreground/30 font-bold group-hover:text-background transition-colors duration-500">{member.name.split(' ')[1]}</span>
+                <span className="font-display text-4xl text-muted-foreground/30 font-bold group-hover:text-background transition-colors duration-500">{member.name.charAt(0)}</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">{member.name}</h3>
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground group-hover:text-foreground transition-colors duration-300">{member.role}</p>
