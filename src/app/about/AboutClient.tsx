@@ -5,10 +5,10 @@ import React from "react";
 
 export default function AboutClient() {
   return (
-    <div className="min-h-screen bg-background text-foreground pt-32 pb-32 font-sans selection:bg-accent selection:text-background">
+    <div className="min-h-screen bg-background text-foreground pt-24 pb-32 font-sans selection:bg-accent selection:text-background">
       
       {/* Elegant Hero */}
-      <section className="container mx-auto px-6 max-w-5xl text-center pt-8 pb-24 md:pt-12 md:pb-32">
+      <section className="container mx-auto px-6 max-w-5xl text-center pt-0 pb-24 md:pt-4 md:pb-32">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
