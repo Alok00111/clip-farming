@@ -17,6 +17,12 @@ export default function SmoothScroll({
   const lenisRef = useRef<any>(null);
 
   useEffect(() => {
+    // Force scroll to top on refresh
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
     function update(time: number) {
       lenisRef.current?.lenis?.raf(time * 1000);
     }
