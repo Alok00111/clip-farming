@@ -1,37 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
-
-const LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*";
-
-function ScrambleText({ text }: { text: string }) {
-  const [displayText, setDisplayText] = useState(text);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      let iterations = 0;
-      const glitchInterval = setInterval(() => {
-        setDisplayText(
-          text.split("").map((letter, index) => {
-            if (index < iterations) return text[index];
-            return LETTERS[Math.floor(Math.random() * LETTERS.length)];
-          }).join("")
-        );
-
-        if (iterations >= text.length) {
-          clearInterval(glitchInterval);
-          setDisplayText(text);
-        }
-        iterations += 1 / 2;
-      }, 30);
-    }, 4000 + Math.random() * 2000); // Randomize glitch interval between 4-6s
-
-    return () => clearInterval(interval);
-  }, [text]);
-
-  return <span className="inline-block min-w-[3ch]">{displayText}</span>;
-}
 
 export default function Logo({ className, iconClassName, textClassName }: { className?: string, iconClassName?: string, textClassName?: string }) {
   return (
@@ -41,8 +11,8 @@ export default function Logo({ className, iconClassName, textClassName }: { clas
       <div className={cn("flex items-center", textClassName)}>
         <span className="text-accent text-[3rem] font-bold italic leading-none mr-2.5 -mt-0.5">/</span>
         <div className="flex flex-col font-display font-black text-2xl leading-[0.85] tracking-tight text-foreground">
-          <ScrambleText text="CLIP" />
-          <ScrambleText text="UP" />
+          <span className="inline-block">CLIP</span>
+          <span className="inline-block">UP</span>
         </div>
         <span className="font-display text-[11px] font-bold uppercase tracking-[0.4em] text-foreground/70 ml-2 mt-1">
           MEDIA
