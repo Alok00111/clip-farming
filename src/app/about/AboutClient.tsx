@@ -85,24 +85,24 @@ export default function AboutClient() {
 
             {/* Stat 2 */}
             <motion.div variants={itemVariants} className="rounded-[2rem] border-4 border-border bg-muted p-10 shadow-[8px_8px_0px_0px_var(--border)] hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--foreground)] hover:border-foreground hover:bg-background transition-all flex flex-col justify-center items-center text-center group">
-              <h3 className="font-display text-7xl font-black uppercase text-foreground group-hover:scale-110 transition-transform">100M</h3>
+              <h3 className="font-display text-7xl font-black uppercase text-foreground group-hover:scale-110 transition-transform">600M+</h3>
               <p className="mt-6 text-xl font-bold uppercase tracking-widest text-muted-foreground group-hover:text-foreground">Views Gen.</p>
             </motion.div>
 
-            {/* The War Room */}
+            {/* The Engine */}
             <motion.div variants={itemVariants} className="md:col-span-2 rounded-[2rem] border-4 border-border bg-background p-10 shadow-[8px_8px_0px_0px_var(--border)] hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[16px_16px_0px_0px_var(--border)] transition-all flex flex-col sm:flex-row gap-8 items-center overflow-hidden relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
               <div className="flex-1 z-10">
-                <h3 className="font-display text-4xl font-black uppercase text-foreground mb-4">The War Room</h3>
+                <h3 className="font-display text-4xl font-black uppercase text-foreground mb-4">The Engine</h3>
                 <p className="text-muted-foreground text-xl font-medium leading-relaxed mb-8">
-                  Managing 4,000+ clippers isn't done on spreadsheets. We built a proprietary distribution and QA engine that grades retention scores automatically.
+                  Scaling high-retention content isn't done on spreadsheets. We utilize brutal, data-driven workflows and continuous A/B testing to ensure every second of footage maximizes watch time.
                 </p>
                 <div className="inline-block border-4 border-foreground bg-accent px-6 py-2 font-bold uppercase tracking-widest text-accent-foreground rounded-full shadow-[4px_4px_0px_0px_var(--foreground)]">
-                  Proprietary Tech
+                  Data-Driven Workflows
                 </div>
               </div>
               <div className="w-full sm:w-1/2 aspect-square sm:aspect-[4/3] rounded-2xl border-4 border-dashed border-border flex items-center justify-center p-6 bg-muted/50 z-10">
-                <span className="font-display text-2xl font-black text-muted-foreground uppercase text-center">Dashboard<br/>UI/UX</span>
+                <span className="font-display text-2xl font-black text-muted-foreground uppercase text-center leading-relaxed">Continuous<br/>Iteration<br/>Cycle</span>
               </div>
             </motion.div>
 
@@ -119,10 +119,10 @@ export default function AboutClient() {
 
             <div className="space-y-24">
               {[
-                { year: "2021", event: "[Title Placeholder]", desc: "[Description Placeholder: Provide accurate details about the origin or a major milestone here.]", align: "left" },
-                { year: "2023", event: "[Title Placeholder]", desc: "[Description Placeholder: Provide accurate details about scaling or technology advancements here.]", align: "right" },
-                { year: "2025", event: "[Title Placeholder]", desc: "[Description Placeholder: Provide accurate details about the current state or major achievements.]", align: "left" },
-                { year: "2026", event: "[Title Placeholder]", desc: "[Description Placeholder: Future vision or latest massive scaling milestone.]", align: "right" }
+                { year: "2026", event: "The Inception", desc: "Recognized the massive gap between traditional editing and the aggressive retention requirements of modern algorithms.", align: "left" },
+                { year: "2026", event: "Assembling The Fleet", desc: "Started aggressively vetting and onboarding elite short-form specialists who understand pacing and psychology.", align: "right" },
+                { year: "2026", event: "Scaling Up", desc: "Hit our first major view milestones by utilizing rapid iteration and hyper-optimized sound design.", align: "left" },
+                { year: "2027", event: "The Future", desc: "Continuing to engineer attention, dominating feeds, and scaling the largest network of retention specialists.", align: "right" }
               ].map((step, i) => (
                 <motion.div key={step.year} variants={itemVariants} className={`relative flex flex-col md:flex-row items-center gap-8 md:gap-16 ${step.align === 'right' ? 'md:flex-row-reverse' : ''}`}>
                   
