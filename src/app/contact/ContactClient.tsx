@@ -142,7 +142,7 @@ export default function ContactClient() {
                   </div>
                 </a>
 
-                <a href="https://wa.me/917411486296" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
+                <a href="https://wa.me/917411486296?text=Hi%20Clip%20Up%20Media!%20I%27d%20like%20to%20discuss%20scaling%20my%20content." target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between rounded-xl border-2 border-border bg-background p-6 transition-transform hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--accent)]">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">WhatsApp</p>
                     <p className="font-display text-xl font-bold text-foreground group-hover:text-accent transition-colors">+91 7411486296</p>
