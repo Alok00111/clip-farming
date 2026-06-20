@@ -50,7 +50,7 @@ export default function VideoGrid() {
             viewport={{ once: true }}
             className="font-display text-4xl font-bold uppercase tracking-tight text-foreground sm:text-6xl"
           >
-            The <span className="text-accent">Output.</span>
+            The <span className="text-accent">Blueprint.</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +59,7 @@ export default function VideoGrid() {
             transition={{ delay: 0.2 }}
             className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            Real examples of the pacing, storytelling, and visual hooks we use to consistently drive millions of views.
+            Watch exactly how dynamic hooks, relentless pacing, and visual storytelling physically hold a viewer's focus.
           </motion.p>
         </div>
 
