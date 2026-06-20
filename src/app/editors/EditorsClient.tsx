@@ -91,13 +91,13 @@ export default function EditorsClient() {
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      className="min-h-screen bg-background pt-32 pb-20 overflow-hidden"
+      className="min-h-screen bg-background pt-24 md:pt-32 pb-20 overflow-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Hero Section */}
         <motion.div variants={itemVariants} className="text-center mb-32">
-          <h1 className="font-display text-5xl font-black uppercase tracking-tight text-foreground sm:text-7xl lg:text-8xl leading-none">
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-black uppercase tracking-tight text-foreground leading-none">
             STOP CHASING CLIENTS. <br className="hidden sm:block" />
             <span className="text-accent underline decoration-border underline-offset-[0.5rem] decoration-[0.5rem]">START EDITING.</span>
           </h1>

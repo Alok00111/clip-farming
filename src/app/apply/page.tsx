@@ -326,7 +326,7 @@ export default function ApplyPage() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-6 relative overflow-hidden bg-background">
+    <div className="min-h-screen pt-24 md:pt-32 pb-20 px-4 md:px-6 relative overflow-hidden bg-background">
       
       {/* Background Noise & Blur */}
       <div className="pointer-events-none absolute inset-0 z-0 opacity-5">

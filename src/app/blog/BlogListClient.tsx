@@ -104,7 +104,7 @@ export default function BlogListClient() {
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      className="min-h-screen bg-background pt-32 pb-20 overflow-x-hidden"
+      className="min-h-screen bg-background pt-24 md:pt-32 pb-20 overflow-x-hidden"
     >
       <div className="container mx-auto px-6 max-w-[90rem]">
         

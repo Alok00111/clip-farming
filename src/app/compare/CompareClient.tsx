@@ -21,13 +21,13 @@ export default function CompareClient() {
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      className="min-h-screen bg-background pt-32 pb-20 overflow-x-hidden"
+      className="min-h-screen bg-background pt-20 md:pt-32 pb-20 overflow-x-hidden"
     >
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Hero Section */}
         <motion.div variants={itemVariants} className="text-center mb-32">
-          <h1 className="font-display text-6xl font-black uppercase tracking-tight text-foreground sm:text-8xl lg:text-[10rem] leading-none">
+          <h1 className="font-display text-4xl sm:text-6xl lg:text-8xl font-black uppercase tracking-tight text-foreground leading-none">
             THE INDUSTRY IS <br />
             <span className="text-accent underline decoration-border underline-offset-[1rem] decoration-8">BROKEN.</span>
           </h1>
