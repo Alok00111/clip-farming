@@ -8,7 +8,7 @@ export default function AboutClient() {
     <div className="min-h-screen bg-background text-foreground pt-32 pb-32 font-sans selection:bg-accent selection:text-background">
       
       {/* Elegant Hero */}
-      <section className="container mx-auto px-6 max-w-5xl text-center py-24 md:py-32">
+      <section className="container mx-auto px-6 max-w-5xl text-center pt-8 pb-24 md:pt-12 md:pb-32">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
