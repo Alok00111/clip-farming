@@ -182,8 +182,8 @@ export default function AboutClient() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 max-w-3xl mx-auto">
           {[
-            { name: "Ajay", role: "Co-Founder / Strategy" },
-            { name: "Alok", role: "Co-Founder / Creative" }
+            { name: "Ajay", role: "Co-Founder" },
+            { name: "Alok", role: "Co-Founder" }
           ].map((member, i) => (
             <motion.div 
               key={i} 
