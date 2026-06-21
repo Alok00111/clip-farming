@@ -23,7 +23,7 @@ export default function VideoGrid() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(containerRef, { amount: 0.3 });
   const [isHovered, setIsHovered] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
 
   // Play video automatically when in view
   useEffect(() => {
@@ -70,8 +70,16 @@ export default function VideoGrid() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group pointer-events-none"
+          onMouseEnter={() => setIsMuted(false)}
+          onMouseLeave={() => setIsMuted(true)}
+          onClick={() => setIsMuted(!isMuted)}
+          className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group cursor-pointer"
         >
+
+          {/* Volume Indicator */}
+          <div className="absolute top-6 right-6 z-30 bg-black/40 backdrop-blur-md p-3 rounded-full text-white/70 transition-all duration-300 group-hover:text-white group-hover:bg-accent group-hover:scale-110 shadow-lg">
+            {isMuted ? <VolumeX className="w-6 h-6" /> : <Volume2 className="w-6 h-6" />}
+          </div>
 
           <video
             ref={videoRef}
