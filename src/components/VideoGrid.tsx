@@ -23,7 +23,7 @@ export default function VideoGrid() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(containerRef, { amount: 0.3 });
   const [isHovered, setIsHovered] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
 
   // Play video automatically when in view
   useEffect(() => {
