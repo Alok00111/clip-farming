@@ -19,8 +19,26 @@ const archivoBlack = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: "ClippingAgency | Premium Short-Form Content",
-  description: "We turn your long-form content into viral short clips, distributed by a network of clippers.",
+  metadataBase: new URL('https://clipupmedia.xyz'),
+  title: {
+    default: "Clip Up Media | Elite Short-Form Content Agency",
+    template: "%s | Clip Up Media",
+  },
+  description: "We turn your long-form videos into viral short-form clips. Join our network of elite editors or hire us to scale your content on TikTok, Reels, and Shorts.",
+  keywords: ["short form content", "tiktok editing agency", "video editors", "clip farming", "content scale"],
+  openGraph: {
+    title: "Clip Up Media | Elite Short-Form Content Agency",
+    description: "We turn your long-form videos into viral short-form clips.",
+    url: "https://clipupmedia.xyz",
+    siteName: "Clip Up Media",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Clip Up Media | Elite Short-Form Content Agency",
+    description: "We turn your long-form videos into viral short-form clips.",
+  },
 };
 
 export default function RootLayout({
