@@ -63,14 +63,14 @@ export default function VideoGrid() {
           </motion.p>
         </div>
 
-        {/* Massive Screen-filling Player */}
+        {/* Vertical Phone-like Video Container */}
         <motion.div
           ref={containerRef}
           initial={{ opacity: 0, scale: 0.95, y: 40 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group pointer-events-none"
+          className="relative w-full max-w-sm mx-auto aspect-[9/16] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group pointer-events-none"
         >
 
           <video
@@ -80,7 +80,7 @@ export default function VideoGrid() {
             autoPlay
             loop
             playsInline
-            className="absolute inset-0 h-full w-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
+            className="absolute inset-0 h-full w-full object-contain z-10 transition-transform duration-700 group-hover:scale-105"
             style={{ opacity: isHovered ? 1 : 0.85 }}
           />
 
