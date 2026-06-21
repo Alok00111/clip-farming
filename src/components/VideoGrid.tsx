@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 // ==========================================
 const featuredVideo = {
   // Replace the src below with your actual video URL (e.g. "https://yoursite.com/video.mp4")
-  src: "/videos/clip1.mp4", 
+  src: "/videos/blueprint-video.mp4", 
   views: "12.4M", 
   platform: "TikTok & Reels", 
   title: "The Anatomy of a Viral Masterpiece",
@@ -72,18 +72,12 @@ export default function VideoGrid() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="relative w-full aspect-[9/16] md:aspect-video lg:aspect-[21/9] max-h-[85vh] rounded-3xl overflow-hidden border border-white/10 bg-black shadow-[0_0_50px_rgba(249,115,22,0.15)] group pointer-events-none"
         >
-          {/* Fallback pattern while video is missing */}
-          <div className="absolute inset-0 z-0 flex flex-col items-center justify-center opacity-30 bg-neutral-900">
-            <div className="flex flex-col items-center gap-4 text-accent">
-              <Play className="h-16 w-16 opacity-50" />
-              <span className="text-sm uppercase tracking-widest text-foreground font-bold">Showcase Reel Missing (.mp4)</span>
-            </div>
-          </div>
 
           <video
             ref={videoRef}
             src={featuredVideo.src}
             muted={isMuted}
+            autoPlay
             loop
             playsInline
             className="absolute inset-0 h-full w-full object-cover z-10 transition-transform duration-700 group-hover:scale-105"
