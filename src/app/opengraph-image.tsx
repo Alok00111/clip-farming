@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
  
-// Route segment config
-export const runtime = 'edge';
+// Route segment config removed for local dev stability
+
  
 // Image metadata
 export const alt = 'Clip Up Media | Elite Short-Form Content Agency';
