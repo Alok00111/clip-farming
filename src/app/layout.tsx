@@ -54,7 +54,7 @@ export default function RootLayout({
     >
       <head>
       </head>
-      <body className="min-h-screen bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
+      <body className="min-h-screen w-full overflow-x-hidden bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
           <div className="noise-overlay" />
           <Cursor />
           <SmoothScroll>
