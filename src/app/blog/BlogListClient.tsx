@@ -153,13 +153,13 @@ export default function BlogListClient() {
               variants={itemVariants}
               initial="hidden"
               animate="show"
-              className="flex flex-col rounded-3xl border-4 border-border bg-muted/30 p-10 sm:p-16 shadow-[8px_8px_0px_0px_var(--border)]"
+              className="flex flex-col rounded-3xl border-4 border-border bg-muted/30 p-6 sm:p-16 shadow-[8px_8px_0px_0px_var(--border)]"
             >
-              <div className="flex items-center gap-6 mb-8 border-b-2 border-border/50 pb-8">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent text-accent-foreground border-2 border-border shadow-[4px_4px_0px_0px_var(--border)]">
+              <div className="flex items-center gap-4 sm:gap-6 mb-8 border-b-2 border-border/50 pb-8">
+                <div className="flex shrink-0 h-16 w-16 items-center justify-center rounded-2xl bg-accent text-accent-foreground border-2 border-border shadow-[4px_4px_0px_0px_var(--border)]">
                   <ActiveIcon className="h-8 w-8" />
                 </div>
-                <h2 className="font-display text-4xl font-black uppercase text-foreground">
+                <h2 className="font-display text-2xl sm:text-4xl font-black uppercase text-foreground break-words">
                   {activeCategoryData.name}
                 </h2>
               </div>
