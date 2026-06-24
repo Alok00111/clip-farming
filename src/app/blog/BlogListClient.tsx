@@ -159,7 +159,7 @@ export default function BlogListClient() {
                 <div className="flex shrink-0 h-16 w-16 items-center justify-center rounded-2xl bg-accent text-accent-foreground border-2 border-border shadow-[4px_4px_0px_0px_var(--border)]">
                   <ActiveIcon className="h-8 w-8" />
                 </div>
-                <h2 className="font-display text-2xl sm:text-4xl font-black uppercase text-foreground break-words">
+                <h2 className="font-display text-2xl sm:text-4xl font-black uppercase text-foreground break-all sm:break-words min-w-0">
                   {activeCategoryData.name}
                 </h2>
               </div>
